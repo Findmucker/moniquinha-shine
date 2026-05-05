@@ -1,0 +1,13 @@
+# Internal-only files — must NEVER be deployed to the public site
+PRECOS_MERCADO.md
+PRECOS_MERCADO.pdf
+send_precos_email.py
+
+# Repo / dev meta
+.git
+.gitignore
+README.md
+.env
+.env.local
+.vscode
+.idea

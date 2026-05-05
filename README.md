@@ -60,7 +60,30 @@ moniquinha-shine/
 
 Site estático — fazer upload dos ficheiros para qualquer hosting.
 
-Para GitHub Pages:
+### Vercel (recomendado)
+
+O projeto já está ligado à Vercel (`.vercel/project.json`).
+
+**Deploy automático** via GitHub Actions: cada push para `master` aciona o workflow `.github/workflows/deploy.yml` que faz `vercel build && vercel deploy --prod`.
+
+Secrets necessários em **GitHub → Settings → Secrets and variables → Actions**:
+
+| Secret | Onde obter |
+|---|---|
+| `VERCEL_TOKEN` | https://vercel.com/account/tokens |
+| `VERCEL_ORG_ID` | `.vercel/project.json` → `orgId` |
+| `VERCEL_PROJECT_ID` | `.vercel/project.json` → `projectId` |
+
+**Deploy manual** (CLI):
+
+```bash
+npx vercel --prod
+```
+
+Configuração de cabeçalhos, redirects e cache em `vercel.json`. Ficheiros internos (research, mailer) excluídos do bundle via `.vercelignore`.
+
+### GitHub Pages (alternativa)
+
 1. Settings → Pages → Source: Deploy from branch → `master` / `root`
 2. Site disponível em `https://findmucker.github.io/moniquinha-shine/`
 
