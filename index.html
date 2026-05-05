@@ -908,6 +908,17 @@ footer {
               <label data-i18n="wiz_email_optional">Email (optional)</label>
               <input type="email" id="email" name="email" placeholder="maria@example.com">
             </div>
+            <div class="wiz-input">
+              <label data-i18n="form_address">Service Address</label>
+              <div style="position:relative;">
+                <input type="text" id="address" name="address" data-i18n-placeholder="form_address_ph" placeholder="Rua, número, cidade..." autocomplete="off" required>
+                <div id="addrSuggest" style="display:none; position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid rgba(0,0,0,0.12); border-radius:10px; margin-top:4px; max-height:240px; overflow-y:auto; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,0.12);"></div>
+              </div>
+              <div id="mapPreview" style="display:none; margin-top:10px; border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,0.08);">
+                <iframe id="mapFrame" width="100%" height="180" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
+                <a id="mapOpenLink" href="#" target="_blank" rel="noopener" style="display:block; padding:8px 12px; font-size:0.8rem; text-align:center; background:#f7f5f1; color:var(--purple-dark); text-decoration:none; font-weight:600;">📍 <span data-i18n="form_address_open">Open in Google Maps</span></a>
+              </div>
+            </div>
             <div class="wiz-buttons">
               <button type="button" class="wiz-back" id="wizBack2" data-i18n="wiz_back">← Back</button>
               <button type="button" class="wiz-next disabled" id="wizNext2" data-i18n="wiz_continue">Continue →</button>
@@ -1066,6 +1077,7 @@ const i18n = {
     contact_hours: "Available Mon–Sat · 8 AM – 7 PM",
     form_title: "Request a Free Quote", form_name: "Your Name", form_name_ph: "Maria Silva",
     form_phone: "Phone", form_service: "Service Needed", form_choose: "Choose a service...",
+    form_address: "Service Address", form_address_ph: "Street, number, city...", form_address_open: "Open in Google Maps", form_address_outside: "No matches in our service area (Óbidos / Caldas da Rainha region).",
     form_other: "Other", form_date: "Preferred Date", form_time: "Preferred Time", form_time_ph: "Select hour...", form_message: "Message", form_message_ph: "Tell me about what you need...",
     form_submit: "Send Request ✨",
     form_subtitle: "Fill in the form below and I'll get back to you within 24 hours.",
@@ -1156,6 +1168,7 @@ const i18n = {
     contact_hours: "Disponível Seg–Sáb · 8h – 19h",
     form_title: "Pedir Orçamento Grátis", form_name: "O Seu Nome", form_name_ph: "Maria Silva",
     form_phone: "Telefone", form_service: "Serviço Pretendido", form_choose: "Escolha um serviço...",
+    form_address: "Morada do Serviço", form_address_ph: "Rua, número, cidade...", form_address_open: "Abrir no Google Maps", form_address_outside: "Sem resultados na nossa zona de serviço (Óbidos / Caldas da Rainha).",
     form_other: "Outro", form_date: "Data Preferida", form_time: "Hora Preferida", form_time_ph: "Escolha a hora...", form_message: "Mensagem", form_message_ph: "Conte-me o que precisa...",
     form_submit: "Enviar Pedido ✨",
     form_subtitle: "Preencha o formulário abaixo e respondo em menos de 24 horas.",
@@ -1246,6 +1259,7 @@ const i18n = {
     contact_hours: "Disponible Lun–Sam · 8h – 19h",
     form_title: "Demander un Devis Gratuit", form_name: "Votre Nom", form_name_ph: "Maria Silva",
     form_phone: "Téléphone", form_service: "Service Souhaité", form_choose: "Choisissez un service...",
+    form_address: "Adresse du Service", form_address_ph: "Rue, numéro, ville...", form_address_open: "Ouvrir dans Google Maps", form_address_outside: "Aucun résultat dans notre zone de service (région d'Óbidos / Caldas da Rainha).",
     form_other: "Autre", form_date: "Date Souhaitée", form_time: "Heure Souhaitée", form_time_ph: "Choisir l'heure...", form_message: "Message", form_message_ph: "Décrivez-moi vos besoins...",
     form_submit: "Envoyer la Demande ✨",
     form_subtitle: "Remplissez le formulaire ci-dessous et je vous répondrai sous 24 heures.",
@@ -1336,6 +1350,7 @@ const i18n = {
     contact_hours: "Disponible Lun–Sáb · 8h – 19h",
     form_title: "Pedir Presupuesto Gratis", form_name: "Tu Nombre", form_name_ph: "María García",
     form_phone: "Teléfono", form_service: "Servicio Deseado", form_choose: "Elige un servicio...",
+    form_address: "Dirección del Servicio", form_address_ph: "Calle, número, ciudad...", form_address_open: "Abrir en Google Maps", form_address_outside: "Sin resultados en nuestra zona de servicio (Óbidos / Caldas da Rainha).",
     form_other: "Otro", form_date: "Fecha Preferida", form_time: "Hora Preferida", form_time_ph: "Elegir hora...", form_message: "Mensaje", form_message_ph: "Cuéntame qué necesitas...",
     form_submit: "Enviar Solicitud ✨",
     form_subtitle: "Rellena el formulario y te responderé en menos de 24 horas.",
@@ -1465,12 +1480,15 @@ function validateStep1() {
   if (selectedService) { btn.classList.remove('disabled'); } else { btn.classList.add('disabled'); }
 }
 
-// Step 2 validation: name + phone (digits only) required
+// Step 2 validation: name + phone (digits only) + address required (must be in service area)
+let _addressValidated = '';
 function validateStep2() {
   const btn = document.getElementById('wizNext2');
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
-  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone)) { btn.classList.remove('disabled'); } else { btn.classList.add('disabled'); }
+  const address = document.getElementById('address').value.trim();
+  const addrOk = address.length >= 5 && _addressValidated && _addressValidated === address;
+  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone) && addrOk) { btn.classList.remove('disabled'); } else { btn.classList.add('disabled'); }
 }
 
 // Phone: only allow digits, spaces, and leading +
@@ -1480,18 +1498,121 @@ document.getElementById('phone').addEventListener('input', function() {
 });
 document.getElementById('name').addEventListener('input', validateStep2);
 
+// Address: live Google Maps preview + keyless autocomplete (Photon / OpenStreetMap)
+let _mapTimer = null;
+let _addrAbort = null;
+const addressInput = document.getElementById('address');
+const suggestBox = document.getElementById('addrSuggest');
+
+function hideSuggest() { suggestBox.style.display = 'none'; suggestBox.innerHTML = ''; }
+function showMapFor(query) {
+  const preview = document.getElementById('mapPreview');
+  const frame = document.getElementById('mapFrame');
+  const openLink = document.getElementById('mapOpenLink');
+  const q = encodeURIComponent(query);
+  frame.src = `https://maps.google.com/maps?q=${q}&hl=${currentLang || 'en'}&z=16&output=embed`;
+  openLink.href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  preview.style.display = 'block';
+}
+
+async function fetchAddrSuggestions(q) {
+  if (_addrAbort) _addrAbort.abort();
+  _addrAbort = new AbortController();
+  try {
+    const lang = (currentLang || 'en').slice(0, 2);
+    // Restrict to Portugal, biased to the Óbidos / Caldas da Rainha region (~30 km box)
+    // viewbox = left,top,right,bottom  (lon,lat,lon,lat)
+    const viewbox = '-9.55,39.70,-8.70,39.10';
+    const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&countrycodes=pt&viewbox=${viewbox}&bounded=1&q=${encodeURIComponent(q)}&accept-language=${lang}`;
+    const res = await fetch(url, { signal: _addrAbort.signal, headers: { 'Accept': 'application/json' } });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data || []).map(f => ({
+      label: f.display_name,           // canonical formatted address
+      coords: [parseFloat(f.lon), parseFloat(f.lat)]
+    })).filter(s => s.label);
+  } catch (e) { return []; }
+}
+
+function renderSuggestions(items) {
+  if (!items.length) {
+    const msg = (i18n[currentLang] && i18n[currentLang].form_address_outside) || 'No matches in our service area (Óbidos / Caldas da Rainha region).';
+    suggestBox.innerHTML = `<div style="padding:10px 12px; font-size:0.85rem; color:var(--gray);">⚠️ ${msg}</div>`;
+    suggestBox.style.display = 'block';
+    return;
+  }
+  suggestBox.innerHTML = items.map((s, i) =>
+    `<div class="addr-sugg" data-i="${i}" style="padding:10px 12px; cursor:pointer; border-bottom:1px solid rgba(0,0,0,0.06); font-size:0.9rem;">
+       <div style="color:var(--dark); font-weight:500;">📍 ${s.label.replace(/</g,'&lt;')}</div>
+     </div>`
+  ).join('');
+  suggestBox.style.display = 'block';
+  Array.from(suggestBox.querySelectorAll('.addr-sugg')).forEach(el => {
+    el.addEventListener('mouseenter', () => el.style.background = '#f7f5f1');
+    el.addEventListener('mouseleave', () => el.style.background = '');
+    el.addEventListener('mousedown', (ev) => {
+      ev.preventDefault();
+      const i = parseInt(el.dataset.i, 10);
+      const chosen = items[i];
+      addressInput.value = chosen.label;
+      _addressValidated = chosen.label;
+      hideSuggest();
+      validateStep2();
+      showMapFor(chosen.label);
+    });
+  });
+}
+
+addressInput.addEventListener('input', function() {
+  _addressValidated = '';
+  validateStep2();
+  clearTimeout(_mapTimer);
+  const val = this.value.trim();
+  const preview = document.getElementById('mapPreview');
+  const frame = document.getElementById('mapFrame');
+  if (val.length < 3) { preview.style.display = 'none'; if (frame) frame.src = ''; hideSuggest(); return; }
+  _mapTimer = setTimeout(async () => {
+    const items = await fetchAddrSuggestions(val);
+    renderSuggestions(items);
+    if (val.length >= 5) showMapFor(val);
+  }, 350);
+});
+addressInput.addEventListener('blur', () => {
+  // On blur: if user typed something but didn't pick a suggestion, snap to top match
+  setTimeout(async () => {
+    hideSuggest();
+    const val = addressInput.value.trim();
+    if (val.length < 3) return;
+    const items = await fetchAddrSuggestions(val);
+    if (items.length && items[0].label.toLowerCase() !== val.toLowerCase()) {
+      addressInput.value = items[0].label;
+      _addressValidated = items[0].label;
+      validateStep2();
+      showMapFor(items[0].label);
+    } else if (items.length) {
+      _addressValidated = items[0].label;
+      validateStep2();
+    }
+  }, 180);
+});
+addressInput.addEventListener('focus', () => {
+  if (suggestBox.innerHTML.trim()) suggestBox.style.display = 'block';
+});
+
 document.getElementById('wizNext1').addEventListener('click', () => { if (selectedService) wizGoStep(2); });
 document.getElementById('wizBack2').addEventListener('click', () => wizGoStep(1));
 document.getElementById('wizNext2').addEventListener('click', () => {
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
-  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone)) wizGoStep(3);
+  const address = document.getElementById('address').value.trim();
+  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone) && address.length >= 5) wizGoStep(3);
 });
 document.getElementById('wizBack3').addEventListener('click', () => wizGoStep(2));
 document.getElementById('wizSend').addEventListener('click', () => {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const phone = document.getElementById('phone').value.trim();
+  const address = document.getElementById('address').value.trim();
   const prefDate = document.getElementById('prefDate').value;
   const prefTime = document.getElementById('prefTime').value;
   const msg = document.getElementById('message').value.trim();
@@ -1562,6 +1683,7 @@ document.getElementById('wizSend').addEventListener('click', () => {
   if (msg) text += `\n\n💬 ${t.msgLabel}\n${msg}`;
   text += `\n\n📞 ${phone}`;
   if (email) text += `\n📧 ${email}`;
+  if (address) text += `\n📍 ${address}\nhttps://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
   text += `\n\n${t.thanks}`;
 
   const url = 'https://wa.me/351915520147?text=' + encodeURIComponent(text);
@@ -1571,6 +1693,8 @@ document.getElementById('wizSend').addEventListener('click', () => {
     from_name: name,
     from_email: email,
     from_phone: phone,
+    address: address || 'Not specified',
+    address_map_url: address ? ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address)) : '',
     service: serviceName,
     date: prefDate || 'Not specified',
     time: prefTime || 'Not specified',
