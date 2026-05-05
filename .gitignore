@@ -1,1 +1,18 @@
 .vercel
+
+# Build / OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Internal pricing research — generated PDF (source markdown is committed)
+PRECOS_MERCADO.pdf
+
+# Local env / secrets for SMTP sending
+.env
+.env.local
