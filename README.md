@@ -16,7 +16,12 @@ Website profissional para serviços de limpeza, babysitting e serviços domésti
 
 - Landing page single-page responsiva
 - Multilingue (PT, EN, FR, ES)
-- Formulário de contacto via EmailJS
+- Formulário de contacto via EmailJS + WhatsApp deep-link
+- **Wizard de orçamento em 3 passos** com validação por passo
+- **Campo de morada com autocomplete** (Nominatim / OpenStreetMap, sem API key)
+  - Sugestões limitadas à zona de serviço (Óbidos, Caldas da Rainha e arredores ~30 km)
+  - Pré-visualização Google Maps embebida
+  - Auto-correção da morada para formato canónico
 - SEO optimizado (meta tags, Open Graph, sitemap, robots.txt)
 - Design mobile-first
 
@@ -24,6 +29,8 @@ Website profissional para serviços de limpeza, babysitting e serviços domésti
 
 - **HTML/CSS/JS** — site estático, sem framework
 - **EmailJS** — envio de formulários sem backend
+- **Nominatim (OpenStreetMap)** — autocomplete de moradas (sem API key)
+- **Google Maps embed** — preview de localização (modo keyless)
 - **Hosting:** pode ser qualquer host estático (Vercel, Netlify, GitHub Pages)
 
 ## Setup
