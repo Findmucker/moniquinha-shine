@@ -1,0 +1,12 @@
+{
+  "name": "moniquinha-shine",
+  "version": "1.0.0",
+  "description": "Moniquinha's Shine - Professional cleaning and domestic services website",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static site - no build step required'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
