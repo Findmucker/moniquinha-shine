@@ -16,12 +16,8 @@
 <meta name="keywords" content="limpeza, limpeza profunda, limpeza Airbnb, alojamento local, alojamento temporário, limpeza de veículos alugados, organização, lavandaria, home staging, decoração, Óbidos, Caldas da Rainha, Portugal, serviços domésticos, Moniquinha's Shine">
 <meta name="author" content="Moniquinha's Shine">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://moniquinhashine.pt/">
-<link rel="alternate" hreflang="pt" href="https://moniquinhashine.pt/">
-<link rel="alternate" hreflang="en" href="https://moniquinhashine.pt/">
-<link rel="alternate" hreflang="fr" href="https://moniquinhashine.pt/">
-<link rel="alternate" hreflang="es" href="https://moniquinhashine.pt/">
-<link rel="alternate" hreflang="x-default" href="https://moniquinhashine.pt/">
+<meta name="theme-color" content="#27263b">
+<link rel="canonical" href="https://www.moniquinhashine.pt/">
 
 <!-- Performance -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -31,8 +27,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Moniquinha's Shine ✨ | Serviços Domésticos Profissionais">
 <meta property="og:description" content="Limpeza, organização e muito mais — com energia, coração e um toque pessoal. Óbidos e Caldas da Rainha.">
-<meta property="og:url" content="https://moniquinhashine.pt/">
-<meta property="og:image" content="https://moniquinhashine.pt/moniquinha.webp">
+<meta property="og:url" content="https://www.moniquinhashine.pt/">
+<meta property="og:image" content="https://www.moniquinhashine.pt/moniquinha.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_PT">
@@ -45,10 +41,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Moniquinha's Shine ✨ | Serviços Domésticos Profissionais">
 <meta name="twitter:description" content="Limpeza, organização e muito mais — com energia, coração e um toque pessoal.">
-<meta name="twitter:image" content="https://moniquinhashine.pt/moniquinha.webp">
+<meta name="twitter:image" content="https://www.moniquinhashine.pt/moniquinha.webp">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" sizes="any" href="https://www.moniquinhashine.pt/favicon.svg">
 
 <!-- Structured Data: LocalBusiness -->
 <script type="application/ld+json">
@@ -57,8 +53,9 @@
   "@type": "LocalBusiness",
   "name": "Moniquinha's Shine",
   "description": "Serviços profissionais de limpeza doméstica, Airbnb, alojamentos temporários e veículos alugados em Óbidos e Caldas da Rainha.",
-  "url": "https://moniquinhashine.pt",
-  "image": "https://moniquinhashine.pt/moniquinha.webp",
+  "url": "https://www.moniquinhashine.pt",
+  "image": "https://www.moniquinhashine.pt/moniquinha.webp",
+  "logo": "https://www.moniquinhashine.pt/favicon.svg",
   "telephone": "+351915520147",
   "email": "moniquinhashine@hotmail.com",
   "address": {
@@ -83,13 +80,7 @@
     "Decoração Festiva"
   ],
   "priceRange": "€",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "08:00",
-    "closes": "19:00"
-  },
-  "sameAs": []
+  "priceRange": "€"
 }
 </script>
 
@@ -99,7 +90,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://moniquinhashine.pt/" }
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.moniquinhashine.pt/" }
   ]
 }
 </script>
@@ -115,7 +106,7 @@
       "name": "Que serviços oferece a Moniquinha's Shine?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oferecemos limpeza regular e profunda, limpeza de Airbnb e alojamentos temporários, limpeza de veículos alugados, organização doméstica, lavandaria e engomadoria, home staging, limpeza pós-obra, organização de armários e decoração festiva."
+        "text": "A Moniquinha oferece limpeza regular e profunda, limpeza de Airbnb e alojamentos temporários, limpeza de veículos alugados, organização doméstica, lavandaria e engomadoria, home staging, limpeza pós-obra, organização de armários e decoração festiva."
       }
     },
     {
@@ -264,23 +255,137 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 }
 
 /* ========== ABOUT ========== */
-.about { background: var(--light-bg); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(232,168,69,0.12), transparent 28%),
+    radial-gradient(circle at 92% 82%, rgba(228,132,154,0.10), transparent 26%),
+    var(--light-bg);
+}
+.about::before, .about::after {
+  content: ''; position: absolute; border-radius: 50%; pointer-events: none;
+}
+.about::before { width: 12px; height: 12px; top: 18%; right: 9%; background: var(--gold); opacity: 0.45; }
+.about::after { width: 7px; height: 7px; bottom: 14%; left: 7%; background: var(--coral); opacity: 0.35; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 72px; align-items: center; position: relative; z-index: 1; }
+.about-image-wrap { position: relative; padding: 16px 0 16px 16px; }
+.about-image-wrap::before {
+  content: ''; position: absolute; inset: 32px 16px 0 0; border-radius: 30px;
+  background: linear-gradient(145deg, #f6d998, #eab0bd); transform: rotate(-3deg);
+  opacity: 0.72;
+}
 .about-image {
-  width: 100%; border-radius: 24px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(155,142,196,0.15);
+  position: relative; width: 100%; border-radius: 28px; overflow: hidden;
+  border: 6px solid rgba(255,255,255,0.9);
+  box-shadow: 0 22px 55px rgba(61,90,153,0.18);
 }
 .about-image img {
-  width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 24px;
+  width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 22px;
 }
-.about-text h2 { margin-bottom: 20px; }
-.about-text p { margin-bottom: 16px; font-size: 1.05rem; }
-.about-stats { display: flex; gap: 32px; margin-top: 28px; }
-.stat { text-align: center; }
-.stat-number { font-size: 2rem; font-weight: 800; color: var(--purple); }
-.stat-label { font-size: 0.85rem; color: var(--gray); }
+.about-sparkle {
+  position: absolute; z-index: 2; color: var(--gold); line-height: 1;
+  filter: drop-shadow(0 3px 8px rgba(232,168,69,0.28));
+}
+.about-sparkle-one { top: 0; right: 5%; font-size: 2rem; transform: rotate(10deg); }
+.about-sparkle-two { bottom: 12%; left: 0; font-size: 1.2rem; color: var(--coral); }
+.about-text {
+  position: relative; padding: 22px 8px 22px 18px;
+}
+.about-text h2 { margin-bottom: 18px; position: relative; }
+.about-text h2::after {
+  content: ''; display: block; width: 58px; height: 4px; margin-top: 12px;
+  border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--coral));
+}
+.about-text p { margin-bottom: 15px; font-size: 1.03rem; }
+.about-stats { display: flex; gap: 14px; margin-top: 27px; }
+.stat {
+  position: relative; flex: 1; text-align: center; padding: 12px 10px;
+}
+.stat:nth-child(1), .stat:nth-child(2) { background: rgba(255,255,255,0.35); }
+.stat:nth-child(1) { border: 1.5px dashed rgba(232,168,69,0.52); border-radius: 21px 15px 19px 14px; transform: rotate(-0.6deg); }
+.stat:nth-child(2) { border: 1.5px dashed rgba(155,142,196,0.55); border-radius: 15px 21px 14px 19px; transform: rotate(0.6deg); }
+.stat:nth-child(1)::after, .stat:nth-child(2)::after {
+  content: '✦'; position: absolute; top: -9px; right: 12px;
+  padding: 0 4px; background: var(--light-bg); font-size: 0.72rem;
+}
+.stat:nth-child(1)::after { color: var(--gold); }
+.stat:nth-child(2)::after { color: var(--purple); }
+.stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); }
+.about-magic-btn {
+  position: relative; display: inline-grid; place-items: center; width: 58px; height: 48px;
+  margin-top: 18px; padding: 0; border: 0; background: transparent; color: var(--gold);
+  cursor: pointer; opacity: 0.82; transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.about-magic-btn:hover { transform: scale(1.08); opacity: 1; }
+.about-magic-btn:active { transform: scale(0.96); }
+.about-magic-btn:focus-visible { outline: 2px dotted var(--gold); outline-offset: 5px; border-radius: 50%; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.about-magic-broom {
+  position: relative; z-index: 2; font-size: 1.38rem; line-height: 1;
+  filter: drop-shadow(0 3px 4px rgba(232,168,69,0.2)); transition: transform 0.35s ease;
+}
+.about-magic-btn:hover .about-magic-broom { transform: rotate(-12deg) translateY(-1px); }
+.about-magic-glitter {
+  position: absolute; color: #e8a845; line-height: 1; pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(232,168,69,0.5));
+  animation: gentleMagicSparkle 2.6s ease-in-out infinite;
+}
+.about-magic-glitter:nth-of-type(2) { top: 3px; left: 8px; font-size: 0.72rem; animation-delay: -0.4s; }
+.about-magic-glitter:nth-of-type(3) { top: 7px; right: 5px; font-size: 0.52rem; animation-delay: -1.7s; }
+.about-magic-glitter:nth-of-type(4) { bottom: 4px; right: 10px; font-size: 0.82rem; animation-delay: -0.9s; }
+.about-magic-glitter:nth-of-type(5) { bottom: 7px; left: 4px; font-size: 0.46rem; animation-delay: -2.1s; }
+.about-magic-btn.is-sweeping { animation: magicButtonPop 0.55s ease; }
+.about-cleaning-broom {
+  position: absolute; left: -90px; top: 58%; z-index: 20;
+  font-size: 3.4rem; line-height: 1; pointer-events: none;
+  filter: drop-shadow(0 7px 8px rgba(61,90,153,0.2));
+  animation: broomSweep 2.35s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.about-cleaning-spark {
+  position: absolute; left: var(--spark-x); top: var(--spark-y); z-index: 19;
+  color: var(--spark-color); font-size: var(--spark-size); opacity: 0;
+  pointer-events: none; animation: cleaningSpark 0.95s ease-out var(--spark-delay) forwards;
+}
+@keyframes broomSweep {
+  0% { left: -90px; top: 64%; transform: rotate(-28deg) scale(0.8); opacity: 0; }
+  12% { opacity: 1; }
+  30% { top: 46%; transform: rotate(12deg) scale(1); }
+  55% { top: 67%; transform: rotate(-18deg) scale(1.05); }
+  78% { top: 38%; transform: rotate(15deg) scale(1); opacity: 1; }
+  100% { left: calc(100% + 90px); top: 56%; transform: rotate(-10deg) scale(0.82); opacity: 0; }
+}
+@keyframes cleaningSpark {
+  0% { opacity: 0; transform: translateY(8px) scale(0.4) rotate(0deg); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-25px) scale(1.25) rotate(55deg); }
+}
+@keyframes gentleMagicSparkle {
+  0%, 100% { opacity: 0.28; transform: scale(0.68) rotate(0deg); }
+  48% { opacity: 1; transform: scale(1.16) rotate(18deg); }
+  68% { opacity: 0.55; transform: scale(0.9) rotate(28deg); }
+}
+@keyframes magicButtonPop { 0%,100% { transform: scale(1); } 45% { transform: scale(1.07) rotate(1deg); } }
 
 /* ========== SERVICES ========== */
+.services-categories { display: grid; gap: 52px; }
+.service-category { position: relative; }
+.service-category-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+  color: var(--purple-dark);
+}
+.service-category-header::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(232,168,69,0.55), rgba(155,142,196,0.12), transparent);
+}
+.service-category-symbol {
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 14px 11px 15px 10px;
+  background: linear-gradient(135deg, rgba(232,168,69,0.17), rgba(228,132,154,0.11)); font-size: 1.2rem;
+}
+.service-category-header h3 { font-size: 1.28rem; white-space: nowrap; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
 .service-card {
   background: var(--white); border-radius: 20px; padding: 36px 28px; text-align: center;
@@ -288,6 +393,7 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
   cursor: default;
 }
 .service-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 12px 40px rgba(155,142,196,0.15); }
+.service-card:focus-visible { outline: 3px solid rgba(232,168,69,0.7); outline-offset: 4px; transform: translateY(-3px); }
 .service-icon { font-size: 3rem; margin-bottom: 16px; display: block; transition: transform 0.3s ease; }
 .service-card:hover .service-icon { animation: iconBounce 0.6s ease; }
 
@@ -482,11 +588,18 @@ input[type="date"], select { accent-color: var(--purple); color-scheme: light; }
 
 /* Service selection grid */
 .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.svc-category-label {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; margin: 10px 2px 1px;
+  color: var(--purple-dark); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.03em;
+}
+.svc-category-label:first-child { margin-top: 0; }
+.svc-category-label::after { content: ''; flex: 1; height: 1px; background: rgba(155,142,196,0.2); }
 .svc-option {
   padding: 14px 6px; border: 2px solid #E8E5F0; border-radius: 14px; text-align: center;
   cursor: pointer; transition: all 0.2s; font-size: 0.78rem; color: var(--gray); font-weight: 500; line-height: 1.3;
 }
 .svc-option:hover { border-color: var(--purple-light); background: var(--purple-light); }
+.svc-option:focus-visible { outline: 3px solid rgba(61,90,153,0.35); outline-offset: 2px; }
 .svc-option.selected { border-color: var(--purple); background: var(--purple-light); color: var(--purple-dark); font-weight: 700; }
 .svc-option .svc-ico { font-size: 1.4rem; display: block; margin-bottom: 3px; }
 
@@ -541,14 +654,24 @@ footer {
 .footer-col a:hover { color: var(--gold); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.85rem; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
 /* ========== MOBILE ========== */
 @media (max-width: 768px) {
   .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,26,46,0.98); flex-direction: column; padding: 20px 24px; gap: 16px; }
   .nav-links.active { display: flex; }
   .hamburger { display: flex; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
-  .about-image { max-width: 300px; margin: 0 auto; }
-  .about-stats { justify-content: center; }
+  .about-grid { gap: 44px; }
+  .about-image-wrap { max-width: 330px; margin: 0 auto; padding-left: 10px; }
+  .about-text { padding: 8px 4px 10px; }
+  .about-stats { gap: 8px; }
+  .stat { padding: 10px 5px; }
+  .stat-number { font-size: 1.35rem; }
+  .about-magic-btn { width: auto; justify-content: flex-start; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -564,10 +687,10 @@ footer {
     <a href="#" class="logo">Moniquinha's <span>Shine</span> ✨</a>
     <div class="nav-right">
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('pt')">PT</button>
-        <button class="lang-btn" onclick="setLang('fr')">FR</button>
-        <button class="lang-btn" onclick="setLang('es')">ES</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-label="View site in English">EN</button>
+        <button type="button" class="lang-btn active" data-lang="pt" aria-label="Ver site em português">PT</button>
+        <button type="button" class="lang-btn" data-lang="fr" aria-label="Voir le site en français">FR</button>
+        <button type="button" class="lang-btn" data-lang="es" aria-label="Ver el sitio en español">ES</button>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" data-i18n="nav_about">About</a></li>
@@ -576,7 +699,7 @@ footer {
         <li><a href="#why" data-i18n="nav_why">Why Me</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button type="button" class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -602,10 +725,14 @@ footer {
 <section class="about section" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-image"><picture>
+      <div class="about-image-wrap">
+        <span class="about-sparkle about-sparkle-one" aria-hidden="true">✦</span>
+        <span class="about-sparkle about-sparkle-two" aria-hidden="true">✦</span>
+        <div class="about-image"><picture>
 <source srcset="moniquinha.webp" type="image/webp">
 <img src="moniquinha.jpeg" alt="Moniquinha's Shine - Serviços profissionais de limpeza e serviços domésticos em Óbidos e Caldas da Rainha" loading="lazy" width="600" height="600">
 </picture></div>
+      </div>
       <div class="about-text">
         <h2 data-i18n="about_title">Hi, I'm Moniquinha!</h2>
         <p data-i18n="about_p1">I'm a young, energetic professional who believes every home deserves to shine. Whether it's a sparkling clean kitchen, a beautifully organized closet, or a cozy space that feels just right — I bring dedication, attention to detail, and a big smile to every job.</p>
@@ -624,6 +751,14 @@ footer {
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
         </div>
+        <button type="button" class="about-magic-btn" id="aboutMagic">
+          <span class="about-magic-broom" aria-hidden="true">🧹</span>
+          <span class="about-magic-glitter" aria-hidden="true">✦</span>
+          <span class="about-magic-glitter" aria-hidden="true">✧</span>
+          <span class="about-magic-glitter" aria-hidden="true">✦</span>
+          <span class="about-magic-glitter" aria-hidden="true">•</span>
+          <span class="sr-only" data-i18n="about_magic">A little touch of shine?</span>
+        </button>
       </div>
     </div>
   </div>
@@ -636,7 +771,13 @@ footer {
       <h2 data-i18n="services_title">What I Can Do for You</h2>
       <p data-i18n="services_subtitle">A full range of home services — all from one trusted professional.</p>
     </div>
-    <div class="services-grid">
+    <div class="services-categories">
+      <section class="service-category">
+        <div class="service-category-header">
+          <span class="service-category-symbol" aria-hidden="true">✨</span>
+          <h3 data-i18n="cat_cleaning">Home Cleaning</h3>
+        </div>
+        <div class="services-grid">
       <div class="service-card" data-service="cleaning">
         <span class="service-icon">🧹</span>
         <h3 data-i18n="svc_cleaning">Regular Cleaning</h3>
@@ -657,6 +798,14 @@ footer {
         <h3 data-i18n="svc_movein">Move-In / Move-Out Cleaning</h3>
         <p data-i18n="svc_movein_desc">Starting fresh or leaving a place behind? A complete clean for smooth transitions.</p>
       </div>
+        </div>
+      </section>
+      <section class="service-category">
+        <div class="service-category-header">
+          <span class="service-category-symbol" aria-hidden="true">🏡</span>
+          <h3 data-i18n="cat_hospitality">Accommodation & Vehicles</h3>
+        </div>
+        <div class="services-grid">
       <div class="service-card" data-service="rental-stay">
         <span class="service-icon">🏡</span>
         <h3 data-i18n="svc_rental_stay">Airbnb & Short-Stay Cleaning</h3>
@@ -665,8 +814,16 @@ footer {
       <div class="service-card" data-service="rental-car">
         <span class="service-icon">🚗</span>
         <h3 data-i18n="svc_rental_car">Rental Vehicle Cleaning</h3>
-        <p data-i18n="svc_rental_car_desc">Convenient interior and exterior cleaning for international visitors enjoying their holidays in Óbidos.</p>
+        <p data-i18n="svc_rental_car_desc">Convenient interior and exterior cleaning for international visitors in Óbidos and Caldas da Rainha.</p>
       </div>
+        </div>
+      </section>
+      <section class="service-category">
+        <div class="service-category-header">
+          <span class="service-category-symbol" aria-hidden="true">💛</span>
+          <h3 data-i18n="cat_home_care">Organization & Home Care</h3>
+        </div>
+        <div class="services-grid">
       <div class="service-card" data-service="laundry">
         <span class="service-icon">👕</span>
         <h3 data-i18n="svc_laundry">Laundry & Ironing</h3>
@@ -697,6 +854,8 @@ footer {
         <h3 data-i18n="svc_staging">Home Staging</h3>
         <p data-i18n="svc_staging_desc">Prepare your home for sale or Airbnb with hotel-level presentation — backed by my hospitality experience.</p>
       </div>
+        </div>
+      </section>
     </div>
   </div>
 </section>
@@ -799,7 +958,7 @@ footer {
             </div>
           </a>
 
-          <a href="https://wa.me/351915520147" class="cta-btn" target="_blank">
+          <a href="https://wa.me/351915520147" class="cta-btn" target="_blank" rel="noopener noreferrer">
             <span class="cta-icon">💬</span>
             <div>
               <strong data-i18n="contact_wa_label">WhatsApp</strong>
@@ -849,26 +1008,30 @@ footer {
           <div class="wiz-step active" id="wizStep1">
             <h4 data-i18n="wiz_pick_title">What do you need? ✨</h4>
             <p data-i18n="wiz_pick_sub">Pick a service or package below.</p>
-            <div class="svc-grid" id="svcGrid">
+            <div class="svc-grid" id="svcGrid" role="radiogroup">
+              <div class="svc-category-label"><span aria-hidden="true">✨</span><span data-i18n="cat_cleaning">Home Cleaning</span></div>
               <div class="svc-option" data-val="cleaning"><span class="svc-ico">🧹</span><span data-i18n="svc_cleaning_short">Cleaning</span></div>
               <div class="svc-option" data-val="deep-cleaning"><span class="svc-ico">🧼</span><span data-i18n="svc_deep_short">Deep Clean</span></div>
               <div class="svc-option" data-val="construction"><span class="svc-ico">🏗️</span><span data-i18n="svc_construction_short">Post-Works</span></div>
               <div class="svc-option" data-val="movein"><span class="svc-ico">🚚</span><span data-i18n="svc_movein_short">Move In/Out</span></div>
+              <div class="svc-category-label"><span aria-hidden="true">🏡</span><span data-i18n="cat_hospitality">Accommodation & Vehicles</span></div>
               <div class="svc-option" data-val="rental-stay"><span class="svc-ico">🏡</span><span data-i18n="svc_rental_stay_short">Airbnb / Short Stay</span></div>
               <div class="svc-option" data-val="rental-car"><span class="svc-ico">🚗</span><span data-i18n="svc_rental_car_short">Rental Vehicle</span></div>
+              <div class="svc-category-label"><span aria-hidden="true">💛</span><span data-i18n="cat_home_care">Organization & Home Care</span></div>
               <div class="svc-option" data-val="laundry"><span class="svc-ico">👕</span><span data-i18n="svc_laundry_short">Laundry</span></div>
               <div class="svc-option" data-val="closet"><span class="svc-ico">👗</span><span data-i18n="svc_closet_short">Closet</span></div>
               <div class="svc-option" data-val="organization"><span class="svc-ico">📦</span><span data-i18n="svc_org_short">Home Org</span></div>
               <div class="svc-option" data-val="garage"><span class="svc-ico">🏠</span><span data-i18n="svc_garage_short">Garage</span></div>
               <div class="svc-option" data-val="holiday"><span class="svc-ico">🎄</span><span data-i18n="svc_holiday_short">Holiday</span></div>
               <div class="svc-option" data-val="staging"><span class="svc-ico">🏨</span><span data-i18n="svc_staging_short">Staging</span></div>
+              <div class="svc-category-label"><span aria-hidden="true">🎁</span><span data-i18n="cat_packages">Packages & Other</span></div>
               <div class="svc-option" data-val="pkg-weekly"><span class="svc-ico">✨</span><span data-i18n="pkg_weekly_short">Weekly Shine</span></div>
               <div class="svc-option" data-val="pkg-fresh"><span class="svc-ico">🚚</span><span data-i18n="pkg_fresh_short">Fresh Start</span></div>
               <div class="svc-option" data-val="pkg-showroom"><span class="svc-ico">🏨</span><span data-i18n="pkg_showroom_short">Showroom</span></div>
               <div class="svc-option" data-val="other"><span class="svc-ico">💬</span><span data-i18n="form_other">Other</span></div>
             </div>
             <div class="wiz-buttons">
-              <button type="button" class="wiz-next disabled" id="wizNext1" data-i18n="wiz_continue">Continue →</button>
+              <button type="button" class="wiz-next disabled" id="wizNext1" data-i18n="wiz_continue" disabled>Continue →</button>
             </div>
           </div>
 
@@ -877,33 +1040,33 @@ footer {
             <h4 data-i18n="wiz_details_title">How can I reach you?</h4>
             <p data-i18n="wiz_details_sub">Just a few details so I can get back to you.</p>
             <div class="wiz-input">
-              <label data-i18n="form_name">Your Name</label>
+              <label for="name" data-i18n="form_name">Your Name</label>
               <input type="text" id="name" name="name" data-i18n-placeholder="form_name_ph" placeholder="Maria Silva" required>
             </div>
             <div class="wiz-input">
-              <label data-i18n="form_phone">Phone</label>
+              <label for="phone" data-i18n="form_phone">Phone</label>
               <input type="tel" id="phone" name="phone" placeholder="+351 ..." required>
             </div>
             <div class="wiz-input">
-              <label data-i18n="wiz_email_optional">Email (optional)</label>
+              <label for="email" data-i18n="wiz_email_optional">Email (optional)</label>
               <input type="email" id="email" name="email" placeholder="maria@example.com">
             </div>
             <div class="wiz-input">
-              <label data-i18n="form_address">Service Address</label>
+              <label for="address" data-i18n="form_address">Service Address</label>
               <div style="position:relative;">
-                <input type="text" id="address" name="address" data-i18n-placeholder="form_address_ph" placeholder="Street, number, city..." autocomplete="off" required>
-                <div id="addrSuggest" style="display:none; position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid rgba(0,0,0,0.12); border-radius:10px; margin-top:4px; max-height:240px; overflow-y:auto; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,0.12);"></div>
+                <input type="text" id="address" name="address" data-i18n-placeholder="form_address_ph" placeholder="Street, number, city..." autocomplete="street-address" aria-autocomplete="list" aria-controls="addrSuggest" aria-expanded="false" required>
+                <div id="addrSuggest" role="listbox" style="display:none; position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid rgba(0,0,0,0.12); border-radius:10px; margin-top:4px; max-height:240px; overflow-y:auto; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,0.12);"></div>
               </div>
               <button type="button" id="useMyLocation" class="wiz-back" style="margin-top:10px; width:100%; justify-content:center;" data-i18n="form_use_location">Use My Current Location</button>
-              <div id="locationStatus" style="display:none; margin-top:8px; font-size:.83rem; color:var(--gray);"></div>
+              <div id="locationStatus" aria-live="polite" style="display:none; margin-top:8px; font-size:.83rem; color:var(--gray);"></div>
               <div id="mapPreview" style="display:none; margin-top:10px; border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,0.08);">
-                <iframe id="mapFrame" width="100%" height="180" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
+                <iframe id="mapFrame" title="Mapa da morada do serviço" width="100%" height="180" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
                 <a id="mapOpenLink" href="#" target="_blank" rel="noopener" style="display:block; padding:8px 12px; font-size:0.8rem; text-align:center; background:#f7f5f1; color:var(--purple-dark); text-decoration:none; font-weight:600;">📍 <span data-i18n="form_address_open">Open in Google Maps</span></a>
               </div>
             </div>
             <div class="wiz-buttons">
               <button type="button" class="wiz-back" id="wizBack2" data-i18n="wiz_back">← Back</button>
-              <button type="button" class="wiz-next disabled" id="wizNext2" data-i18n="wiz_continue">Continue →</button>
+              <button type="button" class="wiz-next disabled" id="wizNext2" data-i18n="wiz_continue" disabled>Continue →</button>
             </div>
           </div>
 
@@ -913,11 +1076,11 @@ footer {
             <p data-i18n="wiz_msg_sub">Add details about timing, location, or special requests.</p>
             <div class="schedule-row">
               <div class="wiz-input" style="flex:1;">
-                <label data-i18n="form_date">Preferred Date</label>
+                <label for="prefDate" data-i18n="form_date">Preferred Date</label>
                 <input type="date" id="prefDate" name="prefDate">
               </div>
               <div class="wiz-input" style="flex:1;">
-                <label data-i18n="form_time">Preferred Time</label>
+                <label for="prefTime" data-i18n="form_time">Preferred Time</label>
                 <select id="prefTime" name="prefTime">
                   <option value="" data-i18n="form_time_ph">Select hour...</option>
                   <option value="0h">0h</option><option value="1h">1h</option><option value="2h">2h</option>
@@ -932,7 +1095,7 @@ footer {
               </div>
             </div>
             <div class="wiz-input">
-              <label data-i18n="form_message">Message</label>
+              <label for="message" data-i18n="form_message">Message</label>
               <textarea id="message" name="message" data-i18n-placeholder="form_message_ph" placeholder="Tell me about what you need..."></textarea>
             </div>
             <div class="wiz-buttons">
@@ -995,12 +1158,15 @@ const i18n = {
     nav_about: "About", nav_services: "Services", nav_packages: "Packages", nav_why: "Why Me", nav_contact: "Contact",
     hero_tagline: "Cleaning, organizing & caring for your home — with energy, heart, and a personal touch.",
     hero_cta: "Get a Free Quote", hero_services: "Our Services",
+    about_magic: "A little touch of shine?",
     about_title: "Hi, I'm Moniquinha!",
     about_p1: "I'm a young, energetic professional who believes every home deserves to shine. Whether it's a sparkling clean kitchen, a beautifully organized closet, or a cozy space that feels just right — I bring dedication, attention to detail, and a big smile to every job.",
     about_p2: "With experience in hotel cleaning and a passion for beautiful spaces, I offer a full range of services tailored to make your life easier and your home more beautiful.",
     stat_dedication: "Dedication", stat_service: "Service", stat_passion: "Passion",
     services_title: "What I Can Do for You",
     services_subtitle: "A full range of home services — all from one trusted professional.",
+    cat_cleaning: "Home Cleaning", cat_hospitality: "Accommodation & Vehicles",
+    cat_home_care: "Organization & Home Care", cat_packages: "Packages & Other",
     svc_cleaning: "Regular Cleaning",
     svc_cleaning_desc: "Keep your home fresh and tidy with scheduled cleaning sessions tailored to your needs.",
     svc_deep: "Deep Cleaning",
@@ -1012,7 +1178,7 @@ const i18n = {
     svc_rental_stay: "Airbnb & Short-Stay Cleaning",
     svc_rental_stay_desc: "Reliable turnover cleaning for Airbnbs and temporary accommodation, ready to welcome every new guest.",
     svc_rental_car: "Rental Vehicle Cleaning",
-    svc_rental_car_desc: "Convenient interior and exterior cleaning for international visitors enjoying their holidays in Óbidos.",
+    svc_rental_car_desc: "Convenient interior and exterior cleaning for international visitors in Óbidos and Caldas da Rainha.",
     svc_laundry: "Laundry & Ironing",
     svc_laundry_desc: "Washing, drying, folding and ironing — your clothes handled with care.",
     svc_closet: "Closet & Wardrobe Organization",
@@ -1051,15 +1217,14 @@ const i18n = {
     contact_text: "Have questions or ready to book? Reach out anytime — I'd love to hear from you!",
     contact_phone_label: "Call Me", contact_wa_label: "WhatsApp", contact_wa_hint: "Fastest way to reach me",
     contact_location: "Service Area", contact_location_val: "Exclusively Óbidos and Caldas da Rainha",
-    contact_hours: "Available Mon–Sat · 8 AM – 7 PM",
     form_title: "Request a Free Quote", form_name: "Your Name", form_name_ph: "Maria Silva",
-    form_phone: "Phone", form_service: "Service Needed", form_choose: "Choose a service...",
+    form_phone: "Phone",
     form_address: "Service Address", form_address_ph: "Street, number, city...", form_address_open: "Open in Google Maps", form_address_outside: "The address must be in Óbidos or Caldas da Rainha.",
     form_use_location: "Use My Current Location", form_location_loading: "Getting your location...", form_location_denied: "Location was not shared. Please enter the address manually.",
     form_other: "Other", form_date: "Preferred Date", form_time: "Preferred Time", form_time_ph: "Select hour...", form_message: "Message", form_message_ph: "Tell me about what you need...",
     form_submit: "Send Request ✨",
     form_subtitle: "Fill in the form below and I'll get back to you within 24 hours.",
-    form_autofill: "Service pre-selected! Feel free to edit the message below.",
+    form_autofill: "Service selected! Add any useful details below.",
     wiz_step1: "Service", wiz_step2: "Details", wiz_step3: "Message",
     wiz_pick_title: "What do you need? ✨", wiz_pick_sub: "Pick a service or package below.",
     wiz_details_title: "How can I reach you?", wiz_details_sub: "Just a few details so I can get back to you.",
@@ -1071,7 +1236,8 @@ const i18n = {
     svc_closet_short: "Closet", svc_org_short: "Home Org",
     svc_garage_short: "Garage", svc_holiday_short: "Holiday", svc_staging_short: "Staging",
     pkg_weekly_short: "Weekly Shine", pkg_fresh_short: "Fresh Start", pkg_showroom_short: "Showroom",
-    form_success_title: "Message Sent!", form_success_text: "Your request was sent by email and opened in WhatsApp. You can also send the same request by SMS.",
+    form_success_title: "Request Ready!", form_success_text: "Your request was sent by email and prepared in WhatsApp. Please confirm it in the WhatsApp tab, or send it by SMS.",
+    form_success_email_fallback: "Your request is ready in WhatsApp, but the email could not be confirmed. Please send it through WhatsApp or use the SMS button.", form_sending: "Sending…",
     form_send_sms: "Send by SMS", form_sms_hint: "Your SMS app will open with the request ready to send.",
     footer_desc: "Professional home services with a personal touch. Making homes shine, one space at a time.",
     footer_links: "Quick Links",
@@ -1081,12 +1247,15 @@ const i18n = {
     nav_about: "Sobre Mim", nav_services: "Serviços", nav_packages: "Pacotes", nav_why: "Porquê Eu", nav_contact: "Contacto",
     hero_tagline: "Limpeza, organização e cuidado do seu lar — com energia, carinho e um toque pessoal.",
     hero_cta: "Pedir Orçamento Grátis", hero_services: "Os Meus Serviços",
+    about_magic: "Um toque de brilho?",
     about_title: "Olá, sou a Moniquinha!",
     about_p1: "Sou uma jovem profissional, cheia de energia, que acredita que todas as casas merecem brilhar. Seja uma cozinha impecável, um armário perfeitamente organizado ou um espaço acolhedor — trago dedicação, atenção ao detalhe e um grande sorriso a cada trabalho.",
     about_p2: "Com experiência em limpeza hoteleira e uma paixão por espaços bonitos, ofereço uma gama completa de serviços pensados para tornar a sua vida mais fácil e a sua casa mais bonita.",
     stat_dedication: "Dedicação", stat_service: "Serviço", stat_passion: "Paixão",
     services_title: "O Que Posso Fazer por Si",
     services_subtitle: "Uma gama completa de serviços para o lar — tudo com uma profissional de confiança.",
+    cat_cleaning: "Limpeza de Casas", cat_hospitality: "Alojamentos e Viaturas",
+    cat_home_care: "Organização e Cuidados do Lar", cat_packages: "Pacotes e Outros",
     svc_cleaning: "Limpeza Regular",
     svc_cleaning_desc: "Mantenha a sua casa fresca e arrumada com sessões de limpeza agendadas à sua medida.",
     svc_deep: "Limpeza Profunda",
@@ -1098,7 +1267,7 @@ const i18n = {
     svc_rental_stay: "Limpeza de Airbnb e Alojamentos Temporários",
     svc_rental_stay_desc: "Limpeza fiável entre estadias para Airbnb e alojamentos temporários, pronta a receber cada novo hóspede.",
     svc_rental_car: "Limpeza de Veículos Alugados",
-    svc_rental_car_desc: "Limpeza interior e exterior prática para visitantes estrangeiros de férias em Óbidos.",
+    svc_rental_car_desc: "Limpeza interior e exterior prática para visitantes estrangeiros em Óbidos e Caldas da Rainha.",
     svc_laundry: "Lavandaria e Engomadoria",
     svc_laundry_desc: "Lavar, secar, dobrar e engomar — a sua roupa tratada com cuidado.",
     svc_closet: "Organização de Armários",
@@ -1137,15 +1306,14 @@ const i18n = {
     contact_text: "Tem perguntas ou quer marcar? Contacte-me a qualquer hora — adoraria ouvir de si!",
     contact_phone_label: "Ligar", contact_wa_label: "WhatsApp", contact_wa_hint: "A forma mais rápida de me contactar",
     contact_location: "Zona de Serviço", contact_location_val: "Exclusivamente Óbidos e Caldas da Rainha",
-    contact_hours: "Disponível Seg–Sáb · 8h – 19h",
     form_title: "Pedir Orçamento Grátis", form_name: "O Seu Nome", form_name_ph: "Maria Silva",
-    form_phone: "Telefone", form_service: "Serviço Pretendido", form_choose: "Escolha um serviço...",
+    form_phone: "Telefone",
     form_address: "Morada do Serviço", form_address_ph: "Rua, número, cidade...", form_address_open: "Abrir no Google Maps", form_address_outside: "A morada tem de ser em Óbidos ou Caldas da Rainha.",
     form_use_location: "Usar a Minha Localização Atual", form_location_loading: "A obter a sua localização...", form_location_denied: "A localização não foi partilhada. Introduza a morada manualmente.",
     form_other: "Outro", form_date: "Data Preferida", form_time: "Hora Preferida", form_time_ph: "Escolha a hora...", form_message: "Mensagem", form_message_ph: "Conte-me o que precisa...",
     form_submit: "Enviar Pedido ✨",
     form_subtitle: "Preencha o formulário abaixo e respondo em menos de 24 horas.",
-    form_autofill: "Serviço pré-selecionado! Pode editar a mensagem abaixo.",
+    form_autofill: "Serviço selecionado! Acrescente abaixo os detalhes que considerar úteis.",
     wiz_step1: "Serviço", wiz_step2: "Dados", wiz_step3: "Mensagem",
     wiz_pick_title: "Do que precisa? ✨", wiz_pick_sub: "Escolha um serviço ou pacote abaixo.",
     wiz_details_title: "Como posso contactá-lo(a)?", wiz_details_sub: "Só alguns dados para poder responder-lhe.",
@@ -1157,7 +1325,8 @@ const i18n = {
     svc_closet_short: "Armários", svc_org_short: "Organização",
     svc_garage_short: "Garagem", svc_holiday_short: "Festas", svc_staging_short: "Staging",
     pkg_weekly_short: "Brilho Semanal", pkg_fresh_short: "Recomeço", pkg_showroom_short: "Showroom",
-    form_success_title: "Mensagem Enviada!", form_success_text: "O pedido foi enviado por email e aberto no WhatsApp. Pode também enviar o mesmo pedido por SMS.",
+    form_success_title: "Pedido Pronto!", form_success_text: "O pedido foi enviado por email e preparado no WhatsApp. Confirme o envio no separador do WhatsApp ou envie-o por SMS.",
+    form_success_email_fallback: "O pedido está pronto no WhatsApp, mas não foi possível confirmar o email. Envie-o pelo WhatsApp ou utilize o botão de SMS.", form_sending: "A enviar…",
     form_send_sms: "Enviar por SMS", form_sms_hint: "A aplicação de SMS abrirá com o pedido pronto a enviar.",
     footer_desc: "Serviços profissionais para o lar com um toque pessoal. A fazer casas brilhar, um espaço de cada vez.",
     footer_links: "Links Rápidos",
@@ -1167,12 +1336,15 @@ const i18n = {
     nav_about: "À Propos", nav_services: "Services", nav_packages: "Forfaits", nav_why: "Pourquoi Moi", nav_contact: "Contact",
     hero_tagline: "Ménage, organisation et soin de votre maison — avec énergie, cœur et une touche personnelle.",
     hero_cta: "Devis Gratuit", hero_services: "Nos Services",
+    about_magic: "Une petite touche d'éclat ?",
     about_title: "Bonjour, je suis Moniquinha !",
     about_p1: "Je suis une jeune professionnelle pleine d'énergie qui croit que chaque maison mérite de briller. Qu'il s'agisse d'une cuisine impeccable, d'un placard parfaitement organisé ou d'un espace chaleureux — j'apporte dévouement, attention aux détails et un grand sourire à chaque mission.",
     about_p2: "Avec une expérience en nettoyage hôtelier et une passion pour les beaux espaces, je propose une gamme complète de services conçus pour vous simplifier la vie et embellir votre maison.",
     stat_dedication: "Dévouement", stat_service: "Service", stat_passion: "Passion",
     services_title: "Ce Que Je Peux Faire pour Vous",
     services_subtitle: "Une gamme complète de services pour la maison — le tout par une professionnelle de confiance.",
+    cat_cleaning: "Nettoyage de la Maison", cat_hospitality: "Hébergements et Véhicules",
+    cat_home_care: "Organisation et Entretien", cat_packages: "Forfaits et Autres",
     svc_cleaning: "Ménage Régulier",
     svc_cleaning_desc: "Gardez votre maison fraîche et rangée avec des séances de ménage programmées selon vos besoins.",
     svc_deep: "Nettoyage en Profondeur",
@@ -1184,7 +1356,7 @@ const i18n = {
     svc_rental_stay: "Nettoyage Airbnb et Locations Temporaires",
     svc_rental_stay_desc: "Un nettoyage fiable entre deux séjours pour les Airbnb et locations temporaires, prêt pour chaque nouvel arrivant.",
     svc_rental_car: "Nettoyage de Véhicules de Location",
-    svc_rental_car_desc: "Nettoyage intérieur et extérieur pratique pour les visiteurs étrangers en vacances à Óbidos.",
+    svc_rental_car_desc: "Nettoyage intérieur et extérieur pratique pour les visiteurs étrangers à Óbidos et Caldas da Rainha.",
     svc_laundry: "Lessive et Repassage",
     svc_laundry_desc: "Lavage, séchage, pliage et repassage — vos vêtements traités avec soin.",
     svc_closet: "Organisation de Penderies",
@@ -1223,15 +1395,14 @@ const i18n = {
     contact_text: "Des questions ou prêt(e) à réserver ? Contactez-moi à tout moment — j'adorerais vous entendre !",
     contact_phone_label: "Appeler", contact_wa_label: "WhatsApp", contact_wa_hint: "Le moyen le plus rapide de me joindre",
     contact_location: "Zone de Service", contact_location_val: "Exclusivement Óbidos et Caldas da Rainha",
-    contact_hours: "Disponible Lun–Sam · 8h – 19h",
     form_title: "Demander un Devis Gratuit", form_name: "Votre Nom", form_name_ph: "Maria Silva",
-    form_phone: "Téléphone", form_service: "Service Souhaité", form_choose: "Choisissez un service...",
+    form_phone: "Téléphone",
     form_address: "Adresse du Service", form_address_ph: "Rue, numéro, ville...", form_address_open: "Ouvrir dans Google Maps", form_address_outside: "L'adresse doit être à Óbidos ou Caldas da Rainha.",
     form_use_location: "Utiliser Ma Position Actuelle", form_location_loading: "Localisation en cours...", form_location_denied: "La position n'a pas été partagée. Saisissez l'adresse manuellement.",
     form_other: "Autre", form_date: "Date Souhaitée", form_time: "Heure Souhaitée", form_time_ph: "Choisir l'heure...", form_message: "Message", form_message_ph: "Décrivez-moi vos besoins...",
     form_submit: "Envoyer la Demande ✨",
     form_subtitle: "Remplissez le formulaire ci-dessous et je vous répondrai sous 24 heures.",
-    form_autofill: "Service pré-sélectionné ! N'hésitez pas à modifier le message.",
+    form_autofill: "Service sélectionné ! Ajoutez ci-dessous les détails utiles.",
     wiz_step1: "Service", wiz_step2: "Coordonnées", wiz_step3: "Message",
     wiz_pick_title: "De quoi avez-vous besoin ? ✨", wiz_pick_sub: "Choisissez un service ou forfait ci-dessous.",
     wiz_details_title: "Comment vous contacter ?", wiz_details_sub: "Quelques informations pour que je puisse vous répondre.",
@@ -1243,7 +1414,8 @@ const i18n = {
     svc_closet_short: "Penderies", svc_org_short: "Organisation",
     svc_garage_short: "Garage", svc_holiday_short: "Fêtes", svc_staging_short: "Staging",
     pkg_weekly_short: "Éclat Hebdo", pkg_fresh_short: "Nouveau Départ", pkg_showroom_short: "Showroom",
-    form_success_title: "Message Envoyé !", form_success_text: "La demande a été envoyée par email et ouverte dans WhatsApp. Vous pouvez aussi l'envoyer par SMS.",
+    form_success_title: "Demande Prête !", form_success_text: "Votre demande a été envoyée par email et préparée dans WhatsApp. Confirmez-la dans l'onglet WhatsApp ou envoyez-la par SMS.",
+    form_success_email_fallback: "Votre demande est prête dans WhatsApp, mais l'email n'a pas pu être confirmé. Envoyez-la par WhatsApp ou utilisez le bouton SMS.", form_sending: "Envoi…",
     form_send_sms: "Envoyer par SMS", form_sms_hint: "L'application SMS s'ouvrira avec la demande prête à être envoyée.",
     footer_desc: "Services professionnels pour la maison avec une touche personnelle. Faire briller les maisons, un espace à la fois.",
     footer_links: "Liens Rapides",
@@ -1253,12 +1425,15 @@ const i18n = {
     nav_about: "Sobre Mí", nav_services: "Servicios", nav_packages: "Paquetes", nav_why: "Por Qué Yo", nav_contact: "Contacto",
     hero_tagline: "Limpieza, organización y cuidado de tu hogar — con energía, corazón y un toque personal.",
     hero_cta: "Presupuesto Gratis", hero_services: "Nuestros Servicios",
+    about_magic: "¿Un pequeño toque de brillo?",
     about_title: "¡Hola, soy Moniquinha!",
     about_p1: "Soy una joven profesional llena de energía que cree que cada hogar merece brillar. Ya sea una cocina impecable, un armario perfectamente organizado o un espacio acogedor — pongo dedicación, atención al detalle y una gran sonrisa en cada trabajo.",
     about_p2: "Con experiencia en limpieza hotelera y pasión por los espacios bonitos, ofrezco una gama completa de servicios diseñados para facilitarte la vida y embellecer tu hogar.",
     stat_dedication: "Dedicación", stat_service: "Servicio", stat_passion: "Pasión",
     services_title: "Lo Que Puedo Hacer por Ti",
     services_subtitle: "Una gama completa de servicios para el hogar — todo de la mano de una profesional de confianza.",
+    cat_cleaning: "Limpieza del Hogar", cat_hospitality: "Alojamientos y Vehículos",
+    cat_home_care: "Organización y Cuidado del Hogar", cat_packages: "Paquetes y Otros",
     svc_cleaning: "Limpieza Regular",
     svc_cleaning_desc: "Mantén tu casa fresca y ordenada con sesiones de limpieza programadas a tu medida.",
     svc_deep: "Limpieza Profunda",
@@ -1270,7 +1445,7 @@ const i18n = {
     svc_rental_stay: "Limpieza de Airbnb y Alojamientos Temporales",
     svc_rental_stay_desc: "Limpieza fiable entre estancias para Airbnb y alojamientos temporales, lista para recibir a cada nuevo huésped.",
     svc_rental_car: "Limpieza de Vehículos de Alquiler",
-    svc_rental_car_desc: "Limpieza interior y exterior cómoda para visitantes extranjeros de vacaciones en Óbidos.",
+    svc_rental_car_desc: "Limpieza interior y exterior cómoda para visitantes extranjeros en Óbidos y Caldas da Rainha.",
     svc_laundry: "Lavandería y Planchado",
     svc_laundry_desc: "Lavado, secado, doblado y planchado — tu ropa tratada con cuidado.",
     svc_closet: "Organización de Armarios",
@@ -1309,15 +1484,14 @@ const i18n = {
     contact_text: "¿Preguntas o listo/a para reservar? Escríbeme cuando quieras — ¡me encantará saber de ti!",
     contact_phone_label: "Llamar", contact_wa_label: "WhatsApp", contact_wa_hint: "La forma más rápida de contactarme",
     contact_location: "Zona de Servicio", contact_location_val: "Exclusivamente Óbidos y Caldas da Rainha",
-    contact_hours: "Disponible Lun–Sáb · 8h – 19h",
     form_title: "Pedir Presupuesto Gratis", form_name: "Tu Nombre", form_name_ph: "María García",
-    form_phone: "Teléfono", form_service: "Servicio Deseado", form_choose: "Elige un servicio...",
+    form_phone: "Teléfono",
     form_address: "Dirección del Servicio", form_address_ph: "Calle, número, ciudad...", form_address_open: "Abrir en Google Maps", form_address_outside: "La dirección debe estar en Óbidos o Caldas da Rainha.",
     form_use_location: "Usar Mi Ubicación Actual", form_location_loading: "Obteniendo tu ubicación...", form_location_denied: "No se compartió la ubicación. Introduce la dirección manualmente.",
     form_other: "Otro", form_date: "Fecha Preferida", form_time: "Hora Preferida", form_time_ph: "Elegir hora...", form_message: "Mensaje", form_message_ph: "Cuéntame qué necesitas...",
     form_submit: "Enviar Solicitud ✨",
     form_subtitle: "Rellena el formulario y te responderé en menos de 24 horas.",
-    form_autofill: "¡Servicio preseleccionado! Puedes modificar el mensaje si quieres.",
+    form_autofill: "¡Servicio seleccionado! Añade abajo los detalles que consideres útiles.",
     wiz_step1: "Servicio", wiz_step2: "Datos", wiz_step3: "Mensaje",
     wiz_pick_title: "¿Qué necesitas? ✨", wiz_pick_sub: "Elige un servicio o paquete a continuación.",
     wiz_details_title: "¿Cómo te contacto?", wiz_details_sub: "Algunos datos para poder responderte.",
@@ -1329,7 +1503,8 @@ const i18n = {
     svc_closet_short: "Armarios", svc_org_short: "Organización",
     svc_garage_short: "Garaje", svc_holiday_short: "Fiestas", svc_staging_short: "Staging",
     pkg_weekly_short: "Brillo Semanal", pkg_fresh_short: "Nuevo Comienzo", pkg_showroom_short: "Showroom",
-    form_success_title: "¡Mensaje Enviado!", form_success_text: "La solicitud se envió por email y se abrió en WhatsApp. También puedes enviarla por SMS.",
+    form_success_title: "¡Solicitud Lista!", form_success_text: "La solicitud se envió por email y se preparó en WhatsApp. Confirma el envío en la pestaña de WhatsApp o envíala por SMS.",
+    form_success_email_fallback: "La solicitud está lista en WhatsApp, pero no se pudo confirmar el email. Envíala por WhatsApp o usa el botón de SMS.", form_sending: "Enviando…",
     form_send_sms: "Enviar por SMS", form_sms_hint: "La aplicación de SMS se abrirá con la solicitud lista para enviar.",
     footer_desc: "Servicios profesionales para el hogar con un toque personal. Haciendo brillar hogares, un espacio a la vez.",
     footer_links: "Enlaces Rápidos",
@@ -1344,23 +1519,23 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   // Update active button
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   // Update all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (i18n[lang][key]) {
-      if (el.tagName === 'OPTION') {
-        el.textContent = i18n[lang][key];
-      } else {
-        el.innerHTML = i18n[lang][key];
-      }
+      el.textContent = i18n[lang][key];
     }
   });
   // Update placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
     if (i18n[lang][key]) el.placeholder = i18n[lang][key];
+  });
+  document.querySelectorAll('.service-card[data-service]').forEach(card => {
+    const title = card.querySelector('h3');
+    if (title) card.setAttribute('aria-label', title.textContent);
   });
   // Save preference
   try { localStorage.setItem('lang', lang); } catch(e) {}
@@ -1372,6 +1547,10 @@ try {
   setLang(saved && i18n[saved] ? saved : 'pt');
 } catch(e) { setLang('pt'); }
 
+document.querySelectorAll('.lang-btn').forEach(button => {
+  button.addEventListener('click', () => setLang(button.dataset.lang));
+});
+
 // ========== NAV & UI ==========
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -1381,10 +1560,14 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
+  const isOpen = navLinks.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('active'));
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
 });
 
 // Scroll animation
@@ -1397,26 +1580,42 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.service-card, .why-card, .package-card, .about-grid, .contact-grid').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.service-card, .why-card, .package-card, .about-grid, .contact-grid').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
 
 // ========== WIZARD FORM ==========
 let selectedService = '';
 
 // Service grid selection
-document.querySelectorAll('.svc-option').forEach(opt => {
-  opt.addEventListener('click', () => {
-    document.querySelectorAll('.svc-option').forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-    selectedService = opt.dataset.val;
-    // Pre-fill message
-    const m = sampleMessages[currentLang] && sampleMessages[currentLang][selectedService];
-    if (m) document.getElementById('message').value = m;
-    validateStep1();
+function selectServiceOption(option) {
+  document.querySelectorAll('.svc-option').forEach(item => {
+    item.classList.remove('selected');
+    item.setAttribute('aria-checked', 'false');
+  });
+  option.classList.add('selected');
+  option.setAttribute('aria-checked', 'true');
+  selectedService = option.dataset.val;
+  const message = sampleMessages[currentLang] && sampleMessages[currentLang][selectedService];
+  if (message) document.getElementById('message').placeholder = message;
+  validateStep1();
+}
+
+document.querySelectorAll('.svc-option').forEach(option => {
+  option.tabIndex = 0;
+  option.setAttribute('role', 'radio');
+  option.setAttribute('aria-checked', 'false');
+  option.addEventListener('click', () => selectServiceOption(option));
+  option.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectServiceOption(option);
+    }
   });
 });
 
@@ -1440,7 +1639,8 @@ function wizGoStep(n) {
 // Step 1 validation: service must be selected
 function validateStep1() {
   const btn = document.getElementById('wizNext1');
-  if (selectedService) { btn.classList.remove('disabled'); } else { btn.classList.add('disabled'); }
+  btn.disabled = !selectedService;
+  btn.classList.toggle('disabled', !selectedService);
 }
 
 // Step 2 validation: name + phone + a confirmed address in the service area
@@ -1449,17 +1649,23 @@ function validateStep2() {
   const btn = document.getElementById('wizNext2');
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
   const address = document.getElementById('address').value.trim();
   const addressOk = address.length >= 5 && _addressValidated === address;
-  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone) && addressOk) { btn.classList.remove('disabled'); } else { btn.classList.add('disabled'); }
+  const phoneOk = /^\+?\d[\d\s]{5,}\d$/.test(phone);
+  const emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValid = Boolean(name && phoneOk && emailOk && addressOk);
+  btn.disabled = !isValid;
+  btn.classList.toggle('disabled', !isValid);
 }
 
 // Phone: only allow digits, spaces, and leading +
 document.getElementById('phone').addEventListener('input', function() {
-  this.value = this.value.replace(/[^\d\s+]/g, '');
+  this.value = this.value.replace(/[^\d\s+]/g, '').replace(/(?!^)\+/g, '');
   validateStep2();
 });
 document.getElementById('name').addEventListener('input', validateStep2);
+document.getElementById('email').addEventListener('input', validateStep2);
 
 // Address search is limited to Óbidos and Caldas da Rainha. Location is requested only after a user click.
 let _mapTimer = null;
@@ -1489,7 +1695,11 @@ function setLocationStatus(message, isError = false) {
   locationStatus.style.display = message ? 'block' : 'none';
 }
 
-function hideSuggest() { suggestBox.style.display = 'none'; suggestBox.innerHTML = ''; }
+function hideSuggest() {
+  suggestBox.style.display = 'none';
+  suggestBox.replaceChildren();
+  addressInput.setAttribute('aria-expanded', 'false');
+}
 
 function showMapFor(query, coords) {
   const preview = document.getElementById('mapPreview');
@@ -1531,18 +1741,30 @@ function chooseAddress(item) {
 }
 
 function renderSuggestions(items) {
+  suggestBox.replaceChildren();
   if (!items.length) {
-    suggestBox.innerHTML = `<div style="padding:10px 12px; font-size:0.85rem; color:var(--gray);">⚠️ ${localizedText('form_address_outside', 'The address must be in Óbidos or Caldas da Rainha.')}</div>`;
+    const emptyMessage = document.createElement('div');
+    emptyMessage.style.cssText = 'padding:10px 12px;font-size:0.85rem;color:var(--gray);';
+    emptyMessage.textContent = `⚠️ ${localizedText('form_address_outside', 'The address must be in Óbidos or Caldas da Rainha.')}`;
+    suggestBox.appendChild(emptyMessage);
     suggestBox.style.display = 'block';
+    addressInput.setAttribute('aria-expanded', 'true');
     return;
   }
-  suggestBox.innerHTML = items.map((item, index) =>
-    `<div class="addr-sugg" data-i="${index}" style="padding:10px 12px; cursor:pointer; border-bottom:1px solid rgba(0,0,0,0.06); font-size:0.9rem;"><div style="color:var(--dark); font-weight:500;">📍 ${item.label.replace(/</g, '&lt;')}</div></div>`
-  ).join('');
+  items.forEach((item, index) => {
+    const option = document.createElement('button');
+    option.type = 'button';
+    option.setAttribute('role', 'option');
+    option.className = 'addr-sugg';
+    option.dataset.i = String(index);
+    option.style.cssText = 'display:block;width:100%;padding:10px 12px;cursor:pointer;border:0;border-bottom:1px solid rgba(0,0,0,0.06);background:#fff;text-align:left;color:var(--dark);font:inherit;font-size:0.9rem;font-weight:500;';
+    option.textContent = `📍 ${item.label}`;
+    suggestBox.appendChild(option);
+  });
   suggestBox.style.display = 'block';
+  addressInput.setAttribute('aria-expanded', 'true');
   suggestBox.querySelectorAll('.addr-sugg').forEach(element => {
-    element.addEventListener('mousedown', event => {
-      event.preventDefault();
+    element.addEventListener('click', () => {
       chooseAddress(items[parseInt(element.dataset.i, 10)]);
     });
   });
@@ -1590,8 +1812,11 @@ document.getElementById('wizBack2').addEventListener('click', () => wizGoStep(1)
 document.getElementById('wizNext2').addEventListener('click', () => {
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
   const address = document.getElementById('address').value.trim();
-  if (name && phone && /^\+?[\d\s]{7,}$/.test(phone) && address === _addressValidated) wizGoStep(3);
+  const phoneOk = /^\+?\d[\d\s]{5,}\d$/.test(phone);
+  const emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (name && phoneOk && emailOk && address === _addressValidated) wizGoStep(3);
 });
 document.getElementById('wizBack3').addEventListener('click', () => wizGoStep(2));
 
@@ -1602,7 +1827,9 @@ function buildSmsUrl(message) {
   return `sms:+351915520147${separator}body=${encodeURIComponent(message)}`;
 }
 
-document.getElementById('wizSend').addEventListener('click', () => {
+document.getElementById('wizSend').addEventListener('click', async () => {
+  const sendButton = document.getElementById('wizSend');
+  if (sendButton.disabled) return;
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const phone = document.getElementById('phone').value.trim();
@@ -1620,7 +1847,8 @@ document.getElementById('wizSend').addEventListener('click', () => {
     'movein': 'svc_movein', 'rental-stay': 'svc_rental_stay', 'rental-car': 'svc_rental_car',
     'laundry': 'svc_laundry', 'closet': 'svc_closet', 'organization': 'svc_org',
     'garage': 'svc_garage', 'holiday': 'svc_holiday', 'staging': 'svc_staging',
-    'pkg-weekly': 'pkg_weekly', 'pkg-fresh': 'pkg_fresh', 'pkg-showroom': 'pkg_showroom'
+    'pkg-weekly': 'pkg_weekly', 'pkg-fresh': 'pkg_fresh', 'pkg-showroom': 'pkg_showroom',
+    'other': 'form_other'
   };
   const svcKey = svcNameMap[svcRaw];
   const serviceName = (svcKey && i18n[currentLang] && i18n[currentLang][svcKey]) || svcRaw || '—';
@@ -1638,12 +1866,12 @@ document.getElementById('wizSend').addEventListener('click', () => {
     },
     pt: {
       greeting: `Olá Moniquinha! 💛`,
-      intro: `O meu nome é *${name}* e encontrei o teu site.\nEstou interessado(a) no serviço de *${serviceName}*.`,
+      intro: `O meu nome é *${name}* e encontrei o seu site.\nGostaria de pedir informações sobre *${serviceName}*.`,
       dateIntro: `Gostaria de marcar`,
       dateFor: `para *${dateStr}*`,
       dateAt: `às *${prefTime}*`,
       msgLabel: `Aqui vão mais alguns detalhes:`,
-      thanks: `Muito obrigado(a)! Aguardo a tua resposta 😊✨`
+      thanks: `Muito obrigado(a)! Aguardo a sua resposta 😊✨`
     },
     fr: {
       greeting: `Bonjour Moniquinha ! 💛`,
@@ -1682,21 +1910,32 @@ document.getElementById('wizSend').addEventListener('click', () => {
   document.getElementById('smsLink').href = buildSmsUrl(text.replace(/\*/g, ''));
 
   const url = 'https://wa.me/351915520147?text=' + encodeURIComponent(text);
-  window.open(url, '_blank');
-  // Send email via EmailJS
-  emailjs.send('service_0o7hvd3', 'template_m24yjpo', {
-    from_name: name,
-    from_email: email,
-    from_phone: phone,
-    address: address,
-    address_map_url: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address),
-    service: serviceName,
-    date: prefDate || 'Not specified',
-    time: prefTime || 'Not specified',
-    period: 'N/A',
-    message: msg
-  }).catch(err => console.warn('EmailJS error:', err));
-  wizGoStep(4);
+  window.open(url, '_blank', 'noopener,noreferrer');
+
+  sendButton.disabled = true;
+  sendButton.textContent = localizedText('form_sending', 'Sending…');
+  const successText = document.querySelector('#wizStep4 [data-i18n="form_success_text"]');
+  try {
+    await emailjs.send('service_0o7hvd3', 'template_m24yjpo', {
+      from_name: name,
+      from_email: email || 'Não indicado',
+      from_phone: phone,
+      address,
+      address_map_url: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address),
+      service: serviceName,
+      date: prefDate || 'Não indicada',
+      time: prefTime || 'Não indicada',
+      period: 'Não aplicável',
+      message: msg || 'Sem detalhes adicionais.'
+    });
+    successText.textContent = localizedText('form_success_text', 'Your request was sent by email and prepared in WhatsApp.');
+  } catch (error) {
+    successText.textContent = localizedText('form_success_email_fallback', 'Your request is ready in WhatsApp, but the email could not be confirmed.');
+  } finally {
+    sendButton.disabled = false;
+    sendButton.textContent = localizedText('form_submit', 'Send Request ✨');
+    wizGoStep(4);
+  }
 });
 
 // ========== SAMPLE MESSAGES ==========
@@ -1707,7 +1946,7 @@ const sampleMessages = {
     construction: "Hi! We've just finished renovations and the house is covered in dust and debris. Could you help with a post-construction cleaning?",
     movein: "Hello! I'm moving into a new place and would love to have it thoroughly cleaned before I settle in. Can we arrange a move-in cleaning?",
     'rental-stay': "Hello! I need reliable turnover cleaning for an Airbnb or short-stay property. Could we discuss the property, guest schedule, and availability?",
-    'rental-car': "Hello! I'm visiting Óbidos on holiday and would like to have my rental vehicle cleaned. Could we arrange a convenient time?",
+    'rental-car': "Hello! I'm visiting the Óbidos or Caldas da Rainha area and would like to have my rental vehicle cleaned. Could we arrange a convenient time?",
     laundry: "Hi Moniquinha! I need help with laundry and ironing on a regular basis. What are your rates and availability?",
     closet: "Hello! My closets are a mess and I'd love help organizing my wardrobe. Do you offer seasonal rotation as well?",
     organization: "Hi Moniquinha! My home needs a good declutter and organization makeover. When could we schedule a consultation?",
@@ -1716,7 +1955,7 @@ const sampleMessages = {
     staging: "Hello! I'm preparing my property for sale/Airbnb and need professional staging. With your hotel experience, I think you'd be perfect!",
     'pkg-weekly': "Hi! I'm interested in the Weekly Shine package (cleaning + laundry + organization). Could you tell me about pricing and scheduling?",
     'pkg-fresh': "Hi! I'd like the Fresh Start package — deep cleaning, full organization, and closet setup. I'm moving into a new place. When can we start?",
-    'pkg-showroom': "Hello! I need the Showroom Ready package for my property. Home staging + deep cleaning + styling. Can we discuss a date?",
+    'pkg-showroom': "Hello! I need the Showroom Ready package for my property: home staging and deep cleaning. Can we discuss a date?",
   },
   pt: {
     cleaning: "Olá Moniquinha! Gostaria de agendar sessões regulares de limpeza para a minha casa. Pode dizer-me a sua disponibilidade e valores?",
@@ -1724,17 +1963,16 @@ const sampleMessages = {
     construction: "Olá! Acabámos de fazer obras e a casa está cheia de pó e entulho. Pode ajudar com a limpeza pós-obra?",
     movein: "Olá! Vou mudar-me para uma casa nova e gostaria de a ter bem limpa antes de me instalar. Podemos combinar uma limpeza de entrada?",
     'rental-stay': "Olá! Preciso de limpeza entre estadias para um Airbnb ou alojamento temporário. Podemos falar sobre o imóvel, o calendário de hóspedes e a disponibilidade?",
-    'rental-car': "Olá! Estou de férias em Óbidos e gostaria de mandar limpar o meu veículo alugado. Podemos combinar uma hora conveniente?",
+    'rental-car': "Olá! Estou na zona de Óbidos ou Caldas da Rainha e gostaria de mandar limpar o meu veículo alugado. Podemos combinar uma hora conveniente?",
     laundry: "Olá Moniquinha! Preciso de ajuda com lavandaria e engomadoria regularmente. Quais são os seus valores e disponibilidade?",
     closet: "Olá! Os meus armários estão uma confusão e adoraria ajuda para organizar o guarda-roupa. Também faz rotação sazonal?",
     organization: "Olá Moniquinha! A minha casa precisa de uma boa arrumação e organização. Quando podemos agendar?",
     garage: "Olá! Tenho uma garagem/arrecadação bastante desorganizada. Gostaria de ajuda para transformá-la num espaço funcional.",
     holiday: "Olá! Gostaria de ajuda para decorar a minha casa para a época festiva. Pode ajudar com a montagem e desmontagem?",
     staging: "Olá! Estou a preparar o meu imóvel para venda/Airbnb e preciso de home staging profissional. Com a sua experiência em hotelaria, seria perfeito!",
-    training: "Olá Moniquinha! Tenho interesse em aprender técnicas profissionais de limpeza e organização. Podemos agendar uma formação?",
     'pkg-weekly': "Olá! Estou interessado(a) no pacote Brilho Semanal (limpeza + lavandaria + organização). Pode falar-me sobre valores e horários?",
     'pkg-fresh': "Olá! Gostaria do pacote Recomeço — limpeza profunda, organização total e armários. Vou mudar-me para uma casa nova. Quando podemos começar?",
-    'pkg-showroom': "Olá! Preciso do pacote Pronto a Mostrar para o meu imóvel. Home staging + limpeza profunda + decoração. Podemos combinar uma data?",
+    'pkg-showroom': "Olá! Preciso do pacote Pronto a Mostrar para o meu imóvel: home staging e limpeza profunda. Podemos combinar uma data?",
   },
   fr: {
     cleaning: "Bonjour Moniquinha ! J'aimerais programmer des séances de ménage régulier pour ma maison. Pouvez-vous me donner vos disponibilités et tarifs ?",
@@ -1742,17 +1980,16 @@ const sampleMessages = {
     construction: "Bonjour ! Nous venons de finir des travaux et la maison est couverte de poussière. Pourriez-vous aider avec un nettoyage après travaux ?",
     movein: "Bonjour ! Je déménage dans un nouveau logement et j'aimerais le faire nettoyer avant de m'installer. Peut-on organiser un nettoyage d'entrée ?",
     'rental-stay': "Bonjour ! J'ai besoin d'un nettoyage entre deux séjours pour un Airbnb ou une location temporaire. Peut-on discuter du logement, du calendrier des voyageurs et de vos disponibilités ?",
-    'rental-car': "Bonjour ! Je passe mes vacances à Óbidos et je souhaite faire nettoyer mon véhicule de location. Peut-on convenir d'une heure pratique ?",
+    'rental-car': "Bonjour ! Je séjourne dans la région d'Óbidos ou de Caldas da Rainha et je souhaite faire nettoyer mon véhicule de location. Peut-on convenir d'une heure pratique ?",
     laundry: "Bonjour Moniquinha ! J'ai besoin d'aide régulière pour la lessive et le repassage. Quels sont vos tarifs et disponibilités ?",
     closet: "Bonjour ! Mes placards sont en désordre et j'adorerais de l'aide pour organiser ma garde-robe. Faites-vous aussi la rotation saisonnière ?",
     organization: "Bonjour Moniquinha ! Ma maison a besoin d'un bon désencombrement et d'une réorganisation. Quand peut-on programmer cela ?",
     garage: "Bonjour ! J'ai un garage/espace de stockage assez encombré. J'aimerais de l'aide pour le transformer en espace fonctionnel.",
     holiday: "Bonjour ! J'aimerais de l'aide pour décorer ma maison pour les fêtes. Pouvez-vous aider avec l'installation et le démontage ?",
     staging: "Bonjour ! Je prépare mon bien pour la vente/Airbnb et j'ai besoin d'un home staging professionnel. Avec votre expérience hôtelière, vous seriez parfaite !",
-    training: "Bonjour Moniquinha ! Je souhaite apprendre des techniques professionnelles de nettoyage et d'organisation. Peut-on programmer une formation ?",
     'pkg-weekly': "Bonjour ! Je suis intéressé(e) par le forfait Éclat Hebdomadaire (ménage + lessive + rangement). Pouvez-vous me donner les tarifs ?",
     'pkg-fresh': "Bonjour ! Je voudrais le forfait Nouveau Départ — nettoyage profond, organisation complète et penderies. Quand peut-on commencer ?",
-    'pkg-showroom': "Bonjour ! J'ai besoin du forfait Prêt à Montrer pour mon bien. Home staging + nettoyage + décoration. Peut-on convenir d'une date ?",
+    'pkg-showroom': "Bonjour ! J'ai besoin du forfait Prêt à Montrer pour mon bien : home staging et nettoyage en profondeur. Peut-on convenir d'une date ?",
   },
   es: {
     cleaning: "¡Hola Moniquinha! Me gustaría programar sesiones regulares de limpieza para mi casa. ¿Podrías decirme tu disponibilidad y tarifas?",
@@ -1760,17 +1997,16 @@ const sampleMessages = {
     construction: "¡Hola! Acabamos de terminar unas reformas y la casa está llena de polvo y escombros. ¿Podrías ayudar con la limpieza post-obra?",
     movein: "¡Hola! Me mudo a una casa nueva y me encantaría tenerla bien limpia antes de instalarme. ¿Podemos organizar una limpieza de entrada?",
     'rental-stay': "¡Hola! Necesito limpieza entre estancias para un Airbnb o alojamiento temporal. ¿Podemos hablar sobre la propiedad, el calendario de huéspedes y la disponibilidad?",
-    'rental-car': "¡Hola! Estoy de vacaciones en Óbidos y me gustaría limpiar mi vehículo de alquiler. ¿Podemos acordar una hora conveniente?",
+    'rental-car': "¡Hola! Estoy en la zona de Óbidos o Caldas da Rainha y me gustaría limpiar mi vehículo de alquiler. ¿Podemos acordar una hora conveniente?",
     laundry: "¡Hola Moniquinha! Necesito ayuda regular con la lavandería y el planchado. ¿Cuáles son tus tarifas y disponibilidad?",
     closet: "¡Hola! Mis armarios son un desastre y me encantaría ayuda para organizar mi vestuario. ¿También haces rotación de temporada?",
     organization: "¡Hola Moniquinha! Mi casa necesita una buena limpieza y organización. ¿Cuándo podríamos agendar?",
     garage: "¡Hola! Tengo un garaje/trastero bastante desordenado. Me gustaría ayuda para convertirlo en un espacio funcional.",
     holiday: "¡Hola! Me encantaría ayuda para decorar mi casa para las fiestas. ¿Puedes ayudar con el montaje y desmontaje?",
     staging: "¡Hola! Estoy preparando mi propiedad para la venta/Airbnb y necesito home staging profesional. ¡Con tu experiencia hotelera, serías perfecta!",
-    training: "¡Hola Moniquinha! Me interesa aprender técnicas profesionales de limpieza y organización. ¿Podemos programar una formación?",
     'pkg-weekly': "¡Hola! Me interesa el paquete Brillo Semanal (limpieza + lavandería + organización). ¿Podrías contarme los precios y horarios?",
     'pkg-fresh': "¡Hola! Quiero el paquete Nuevo Comienzo — limpieza profunda, organización total y armarios. Me mudo a una casa nueva. ¿Cuándo empezamos?",
-    'pkg-showroom': "¡Hola! Necesito el paquete Listo para Mostrar para mi propiedad. Home staging + limpieza profunda + decoración. ¿Podemos quedar?",
+    'pkg-showroom': "¡Hola! Necesito el paquete Listo para Mostrar para mi propiedad: home staging y limpieza profunda. ¿Podemos quedar?",
   }
 };
 
@@ -1779,14 +2015,20 @@ function fillForm(serviceValue) {
   const notice = document.getElementById('autofillNotice');
   const message = document.getElementById('message');
   // Select the service in the wizard grid
-  document.querySelectorAll('.svc-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.svc-option').forEach(option => {
+    option.classList.remove('selected');
+    option.setAttribute('aria-checked', 'false');
+  });
   const match = document.querySelector('.svc-option[data-val="' + serviceValue + '"]');
-  if (match) match.classList.add('selected');
+  if (match) {
+    match.classList.add('selected');
+    match.setAttribute('aria-checked', 'true');
+  }
   selectedService = serviceValue;
   validateStep1();
   // Pre-fill message
   const msg = sampleMessages[currentLang] && sampleMessages[currentLang][serviceValue];
-  if (msg) message.value = msg;
+  if (msg) message.placeholder = msg;
   notice.classList.add('visible');
   // Scroll to form and go to step 1
   wizGoStep(1);
@@ -1797,7 +2039,16 @@ function fillForm(serviceValue) {
 
 document.querySelectorAll('.service-card[data-service]').forEach(card => {
   card.style.cursor = 'pointer';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', card.querySelector('h3')?.textContent || card.dataset.service);
   card.addEventListener('click', () => fillForm(card.dataset.service));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      fillForm(card.dataset.service);
+    }
+  });
 });
 
 document.querySelectorAll('.package-card[data-service]').forEach(card => {
@@ -1807,6 +2058,49 @@ document.querySelectorAll('.package-card[data-service]').forEach(card => {
     fillForm(card.dataset.service);
   });
 });
+
+// ========== ABOUT: PLAYFUL CLEANING ANIMATION ==========
+(function() {
+  const section = document.getElementById('about');
+  const button = document.getElementById('aboutMagic');
+  if (!section || !button) return;
+
+  button.addEventListener('click', () => {
+    section.querySelectorAll('.about-cleaning-broom, .about-cleaning-spark').forEach(el => el.remove());
+    button.disabled = true;
+    button.classList.remove('is-sweeping');
+    void button.offsetWidth;
+    button.classList.add('is-sweeping');
+
+    const broom = document.createElement('span');
+    broom.className = 'about-cleaning-broom';
+    broom.textContent = '🧹';
+    broom.setAttribute('aria-hidden', 'true');
+    section.appendChild(broom);
+
+    const colors = ['#E8A845', '#E4849A', '#9B8EC4', '#5CBEA3'];
+    const symbols = ['✦', '✨', '·'];
+    for (let i = 0; i < 18; i++) {
+      const spark = document.createElement('span');
+      spark.className = 'about-cleaning-spark';
+      spark.textContent = symbols[i % symbols.length];
+      spark.setAttribute('aria-hidden', 'true');
+      spark.style.setProperty('--spark-x', (7 + i * 5.1) + '%');
+      spark.style.setProperty('--spark-y', (30 + (i * 17) % 48) + '%');
+      spark.style.setProperty('--spark-delay', (0.12 + i * 0.105) + 's');
+      spark.style.setProperty('--spark-color', colors[i % colors.length]);
+      spark.style.setProperty('--spark-size', (0.75 + (i % 3) * 0.22) + 'rem');
+      section.appendChild(spark);
+    }
+
+    setTimeout(() => {
+      broom.remove();
+      section.querySelectorAll('.about-cleaning-spark').forEach(el => el.remove());
+      button.classList.remove('is-sweeping');
+      button.disabled = false;
+    }, 2550);
+  });
+})();
 
 // Re-trigger language to apply
 setLang(currentLang);

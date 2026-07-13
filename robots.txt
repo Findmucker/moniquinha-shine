@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moniquinhashine.pt/sitemap.xml
+Sitemap: https://www.moniquinhashine.pt/sitemap.xml

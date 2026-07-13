@@ -1,92 +1,87 @@
 # ✨ Moniquinha's Shine
 
-Website profissional para serviços de limpeza e serviços domésticos na região de Óbidos e Caldas da Rainha.
+Site profissional multilingue para os serviços da Moniquinha nas zonas de Óbidos e Caldas da Rainha.
 
-**Live:** [moniquinhashine.pt](https://moniquinhashine.pt)
+**Produção:** [www.moniquinhashine.pt](https://www.moniquinhashine.pt/)
 
 ## Serviços
 
-- 🧹 Limpeza regular e profunda
-- 🏡 Limpeza de Airbnb e alojamentos temporários
-- 🚗 Limpeza de veículos alugados para visitantes em Óbidos
-- 📦 Organização doméstica
-- 👔 Lavandaria e engomadoria
-- 🏨 Home staging
+- **Limpeza de casas:** regular, profunda, pós-obra e entrada/saída
+- **Alojamentos e viaturas:** Airbnb, alojamentos temporários e veículos alugados
+- **Organização e cuidados do lar:** lavandaria, armários, organização doméstica, garagens, decoração festiva e home staging
+- **Pacotes:** Brilho Semanal, Recomeço e Pronto a Mostrar
 
 ## Funcionalidades
 
-- Landing page single-page responsiva
-- Multilingue (PT, EN, FR, ES)
-- Formulário de contacto via EmailJS + WhatsApp deep-link
-- **Wizard de orçamento em 3 passos** com validação por passo
-- **Morada obrigatória com autocomplete** (Nominatim / OpenStreetMap)
-  - Resultados limitados a Óbidos e Caldas da Rainha
-  - Botão opcional para o cliente partilhar a localização atual
-  - Pré-visualização e link da morada no Google Maps
-- SEO optimizado (meta tags, Open Graph, sitemap, robots.txt)
-- Design mobile-first
+- Página única responsiva em português, inglês, francês e espanhol
+- Formulário de orçamento em três passos, com seleção de serviços por categoria
+- Morada obrigatória e validada para Óbidos ou Caldas da Rainha
+- Pesquisa de moradas através do Nominatim/OpenStreetMap
+- Localização atual apenas quando o cliente carrega no respetivo botão
+- Pré-visualização e ligação da morada no Google Maps
+- Envio por EmailJS, pedido preparado no WhatsApp e ligação opcional para SMS
+- SEO técnico com metadados, dados estruturados, sitemap, robots e favicon
+- Vercel Analytics e cabeçalhos de segurança
 
-## Tech Stack
+## Tecnologia
 
-- **HTML/CSS/JS** — site estático, sem framework
-- **EmailJS** — envio de formulários sem backend
-- **Nominatim (OpenStreetMap)** — pesquisa e confirmação de moradas
-- **Google Maps embed** — pré-visualização da morada confirmada
-- **Hosting:** pode ser qualquer host estático (Vercel, Netlify, GitHub Pages)
+O site é estático e não utiliza framework:
 
-## Setup
+- HTML, CSS e JavaScript em `index.html`
+- EmailJS para entrega do formulário por email
+- Nominatim/OpenStreetMap para pesquisa e validação de moradas
+- Google Maps para pré-visualização da localização confirmada
+- Vercel para alojamento e deploy automático
 
-Não requer instalação — basta servir os ficheiros estáticos.
+## Desenvolvimento local
+
+Não existe etapa de compilação. A partir da raiz do projeto:
 
 ```bash
-# Localmente com Python
 python -m http.server 8000
-
-# Ou com npx
-npx serve .
 ```
 
-## Estrutura
+Depois, abrir `http://127.0.0.1:8000/`.
 
+O comando abaixo existe apenas para compatibilidade com a Vercel:
+
+```bash
+pnpm build
 ```
-moniquinha-shine/
-├── index.html         # Página principal (HTML completo)
-├── favicon.svg        # Ícone de estrela da marca
-├── moniquinha.jpeg    # Foto de perfil (original)
-├── moniquinha.webp    # Foto de perfil (optimizada)
-├── robots.txt         # Instruções para crawlers
-└── sitemap.xml        # Sitemap para SEO
+
+## Estrutura principal
+
+```text
+moniquinhashine/
+├── index.html          # Página, estilos, traduções e comportamento
+├── favicon.svg         # Favicon da marca
+├── moniquinha.webp     # Imagem otimizada usada no site
+├── moniquinha.jpeg     # Imagem original
+├── robots.txt          # Regras para motores de pesquisa
+├── sitemap.xml         # URL canónica para indexação
+├── vercel.json         # Deploy, cache e cabeçalhos de segurança
+└── .vercelignore       # Exclui documentação e ferramentas internas
 ```
+
+`PRECOS_MERCADO.md` e `send_precos_email.py` são materiais internos e não fazem parte do site publicado.
 
 ## Deploy
 
-Site estático — fazer upload dos ficheiros para qualquer hosting.
+O projeto Vercel está ligado ao branch `master`. Cada push para `master` inicia automaticamente um deploy de produção; não é necessário executar a CLI da Vercel.
 
-### Vercel (recomendado)
+Antes do push, confirmar:
 
-O projeto `moniquinhas-shine` está ligado ao repositório através da integração Git da Vercel.
+1. O site funciona localmente nos quatro idiomas.
+2. A seleção de serviços e a validação da morada continuam funcionais.
+3. As ligações de WhatsApp, SMS e Google Maps são geradas corretamente.
+4. `git diff --check` não apresenta erros.
 
-**Deploy automático:** cada push para `master` cria uma implantação de produção diretamente na Vercel. Não é necessário um workflow GitHub Actions separado nem segredos do Vercel no GitHub.
+## Segurança e configuração
 
-**Deploy manual** (CLI):
-
-```bash
-npx vercel --prod
-```
-
-Configuração da pasta de saída, cabeçalhos, redirects e cache em `vercel.json`. Ficheiros internos (research, mailer) excluídos do bundle via `.vercelignore`.
-
-### GitHub Pages (alternativa)
-
-1. Settings → Pages → Source: Deploy from branch → `master` / `root`
-2. Site disponível em `https://findmucker.github.io/moniquinha-shine/`
-
-## Domínio
-
-O site está configurado para o domínio `moniquinhashine.pt`. Para ligar:
-1. Configurar DNS A record para o IP do hosting
-2. Ou CNAME para o domínio do hosting provider
+- Nunca guardar credenciais SMTP, chaves privadas ou ficheiros `.env` no repositório.
+- A chave pública do EmailJS pode existir no cliente; as permissões e domínios autorizados devem ser limitados no painel do EmailJS.
+- Os documentos internos permanecem excluídos do bundle através de `.vercelignore`.
 
 ## Licença
 
-Projeto pessoal — feito com ✨
+Projeto pessoal da Moniquinha's Shine.

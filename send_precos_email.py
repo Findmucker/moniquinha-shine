@@ -42,10 +42,10 @@ SUBJECT = "Tabela de Preços de Mercado — Avaliação para Moniquinha's Shine"
 BODY = """Olá Moniquinha! 💛
 
 Em anexo segue o documento com a pesquisa de preços de mercado para os serviços da Moniquinha's Shine,
-para a região de Óbidos, Caldas da Rainha e arredores (Oeste).
+para as zonas de Óbidos e Caldas da Rainha.
 
 O documento inclui:
-  • Tabela com os 14 serviços (mínimo, típico, máximo) e respectivas unidades
+  • Tabela com os 12 serviços (mínimo, típico, máximo) e respetivas unidades
   • Sugestão de posicionamento de preços
   • Parâmetros alternativos de cobrança (por hora, m², peça, visita, projeto…)
   • Fatores que influenciam o preço
