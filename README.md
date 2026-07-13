@@ -1,16 +1,17 @@
 # ✨ Moniquinha's Shine
 
-Website profissional para serviços de limpeza, babysitting e serviços domésticos na região de Óbidos e Caldas da Rainha.
+Website profissional para serviços de limpeza e serviços domésticos na região de Óbidos e Caldas da Rainha.
 
 **Live:** [moniquinhashine.pt](https://moniquinhashine.pt)
 
 ## Serviços
 
 - 🧹 Limpeza regular e profunda
-- 👶 Babysitting
+- 🏡 Limpeza de Airbnb e alojamentos temporários
+- 🚗 Limpeza de veículos alugados para visitantes em Óbidos
 - 📦 Organização doméstica
 - 👔 Lavandaria e engomadoria
-- 🎨 Home staging e decoração de interiores
+- 🏨 Home staging
 
 ## Funcionalidades
 
@@ -18,10 +19,10 @@ Website profissional para serviços de limpeza, babysitting e serviços domésti
 - Multilingue (PT, EN, FR, ES)
 - Formulário de contacto via EmailJS + WhatsApp deep-link
 - **Wizard de orçamento em 3 passos** com validação por passo
-- **Campo de morada com autocomplete** (Nominatim / OpenStreetMap, sem API key)
-  - Sugestões limitadas à zona de serviço (Óbidos, Caldas da Rainha e arredores ~30 km)
-  - Pré-visualização Google Maps embebida
-  - Auto-correção da morada para formato canónico
+- **Morada obrigatória com autocomplete** (Nominatim / OpenStreetMap)
+  - Resultados limitados a Óbidos e Caldas da Rainha
+  - Botão opcional para o cliente partilhar a localização atual
+  - Pré-visualização e link da morada no Google Maps
 - SEO optimizado (meta tags, Open Graph, sitemap, robots.txt)
 - Design mobile-first
 
@@ -29,8 +30,8 @@ Website profissional para serviços de limpeza, babysitting e serviços domésti
 
 - **HTML/CSS/JS** — site estático, sem framework
 - **EmailJS** — envio de formulários sem backend
-- **Nominatim (OpenStreetMap)** — autocomplete de moradas (sem API key)
-- **Google Maps embed** — preview de localização (modo keyless)
+- **Nominatim (OpenStreetMap)** — pesquisa e confirmação de moradas
+- **Google Maps embed** — pré-visualização da morada confirmada
 - **Hosting:** pode ser qualquer host estático (Vercel, Netlify, GitHub Pages)
 
 ## Setup
@@ -50,6 +51,7 @@ npx serve .
 ```
 moniquinha-shine/
 ├── index.html         # Página principal (HTML completo)
+├── favicon.svg        # Ícone de estrela da marca
 ├── moniquinha.jpeg    # Foto de perfil (original)
 ├── moniquinha.webp    # Foto de perfil (optimizada)
 ├── robots.txt         # Instruções para crawlers

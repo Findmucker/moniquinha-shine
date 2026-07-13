@@ -1,13 +1,13 @@
 # 💛 Moniquinha's Shine — Tabela de Preços de Mercado
 
-**Região:** Óbidos, Caldas da Rainha, Bombarral, Peniche, Nazaré, Alcobaça, Rio Maior e arredores (Oeste)
+**Região:** exclusivamente Óbidos e Caldas da Rainha
 **Moeda:** EUR (€) · **IVA:** estimativas brutas (cliente final)
 **Data da pesquisa:** 2026-05-05
 **Uso:** documento interno de avaliação — não publicado no site
 
 > ⚠️ **Aviso metodológico:** as buscas web ao vivo (Zaask, Fixando, Habitíssimo) foram bloqueadas nesta sessão.
 > Os valores abaixo são **estimativas informadas** baseadas em ranges publicamente conhecidos do mercado português
-> (referência Lisboa) com ajustes regionais (-10% a -15% interior; +5% a +10% costa turística).
+> (referência Lisboa) com ajustes para o mercado local de Óbidos e Caldas da Rainha.
 > **Recomendado:** confirmar com 2–3 orçamentos reais antes de fixar preços finais.
 
 ---
@@ -21,15 +21,13 @@
 | 3 | 🏗️ Limpeza Pós-Obras | **4 €** | **6–9 €** | **12 €** | por m² | Mínimo típico ~150 €. Pó, vidros e resíduos de tinta encarecem. |
 | 4 | 🔑 Mudanças (Entrada/Saída) | **3 €** | **5–8 €** | **10 €** | por m² | T2 ~150–300 € · T3 ~250–450 € · T4+ sob orçamento. |
 | 5 | 👕 Lavandaria & Engomadoria | **8 €** | **10–12 €** | **15 €** | por hora | Ou 1–2 €/peça engomada. Recolha ao domicílio +5–10 €. |
-| 6 | 👶 Babysitting | **5 €** | **7–9 €** | **12 €** | por hora | Noites/fins-de-semana/multi-criança com prémio. Agências cobram mais. |
-| 7 | 🐾 Pet Sitting | **8 €** | **10–12 €** | **18 €** | por visita (30–60min) | Pernoita em casa: 20–35 €/noite. Passeios curtos a partir de 6 €. |
+| 6 | 🏡 Limpeza de Airbnb/Alojamento Temporário | — | **Sob orçamento** | — | por mudança de hóspedes | Definir após pesquisa de mercado; considerar tipologia, roupa de cama e tempo entre hóspedes. |
+| 7 | 🚗 Limpeza de Veículos Alugados | — | **Sob orçamento** | — | por veículo | Definir após pesquisa de mercado; considerar interior/exterior, localização e nível de sujidade. |
 | 8 | 👗 Organização de Roupeiros | **20 €** | **25–35 €** | **50 €** | por hora | Ou 150–400 € por projeto/roupeiro. Materiais (caixas, cabides) à parte. |
 | 9 | 🏠 Organização Doméstica | **25 €** | **30–40 €** | **60 €** | por hora | Pacotes T2 ~400–800 €. Poucos profissionais certificados na zona Oeste. |
 | 10 | 🚗 Garagens & Arrecadações | **20 €** | **25–35 €** | **45 €** | por hora | Frequente cobrar por dia: 150–300 €/dia (descarte incluído ou não). |
 | 11 | 🎄 Decoração Festiva | **150 €** | **300–600 €** | **1500 €+** | por projeto | Depende de árvore, exterior e fornecimento de materiais. |
 | 12 | 🛋️ Home Staging | **300 €** | **500–1200 €** | **3000 €+** | por imóvel | Ou 5–15 €/m² consultoria. +Aluguer de mobiliário se vazio. |
-| 13 | 🎨 Decoração de Interiores | **40 €** | **60–90 €** | **150 €** | por hora | Visita inicial 80–150 €. Projeto completo 15–40 €/m². |
-| 14 | 📚 Formação Limpeza/Organização | **30 €** | **50–80 €** | **150 €** | por hora ou por pax (sessão grupo) | Mercado pouco maduro em PT — estimativa por analogia com formação corporativa. |
 
 ---
 
@@ -40,10 +38,10 @@ Considerando o **diferencial competitivo da Moniquinha** (experiência hoteleira
 | Tipo de Serviço | Posicionamento Sugerido | Justificação |
 |---|---|---|
 | Limpezas (1–4) | **Topo da gama típica** (12–18 €/h) | Qualidade hoteleira justifica prémio. |
-| Doméstico (5–7) | **Meio da gama** (10–12 €/h) | Mercado sensível a preço; fidelizar. |
+| Lavandaria (5) | **Meio da gama** (10–12 €/h) | Mercado sensível a preço; fidelizar. |
+| Turismo (6–7) | **A definir após pesquisa** | Serviços orientados a Airbnb e visitantes internacionais. |
 | Organização (8–10) | **Topo da gama** (35–45 €/h) | Pouca concorrência local qualificada. |
-| Decoração & Staging (11–13) | **Premium** (alvo Airbnb/expat) | Óbidos atrai clientela com poder de compra. |
-| Formação (14) | **80–120 €/h** ou pacote 250–500 € | Posicionar como expert (background hoteleiro). |
+| Decoração Festiva & Staging (11–12) | **Premium** (alvo Airbnb/expat) | Óbidos atrai clientela com poder de compra. |
 
 ---
 
@@ -53,10 +51,10 @@ Além da hora, o mercado português usa frequentemente:
 
 - **€/m²** — limpezas pós-obra, mudanças, staging
 - **€/peça** — engomadoria (1–2 €/peça)
-- **€/visita** — pet sitting, babysitting curto
+- **€/mudança de hóspedes** — Airbnb e alojamentos temporários
+- **€/veículo** — limpeza interior e exterior de veículos alugados
 - **€/dia** — organização de garagens, projetos longos
 - **€/projeto** — decoração festiva, home staging, organização por divisão
-- **€/noite** — pet sitting overnight, babysitting de fim-de-semana
 - **Pacote mensal** — limpezas recorrentes (4× / 8× mês)
 - **Quilometragem** — surcharge para zonas mais distantes (10–25 €)
 
@@ -67,7 +65,7 @@ Além da hora, o mercado português usa frequentemente:
 1. **Frequência:** recorrente vs. pontual (recorrente -10% a -25%)
 2. **Tamanho do imóvel:** m² ou tipologia (T1, T2, T3...)
 3. **Estado:** limpo regular vs. pós-obra vs. abandonado
-4. **Localização:** premium costa turística (Óbidos, Nazaré) +5–10%; surcharge km no interior
+4. **Localização:** diferenças de procura entre Óbidos e Caldas da Rainha
 5. **Materiais:** quem fornece produtos? (cliente -2 €/h vs. prestadora)
 6. **Horário:** noite, fim-de-semana, feriado +20–50%
 7. **Urgência:** serviço em <24h +30%
@@ -79,7 +77,6 @@ Além da hora, o mercado português usa frequentemente:
 
 - [Zaask — Limpezas Domésticas](https://www.zaask.pt/servico/limpezas-domesticas)
 - [Fixando — Preços de Limpeza](https://www.fixando.pt/precos/limpeza-domestica)
-- [Fixando — Babysitter](https://www.fixando.pt/precos/babysitter)
 - [Habitíssimo — Preços de Limpeza](https://www.habitissimo.pt/precos/limpeza)
 - [Helpling Portugal](https://www.helpling.pt/)
 - [Doctor House](https://www.doctorhouse.pt/)
@@ -93,10 +90,9 @@ Além da hora, o mercado português usa frequentemente:
 
 ## ⚠️ Limitações desta Estimativa
 
-- Itens **11–14** (decoração festiva, staging, interiores, formação) têm dados públicos escassos em PT;
+- Itens **11–12** (decoração festiva e staging) têm dados públicos escassos em PT;
   estimativas extrapoladas de prestadores de Lisboa (ex: *Mary Poppins Organização*, *A Casa Perfeita*, APHS).
-- **Prémio costa turística:** Óbidos, Nazaré, São Martinho do Porto frequentemente +5–10% (procura via short-term-rental).
-- **Surcharge rural:** Rio Maior / Bombarral / interior — pode justificar deslocação 10–25 €.
+- **Prémio turístico:** Óbidos pode justificar +5–10% em períodos de maior procura de alojamento temporário.
 - **Recomendação:** pedir 3 orçamentos reais a concorrentes locais (zaask.pt) antes de fixar tabela final.
 
 ---
