@@ -7,7 +7,6 @@ Site profissional multilingue para os serviços da Moniquinha nas zonas de Óbid
 ## Serviços
 
 - **Limpeza de casas:** regular, profunda, pós-obra e entrada/saída
-- **Alojamentos e viaturas:** Airbnb, alojamentos temporários e veículos alugados
 - **Organização e cuidados do lar:** lavandaria, armários, organização doméstica, garagens, decoração festiva e home staging
 - **Pacotes:** Brilho Semanal, Recomeço e Pronto a Mostrar
 
