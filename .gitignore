@@ -14,5 +14,4 @@ Thumbs.db
 PRECOS_MERCADO.pdf
 
 # Local env / secrets for SMTP sending
-.env
-.env.local
+.env*

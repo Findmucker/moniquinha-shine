@@ -64,17 +64,9 @@ Site estático — fazer upload dos ficheiros para qualquer hosting.
 
 ### Vercel (recomendado)
 
-O projeto já está ligado à Vercel (`.vercel/project.json`).
+O projeto `moniquinhas-shine` está ligado ao repositório através da integração Git da Vercel.
 
-**Deploy automático** via GitHub Actions: cada push para `master` aciona o workflow `.github/workflows/deploy.yml` que faz `vercel build && vercel deploy --prod`.
-
-Secrets necessários em **GitHub → Settings → Secrets and variables → Actions**:
-
-| Secret | Onde obter |
-|---|---|
-| `VERCEL_TOKEN` | https://vercel.com/account/tokens |
-| `VERCEL_ORG_ID` | `.vercel/project.json` → `orgId` |
-| `VERCEL_PROJECT_ID` | `.vercel/project.json` → `projectId` |
+**Deploy automático:** cada push para `master` cria uma implantação de produção diretamente na Vercel. Não é necessário um workflow GitHub Actions separado nem segredos do Vercel no GitHub.
 
 **Deploy manual** (CLI):
 
@@ -82,7 +74,7 @@ Secrets necessários em **GitHub → Settings → Secrets and variables → Acti
 npx vercel --prod
 ```
 
-Configuração de cabeçalhos, redirects e cache em `vercel.json`. Ficheiros internos (research, mailer) excluídos do bundle via `.vercelignore`.
+Configuração da pasta de saída, cabeçalhos, redirects e cache em `vercel.json`. Ficheiros internos (research, mailer) excluídos do bundle via `.vercelignore`.
 
 ### GitHub Pages (alternativa)
 
