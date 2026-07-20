@@ -573,10 +573,11 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .wiz-input input::placeholder, .wiz-input textarea::placeholder { color: #B8B3C8; }
 
 /* Date picker theming */
-.wiz-input input[type="date"] {
+.wiz-input input[type="date"], .wiz-input input[type="time"] {
   cursor: pointer; color: var(--dark);
 }
-.wiz-input input[type="date"]::-webkit-calendar-picker-indicator {
+.wiz-input input[type="date"]::-webkit-calendar-picker-indicator,
+.wiz-input input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(30%) sepia(20%) saturate(800%) hue-rotate(200deg);
   cursor: pointer;
 }
@@ -1067,17 +1068,7 @@ footer {
               </div>
               <div class="wiz-input" style="flex:1;">
                 <label for="prefTime" data-i18n="form_time">Preferred Time</label>
-                <select id="prefTime" name="prefTime">
-                  <option value="" data-i18n="form_time_ph">Select hour...</option>
-                  <option value="0h">0h</option><option value="1h">1h</option><option value="2h">2h</option>
-                  <option value="3h">3h</option><option value="4h">4h</option><option value="5h">5h</option>
-                  <option value="6h">6h</option><option value="7h">7h</option><option value="8h">8h</option>
-                  <option value="9h">9h</option><option value="10h">10h</option><option value="11h">11h</option>
-                  <option value="12h">12h</option><option value="13h">13h</option><option value="14h">14h</option>
-                  <option value="15h">15h</option><option value="16h">16h</option><option value="17h">17h</option>
-                  <option value="18h">18h</option><option value="19h">19h</option><option value="20h">20h</option>
-                  <option value="21h">21h</option><option value="22h">22h</option><option value="23h">23h</option>
-                </select>
+                <input type="time" id="prefTime" name="prefTime" min="00:00" max="23:30" step="1800">
               </div>
             </div>
             <div class="wiz-input">
@@ -1820,7 +1811,12 @@ document.getElementById('wizSend').addEventListener('click', async () => {
   const phone = document.getElementById('phone').value.trim();
   const address = document.getElementById('address').value.trim();
   const prefDate = document.getElementById('prefDate').value;
-  const prefTime = document.getElementById('prefTime').value;
+  const prefTimeInput = document.getElementById('prefTime');
+  if (!prefTimeInput.checkValidity()) {
+    prefTimeInput.reportValidity();
+    return;
+  }
+  const prefTime = prefTimeInput.value;
   const homeType = homeCleaningServices.has(selectedService) ? document.getElementById('homeType').value.trim() : '';
   const msg = document.getElementById('message').value.trim();
   const svcRaw = selectedService || '';
