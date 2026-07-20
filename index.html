@@ -295,7 +295,7 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
   border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--coral));
 }
 .about-text p { margin-bottom: 15px; font-size: 1.03rem; }
-.about-stats { display: flex; gap: 14px; margin-top: 27px; }
+.about-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 27px; align-items: stretch; }
 .stat {
   position: relative; flex: 1; text-align: center; padding: 12px 10px;
 }
@@ -311,8 +311,8 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
 .stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); }
 .about-magic-btn {
-  position: relative; display: inline-grid; place-items: center; width: 58px; height: 48px;
-  margin-top: 18px; padding: 0; border: 0; background: transparent; color: var(--gold);
+  position: relative; display: grid; place-items: center; min-width: 0;
+  padding: 12px 6px; border: 0; background: transparent; color: var(--gold);
   cursor: pointer; opacity: 0.82; transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .about-magic-btn:hover { transform: scale(1.08); opacity: 1; }
@@ -321,6 +321,9 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.about-magic-icon {
+  position: relative; display: grid; place-items: center; width: 58px; height: 28px;
 }
 .about-magic-broom {
   position: relative; z-index: 2; font-size: 1.38rem; line-height: 1;
@@ -332,10 +335,10 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
   filter: drop-shadow(0 0 4px rgba(232,168,69,0.5));
   animation: gentleMagicSparkle 2.6s ease-in-out infinite;
 }
-.about-magic-glitter:nth-of-type(2) { top: 3px; left: 8px; font-size: 0.72rem; animation-delay: -0.4s; }
-.about-magic-glitter:nth-of-type(3) { top: 7px; right: 5px; font-size: 0.52rem; animation-delay: -1.7s; }
-.about-magic-glitter:nth-of-type(4) { bottom: 4px; right: 10px; font-size: 0.82rem; animation-delay: -0.9s; }
-.about-magic-glitter:nth-of-type(5) { bottom: 7px; left: 4px; font-size: 0.46rem; animation-delay: -2.1s; }
+.about-magic-glitter:nth-of-type(2) { top: 0; left: 8px; font-size: 0.72rem; animation-delay: -0.4s; }
+.about-magic-glitter:nth-of-type(3) { top: 3px; right: 5px; font-size: 0.52rem; animation-delay: -1.7s; }
+.about-magic-glitter:nth-of-type(4) { bottom: 0; right: 10px; font-size: 0.82rem; animation-delay: -0.9s; }
+.about-magic-glitter:nth-of-type(5) { bottom: 2px; left: 4px; font-size: 0.46rem; animation-delay: -2.1s; }
 .about-magic-btn.is-sweeping { animation: magicButtonPop 0.55s ease; }
 .about-cleaning-broom {
   position: absolute; left: -90px; top: 58%; z-index: 20;
@@ -669,7 +672,7 @@ footer {
   .about-stats { gap: 8px; }
   .stat { padding: 10px 5px; }
   .stat-number { font-size: 1.35rem; }
-  .about-magic-btn { width: auto; justify-content: flex-start; }
+  .about-magic-btn { padding-inline: 2px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -748,15 +751,17 @@ footer {
             <div class="stat-number">💛</div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
+          <button type="button" class="about-magic-btn" id="aboutMagic">
+            <span class="about-magic-icon" aria-hidden="true">
+              <span class="about-magic-broom">🧹</span>
+              <span class="about-magic-glitter">✦</span>
+              <span class="about-magic-glitter">✧</span>
+              <span class="about-magic-glitter">✦</span>
+              <span class="about-magic-glitter">•</span>
+            </span>
+            <span class="sr-only" data-i18n="about_magic">A little touch of shine?</span>
+          </button>
         </div>
-        <button type="button" class="about-magic-btn" id="aboutMagic">
-          <span class="about-magic-broom" aria-hidden="true">🧹</span>
-          <span class="about-magic-glitter" aria-hidden="true">✦</span>
-          <span class="about-magic-glitter" aria-hidden="true">✧</span>
-          <span class="about-magic-glitter" aria-hidden="true">✦</span>
-          <span class="about-magic-glitter" aria-hidden="true">•</span>
-          <span class="sr-only" data-i18n="about_magic">A little touch of shine?</span>
-        </button>
       </div>
     </div>
   </div>
