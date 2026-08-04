@@ -53,7 +53,8 @@ pnpm build
 ```text
 moniquinhashine/
 ├── index.html          # Página, estilos, traduções e comportamento
-├── favicon.svg         # Favicon da marca
+├── favicon.png         # Favicon atual da marca (Icons8)
+├── favicon.svg         # Favicon anterior, mantido como recurso legado
 ├── moniquinha.webp     # Imagem otimizada usada no site
 ├── moniquinha.jpeg     # Imagem original
 ├── robots.txt          # Regras para motores de pesquisa
