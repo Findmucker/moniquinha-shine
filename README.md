@@ -1,4 +1,4 @@
-# ✨ Moniquinha's Shine
+# ✨ Moniquinha Shine
 
 Site profissional multilingue para os serviços da Moniquinha nas zonas de Óbidos e Caldas da Rainha.
 
@@ -84,4 +84,4 @@ Antes do push, confirmar:
 
 ## Licença
 
-Projeto pessoal da Moniquinha's Shine.
+Projeto pessoal da Moniquinha Shine.

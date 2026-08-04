@@ -37,11 +37,11 @@ MAIL_TO   = os.getenv("MAIL_TO", "moniquinhashine@hotmail.com")
 
 PDF_PATH = Path(__file__).parent / "PRECOS_MERCADO.pdf"
 
-SUBJECT = "Tabela de Preços de Mercado — Avaliação para Moniquinha's Shine"
+SUBJECT = "Tabela de Preços de Mercado — Avaliação para Moniquinha Shine"
 
 BODY = """Olá Moniquinha! 💛
 
-Em anexo segue o documento com a pesquisa de preços de mercado para os serviços da Moniquinha's Shine,
+Em anexo segue o documento com a pesquisa de preços de mercado para os serviços da Moniquinha Shine,
 para as zonas de Óbidos e Caldas da Rainha.
 
 O documento inclui:
@@ -55,7 +55,7 @@ O documento inclui:
 Recomendamos confirmar com 2–3 orçamentos reais (Zaask, Fixando) antes de fixar a tabela final.
 
 Beijinhos,
-Equipa Moniquinha's Shine ✨
+Equipa Moniquinha Shine ✨
 """
 
 

@@ -1,4 +1,4 @@
-# Moniquinha's Shine — Pesquisa e Decisão de Preços
+# Moniquinha Shine — Pesquisa e Decisão de Preços
 
 **Zona de serviço:** exclusivamente Óbidos e Caldas da Rainha
 
