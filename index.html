@@ -44,7 +44,7 @@
 <meta name="twitter:image" content="https://www.moniquinhashine.pt/moniquinha.webp">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="100x100" href="https://www.moniquinhashine.pt/favicon.png">
+<link rel="icon" type="image/svg+xml" sizes="any" href="/moniquinha-star.svg?v=3">
 
 <!-- Structured Data: LocalBusiness -->
 <script type="application/ld+json">
@@ -55,7 +55,7 @@
   "description": "Serviços profissionais de limpeza doméstica, organização, lavandaria e home staging em Óbidos e Caldas da Rainha.",
   "url": "https://www.moniquinhashine.pt",
   "image": "https://www.moniquinhashine.pt/moniquinha.webp",
-  "logo": "https://www.moniquinhashine.pt/favicon.png",
+  "logo": "https://www.moniquinhashine.pt/moniquinha-star.svg",
   "telephone": "+351915520147",
   "email": "moniquinhashine@hotmail.com",
   "address": {
@@ -194,8 +194,10 @@ nav {
 nav.scrolled { background: rgba(26,26,46,0.95); backdrop-filter: blur(10px); padding: 10px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
 nav .container { display: flex; justify-content: space-between; align-items: center; }
 .nav-right { display: flex; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 800; color: var(--white); text-decoration: none; }
-.logo span { color: var(--gold); }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; color: var(--white); text-decoration: none; }
+.logo-mark { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 10px; box-shadow: 0 4px 16px rgba(255, 187, 91, 0.22); }
+.logo [data-brand-lead] { color: var(--white); }
+.logo [data-brand-accent] { color: var(--gold); }
 .nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
 .nav-links a:hover { color: var(--gold); }
@@ -686,7 +688,7 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <div class="container">
-    <a href="#" class="logo"><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span> ✨</a>
+    <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="/moniquinha-star.svg?v=3" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
     <div class="nav-right">
       <div class="lang-switcher">
         <button type="button" class="lang-btn active" data-lang="pt" aria-label="Ver site em português">PT</button>
@@ -1102,7 +1104,7 @@ footer {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo"><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span> ✨</a>
+        <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="/moniquinha-star.svg?v=3" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
         <p data-i18n="footer_desc">Professional home services with a personal touch. Making homes shine, one space at a time.</p>
       </div>
       <div class="footer-col">
