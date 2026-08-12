@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "output" / "pdf"
 PDF_PATH = OUT_DIR / "cartao-visita-moniquinha-shine.pdf"
 STAR_PATH = OUT_DIR / "moniquinha-star-print.png"
+WHATSAPP_PATH = OUT_DIR / "whatsapp-logo-gradient.png"
 
 
 def register_fonts():
@@ -71,7 +72,7 @@ def centered_brand(c: Canvas):
     lead_w = pdfmetrics.stringWidth(lead, font, size)
     accent_w = pdfmetrics.stringWidth(accent, font, size)
     x = (PAGE_W - lead_w - accent_w) / 2
-    baseline = PAGE_H * 0.58
+    baseline = PAGE_H * 0.70
 
     c.setFont(font, size)
     c.setFillColor(HexColor("#FFFFFF"))
@@ -79,17 +80,52 @@ def centered_brand(c: Canvas):
     c.setFillColor(HexColor("#F3A83D"))
     c.drawString(x + lead_w, baseline, accent)
 
-    star_w = 15 * MM
-    star_h = 15 * MM
+    star_w = 13 * MM
+    star_h = 13 * MM
     c.drawImage(
         ImageReader(str(STAR_PATH)),
         (PAGE_W - star_w) / 2,
-        baseline - 18.5 * MM,
+        baseline - 19.5 * MM,
         width=star_w,
         height=star_h,
         preserveAspectRatio=True,
         mask="auto",
     )
+
+    tagline_line_1 = "Limpeza, organização e cuidado do seu lar,"
+    tagline_line_2 = "com energia, carinho e um "
+    tagline_highlight = "toque pessoal."
+    tagline_font = "SegoeUI"
+    tagline_size = 7.2
+    tagline_leading = 9.4
+    first_baseline = BLEED + 10.7 * MM
+
+    c.saveState()
+    c.setFillColor(HexColor("#FFFFFF"))
+    c.setFillAlpha(0.94)
+    c.setFont(tagline_font, tagline_size)
+    line_1_width = pdfmetrics.stringWidth(tagline_line_1, tagline_font, tagline_size)
+    line_1_x = (PAGE_W - line_1_width) / 2
+    c.drawString(line_1_x, first_baseline, tagline_line_1)
+
+    prefix_width = pdfmetrics.stringWidth(tagline_line_2, tagline_font, tagline_size)
+    highlight_width = pdfmetrics.stringWidth(tagline_highlight, tagline_font, tagline_size)
+    second_x = (PAGE_W - prefix_width - highlight_width) / 2
+    c.drawString(second_x, first_baseline - tagline_leading, tagline_line_2)
+    c.setFillColor(HexColor("#FFFFFF"))
+    c.setFillAlpha(0.94)
+    c.setFont(tagline_font, tagline_size)
+    second_y = first_baseline - tagline_leading
+    c.drawString(second_x + prefix_width, second_y, tagline_highlight)
+    c.restoreState()
+
+    # Two tiny, asymmetric sparkle clusters give the copy a branded finish
+    # without enclosing it or competing with the main mark.
+    draw_sparkle(c, line_1_x - 3.8 * MM, first_baseline + 0.8 * MM, 0.48 * MM, "#FFD36A", 0.58)
+    draw_sparkle(c, line_1_x - 2.4 * MM, first_baseline + 1.7 * MM, 0.18 * MM, "#7897D2", 0.42)
+    right_x = second_x + prefix_width + highlight_width
+    draw_sparkle(c, right_x + 3.8 * MM, second_y + 0.9 * MM, 0.44 * MM, "#F3A83D", 0.54)
+    draw_sparkle(c, right_x + 2.5 * MM, second_y - 0.6 * MM, 0.17 * MM, "#CDB9E3", 0.42)
 
 
 def draw_sparkle(c: Canvas, x, y, radius, color, alpha):
@@ -176,6 +212,36 @@ def golden_glitter_line(c: Canvas, center_x, center_y):
     c.restoreState()
 
 
+def draw_whatsapp_badge(c: Canvas, x, y, radius):
+    """Draw the official WhatsApp glyph recolored with the brand gradient."""
+    diameter = 2 * radius
+    c.drawImage(
+        ImageReader(str(WHATSAPP_PATH)),
+        x - radius,
+        y - radius,
+        width=diameter,
+        height=diameter,
+        preserveAspectRatio=True,
+        mask="auto",
+    )
+
+
+def centered_whatsapp_contact(c: Canvas, center_y):
+    number = "+351 915 520 147"
+    font = "SegoeUI-Bold"
+    size = 8.8
+    radius = 2.35 * MM
+    gap = 2.0 * MM
+    number_width = pdfmetrics.stringWidth(number, font, size)
+    group_width = 2 * radius + gap + number_width
+    badge_x = (PAGE_W - group_width) / 2 + radius
+    draw_whatsapp_badge(c, badge_x, center_y + 1.0, radius)
+
+    c.setFont(font, size)
+    c.setFillColor(HexColor("#FFF5DD"))
+    c.drawString(badge_x + radius + gap, center_y - size * 0.32, number)
+
+
 def centered_website(c: Canvas):
     text = "www.moniquinhashine.pt"
     font = "SegoeUI-Bold"
@@ -183,9 +249,10 @@ def centered_website(c: Canvas):
     width = pdfmetrics.stringWidth(text, font, size)
     c.setFont(font, size)
     c.setFillColor(HexColor("#FFFFFF"))
-    c.drawString((PAGE_W - width) / 2, (PAGE_H - size) / 2 + 2, text)
+    c.drawString((PAGE_W - width) / 2, PAGE_H * 0.59, text)
 
-    golden_glitter_line(c, PAGE_W / 2, PAGE_H * 0.39)
+    centered_whatsapp_contact(c, PAGE_H * 0.43)
+    golden_glitter_line(c, PAGE_W / 2, PAGE_H * 0.29)
 
 
 def create_pdf():
