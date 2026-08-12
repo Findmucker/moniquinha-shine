@@ -92,6 +92,57 @@ def centered_brand(c: Canvas):
     )
 
 
+def draw_sparkle(c: Canvas, x, y, radius, color, alpha):
+    """Draw an organic four-point sparkle as a print-safe vector path."""
+    c.saveState()
+    c.setFillColor(HexColor(color))
+    c.setFillAlpha(alpha)
+    p = c.beginPath()
+    p.moveTo(x, y + radius)
+    p.curveTo(x + radius * 0.08, y + radius * 0.34, x + radius * 0.34, y + radius * 0.08, x + radius, y)
+    p.curveTo(x + radius * 0.34, y - radius * 0.08, x + radius * 0.08, y - radius * 0.34, x, y - radius)
+    p.curveTo(x - radius * 0.08, y - radius * 0.34, x - radius * 0.34, y - radius * 0.08, x - radius, y)
+    p.curveTo(x - radius * 0.34, y + radius * 0.08, x - radius * 0.08, y + radius * 0.34, x, y + radius)
+    p.close()
+    c.drawPath(p, stroke=0, fill=1)
+    c.restoreState()
+
+
+def golden_glitter_line(c: Canvas, center_x, center_y):
+    # Deliberately irregular spacing and opacity keep the effect light and magical.
+    sparkles = [
+        (-18.0, 0.1, 0.75, "#FFE49A", 0.32),
+        (-14.9, -0.7, 0.45, "#F3A83D", 0.45),
+        (-11.7, 0.3, 1.55, "#FFD36A", 0.88),
+        (-8.2, -0.8, 0.62, "#FFF0B7", 0.40),
+        (-5.3, 0.7, 1.00, "#F7B84C", 0.68),
+        (-1.8, -0.3, 0.52, "#FFE49A", 0.30),
+        (1.0, 0.2, 0.78, "#FFD36A", 0.50),
+        (4.7, -0.6, 0.42, "#FFF0B7", 0.34),
+        (8.1, 0.5, 1.35, "#F3A83D", 0.78),
+        (11.5, -0.8, 0.58, "#FFE49A", 0.38),
+        (14.3, 0.6, 0.92, "#FFD36A", 0.61),
+        (18.0, -0.1, 0.52, "#FFF0B7", 0.30),
+    ]
+    for dx, dy, radius, color, alpha in sparkles:
+        draw_sparkle(c, center_x + dx * MM, center_y + dy * MM, radius * MM, color, alpha)
+
+    glitter = [
+        (-16.7, 1.6, 0.22, 0.32), (-13.4, 1.2, 0.28, 0.42),
+        (-10.0, -1.5, 0.24, 0.48), (-6.8, 1.5, 0.18, 0.28),
+        (-3.7, -1.4, 0.30, 0.50), (-0.2, 1.5, 0.20, 0.34),
+        (2.8, -1.5, 0.26, 0.43), (6.3, 1.5, 0.18, 0.30),
+        (9.8, -1.4, 0.24, 0.46), (12.8, 1.6, 0.28, 0.44),
+        (16.4, -1.3, 0.20, 0.31),
+    ]
+    c.saveState()
+    c.setFillColor(HexColor("#FFD978"))
+    for dx, dy, radius, alpha in glitter:
+        c.setFillAlpha(alpha)
+        c.circle(center_x + dx * MM, center_y + dy * MM, radius * MM, stroke=0, fill=1)
+    c.restoreState()
+
+
 def centered_website(c: Canvas):
     text = "www.moniquinhashine.pt"
     font = "SegoeUI-Bold"
@@ -101,12 +152,7 @@ def centered_website(c: Canvas):
     c.setFillColor(HexColor("#FFFFFF"))
     c.drawString((PAGE_W - width) / 2, (PAGE_H - size) / 2 + 2, text)
 
-    # A fine golden underline gives the back the same brand accent without adding text.
-    line_w = 31 * MM
-    c.setStrokeColor(HexColor("#F3A83D"))
-    c.setLineWidth(1.1)
-    c.setLineCap(1)
-    c.line((PAGE_W - line_w) / 2, PAGE_H * 0.39, (PAGE_W + line_w) / 2, PAGE_H * 0.39)
+    golden_glitter_line(c, PAGE_W / 2, PAGE_H * 0.39)
 
 
 def create_pdf():
