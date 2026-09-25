@@ -491,9 +491,13 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .reviews-empty h3 { color: var(--purple-dark); font-size: clamp(1.4rem, 3vw, 2rem); }
 .reviews-empty p { margin-top: 10px; color: #6e6690; font-size: 1.1rem; font-weight: 600; }
 .reviews-empty[hidden] { display: none; }
-.reviews-grid { display: flex; justify-content: center; gap: 22px; }
+.reviews-carousel { position: relative; margin-inline: 20px; }
+.reviews-grid { display: flex; justify-content: flex-start; gap: 22px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; cursor: grab; }
+.reviews-grid::-webkit-scrollbar { display: none; }
+.reviews-grid.is-short { justify-content: center; }
+.reviews-grid.is-dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; user-select: none; }
 .reviews-grid:empty { display: none; }
-.review-card { box-sizing: border-box; display: flex; flex: 0 0 calc((100% - 44px) / 3); flex-direction: column; min-width: 0; height: 350px; padding: 30px; border: 1px solid #dfe5f2; border-radius: 25px; background: #fff; box-shadow: 0 12px 34px rgba(45,65,111,.07); }
+.review-card { box-sizing: border-box; display: flex; flex: 0 0 calc((100% - 44px) / 3); flex-direction: column; min-width: 0; height: 350px; padding: 30px; border: 1px solid #dfe5f2; border-radius: 25px; background: #fff; box-shadow: 0 12px 34px rgba(45,65,111,.07); scroll-snap-align: start; }
 @keyframes review-enter { from { opacity: .55; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
 .review-card { animation: review-enter .4s ease both; }
 .review-card-stars { display: flex; gap: 3px; margin-bottom: 18px; }
@@ -504,11 +508,12 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .review-card-name { color: var(--purple-dark); font-weight: 800; overflow-wrap: anywhere; }
 .review-card-service { display: inline-flex; gap: 5px; align-items: center; color: #687493; font-size: .82rem; text-align: right; }
 .review-card-service-icon { font-size: 1.2rem; line-height: 1; }
-.reviews-nav { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 24px; }
+.reviews-nav { position: absolute; top: 50%; left: -25px; right: -25px; z-index: 1; display: flex; justify-content: space-between; transform: translateY(-50%); pointer-events: none; }
 .reviews-nav[hidden] { display: none; }
-.reviews-nav button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #d9dff0; border-radius: 50%; background: #fff; color: var(--purple-dark); box-shadow: 0 4px 12px rgba(45,65,111,.08); font: inherit; font-size: 1.55rem; cursor: pointer; transition: background .2s, transform .2s; }
-.reviews-nav button:hover { background: #f4efff; transform: translateY(-2px); }
-.reviews-position { min-width: 55px; color: var(--purple-dark); text-align: center; font-size: .9rem; font-weight: 800; }
+.reviews-nav button { position: relative; display: grid; place-items: center; width: 50px; height: 50px; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; filter: drop-shadow(0 4px 6px rgba(43,65,120,.23)); transition: transform .2s, filter .2s; }
+.reviews-nav button:hover { transform: scale(1.13); filter: drop-shadow(0 6px 9px rgba(43,65,120,.3)); }
+.reviews-nav .review-rating-star { width: 48px; height: 48px; flex-basis: 48px; }
+.reviews-arrow-glyph { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-55%); color: #273e76; font-size: 2rem; font-weight: 900; line-height: 1; text-shadow: 0 1px 2px #fff; }
 .review-rating-star {
   width: 27px; height: 27px; flex: 0 0 27px;
   background: center / contain no-repeat url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkVzdHJlbGluaGEgZGEgTW9uaXF1aW5oYSBTaGluZTwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPlRyw6pzIGJyaWxob3Mgb3Jnw6JuaWNvcyBkb3VyYWRvcyBlIGNvcmFpcyBzb2JyZSB1bSBmdW5kbyBhenVsIHN1YXZlLjwvZGVzYz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ibGFyZ2VTaGluZSIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4IDI3KSByb3RhdGUoNTcpIHNjYWxlKDU3IDQ5KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU2ODAiLz48c3RvcCBvZmZzZXQ9Ii40MiIgc3RvcC1jb2xvcj0iI0ZGQzc1RSIvPjxzdG9wIG9mZnNldD0iLjc0IiBzdG9wLWNvbG9yPSIjRkY5QjY1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkY3NDZGIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic21hbGxHb2xkIiB4MT0iMTQiIHkxPSI3IiB4Mj0iMjgiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU3OEEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkFENTUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzbWFsbENvcmFsIiB4MT0iMTAiIHkxPSI0MyIgeDI9IjI5IiB5Mj0iNzEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRkZEMjdCIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiNGRjlCNzAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjczNzUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93Ij48c3RvcCBzdG9wLWNvbG9yPSIjRkZENzY1IiBzdG9wLW9wYWNpdHk9Ii4zMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGRDc2NSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImRlcHRoIiB4PSItMzUlIiB5PSItMzUlIiB3aWR0aD0iMTcwJSIgaGVpZ2h0PSIxODAlIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMiIgc3RkRGV2aWF0aW9uPSIyLjIiIGZsb29kLWNvbG9yPSIjNUM1Mjc5IiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGVsbGlwc2UgY3g9IjU4IiBjeT0iNDgiIHJ4PSIzNiIgcnk9IjM3IiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTQiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8Y2lyY2xlIGN4PSIyMSIgY3k9IjU4IiByPSIxNSIgZmlsbD0idXJsKCNnbG93KSIvPgogIDxnIGZpbHRlcj0idXJsKCNkZXB0aCkiPgogICAgPHBhdGggZmlsbD0idXJsKCNsYXJnZVNoaW5lKSIgZD0iTTUyIDhjMyAwIDUgMiA2IDZsNCAxN2MxIDQgNCA3IDggOGwxNCA0YzYgMiA2IDggMCAxMGwtMTQgNWMtNCAxLTYgNC03IDhsLTUgMTZjLTIgNy05IDctMTEgMGwtNS0xNmMtMS00LTQtNy04LThsLTEyLTRjLTYtMi02LTcgMC0xMGwxMy02YzQtMiA2LTUgNy05bDQtMTVjMS00IDMtNiA2LTZaIi8+CiAgICA8cGF0aCBmaWxsPSIjRkZGM0E0IiBvcGFjaXR5PSIuMjQiIGQ9Ik01MiAxMWMxIDAgMiAxIDMgNGw0IDE2YzEgNSAzIDggNyAxMC04LTEtMTQgMS0xOSA3LTIgMy00IDYtNSAxMC0yLTMtNC01LTctNmwtMTAtM2MtMy0xLTMtMyAwLTRsMTEtNWM1LTIgNy02IDgtMTFsNC0xNGMxLTMgMi00IDQtNFoiLz4KICAgIDxwYXRoIGZpbGw9InVybCgjc21hbGxHb2xkKSIgZD0iTTIwLjggNS42YzEuMSAwIDEuOC44IDIuMSAyLjJsMS40IDYuMWMuNCAxLjYgMS4zIDIuNiAyLjggMy4xbDUuMyAxLjhjMi40LjggMi40IDMuMy4xIDQuMmwtNS41IDIuMWMtMS41LjYtMi40IDEuNi0yLjggMy4ybC0xLjQgNmMtLjUgMi4zLTMuMSAyLjMtMy43IDBsLTEuNi02LjJjLS40LTEuNS0xLjMtMi41LTIuNy0zbC01LjMtMS45Yy0yLjMtLjgtMi40LTMuMi0uMi00LjFsNS42LTIuM2MxLjUtLjYgMi40LTEuNyAyLjctMy4ybDEuMy01LjljLjMtMS4zLjktMi4xIDEuOS0yLjFaIi8+CiAgICA8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3KSIgZmlsbD0idXJsKCNzbWFsbENvcmFsKSIgZD0iTTEzLjYgMzguNmMxLjMgMCAyLjEuOSAyLjQgMi43bDEuOCA4Yy40IDEuOSAxLjUgMy4xIDMuMyAzLjdsNy4yIDIuNGMyLjguOSAyLjkgMy45LjEgNWwtNy4yIDIuOGMtMS44LjctMi45IDItMy4zIDMuOGwtMS44IDcuOGMtLjcgMi44LTMuOCAyLjgtNC41IDBsLTIuMS04Yy0uNS0xLjctMS41LTIuOS0zLjMtMy41TC0uNiA2MWMtMi44LTEtMi45LTMuOS0uMi01bDctMi44YzEuOC0uNyAyLjktMiAzLjMtMy45bDEuNy04Yy40LTEuOCAxLjItMi43IDIuNC0yLjdaIi8+CiAgPC9nPgo8L3N2Zz4K");
@@ -1081,10 +1086,9 @@ footer {
     <div class="reviews-carousel" id="reviewsCarousel" aria-roledescription="carousel" aria-labelledby="reviews-title">
       <div class="reviews-grid" id="reviewsGrid"></div>
       <div class="reviews-nav" id="reviewsNav" hidden>
-        <button id="reviewsPrevious" type="button" data-i18n-aria-label="reviews_previous" aria-label="Testemunhos anteriores">‹</button>
-        <span class="reviews-position" id="reviewsPosition" aria-live="off"></span>
+        <button id="reviewsPrevious" type="button" data-i18n-aria-label="reviews_previous" aria-label="Testemunhos anteriores"><span class="review-rating-star" aria-hidden="true"></span><span class="reviews-arrow-glyph" aria-hidden="true">‹</span></button>
         <span class="sr-only" id="reviewsAnnouncement" aria-live="polite"></span>
-        <button id="reviewsNext" type="button" data-i18n-aria-label="reviews_next" aria-label="Testemunhos seguintes">›</button>
+        <button id="reviewsNext" type="button" data-i18n-aria-label="reviews_next" aria-label="Testemunhos seguintes"><span class="review-rating-star" aria-hidden="true"></span><span class="reviews-arrow-glyph" aria-hidden="true">›</span></button>
       </div>
     </div>
     <div class="reviews-empty" id="reviewsEmpty">
@@ -1852,8 +1856,8 @@ document.querySelectorAll('.lang-btn').forEach(button => {
 // ========== TESTIMONIAL FORM ==========
 const reviewsEndpoint = 'https://vpdovbwljwtlqhnqefwo.supabase.co/functions/v1/reviews';
 const reviewsCarousel = document.getElementById('reviewsCarousel');
+const reviewsGrid = document.getElementById('reviewsGrid');
 const reviewsNav = document.getElementById('reviewsNav');
-const reviewsPosition = document.getElementById('reviewsPosition');
 const reducedReviewMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let reviewIndex = 0;
 let reviewTimer;
@@ -1863,6 +1867,30 @@ let reviewReadingTimeout;
 
 function getReviewPageSize() {
   return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+}
+
+function getReviewStep() {
+  const card = reviewsGrid.querySelector('.review-card');
+  return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(reviewsGrid).gap) : 0;
+}
+
+function getLastReviewIndex() {
+  return Math.max(0, publishedReviews.length - getReviewPageSize());
+}
+
+function getCurrentReviewIndex() {
+  return Math.min(getLastReviewIndex(), Math.round(reviewsGrid.scrollLeft / (getReviewStep() || 1)));
+}
+
+function scrollToReview(index, smooth = true) {
+  reviewIndex = Math.max(0, Math.min(getLastReviewIndex(), index));
+  const left = reviewIndex * getReviewStep();
+  if (smooth) reviewsGrid.scrollTo({ left, behavior: 'smooth' });
+  else {
+    reviewsGrid.style.scrollBehavior = 'auto';
+    reviewsGrid.scrollLeft = left;
+    reviewsGrid.style.scrollBehavior = '';
+  }
 }
 
 function stopReviewTimer() {
@@ -1876,9 +1904,9 @@ function startReviewTimer() {
       document.hidden || reviewsCarousel.matches(':hover') ||
       reviewsCarousel.contains(document.activeElement) || Date.now() < reviewReadingUntil) return;
   reviewTimer = setInterval(() => {
-    reviewIndex = (reviewIndex + 1) % publishedReviews.length;
-    renderPublishedReviews();
-  }, 3000);
+    const current = getCurrentReviewIndex();
+    scrollToReview(current >= getLastReviewIndex() ? 0 : current + 1);
+  }, 5000);
 }
 
 function pauseReviewReading() {
@@ -1897,19 +1925,12 @@ function updateReviewScrollability() {
 
 function renderPublishedReviews() {
   stopReviewTimer();
-  const grid = document.getElementById('reviewsGrid');
-  grid.replaceChildren();
+  reviewsGrid.replaceChildren();
   document.getElementById('reviewsEmpty').hidden = publishedReviews.length > 0;
   const pageSize = getReviewPageSize();
-  const count = Math.min(pageSize, publishedReviews.length);
-  if (publishedReviews.length <= pageSize) reviewIndex = 0;
-  else reviewIndex %= publishedReviews.length;
+  reviewsGrid.classList.toggle('is-short', publishedReviews.length <= pageSize);
   reviewsNav.hidden = publishedReviews.length <= pageSize;
-  reviewsPosition.textContent = `${reviewIndex + 1} / ${publishedReviews.length}`;
-  reviewsPosition.setAttribute('aria-label', i18n[currentLang].reviews_position
-    .replace('{current}', reviewIndex + 1).replace('{total}', publishedReviews.length));
-  for (let offset = 0; offset < count; offset++) {
-    const review = publishedReviews[(reviewIndex + offset) % publishedReviews.length];
+  for (const review of publishedReviews) {
     const card = document.createElement('article');
     card.className = 'review-card';
     const stars = document.createElement('div');
@@ -1941,25 +1962,59 @@ function renderPublishedReviews() {
     service.append(icon, label);
     bottom.append(name, service);
     card.append(stars, quote, bottom);
-    grid.append(card);
+    reviewsGrid.append(card);
   }
-  requestAnimationFrame(updateReviewScrollability);
-  startReviewTimer();
+  requestAnimationFrame(() => {
+    scrollToReview(reviewIndex, false);
+    updateReviewScrollability();
+    startReviewTimer();
+  });
 }
 
 function advanceReviews(direction) {
-  reviewIndex = (reviewIndex + direction + publishedReviews.length) % publishedReviews.length;
-  renderPublishedReviews();
-  document.getElementById('reviewsAnnouncement').textContent = reviewsPosition.getAttribute('aria-label');
+  const current = getCurrentReviewIndex();
+  const next = current + direction;
+  const target = next < 0 ? getLastReviewIndex() : next > getLastReviewIndex() ? 0 : next;
+  scrollToReview(target);
+  document.getElementById('reviewsAnnouncement').textContent = i18n[currentLang].reviews_position
+    .replace('{current}', target + 1).replace('{total}', publishedReviews.length);
 }
 document.getElementById('reviewsPrevious').addEventListener('click', () => advanceReviews(-1));
 document.getElementById('reviewsNext').addEventListener('click', () => advanceReviews(1));
 reviewsCarousel.addEventListener('mouseenter', stopReviewTimer);
 reviewsCarousel.addEventListener('mouseleave', startReviewTimer);
 reviewsCarousel.addEventListener('focusin', stopReviewTimer);
-reviewsCarousel.addEventListener('pointerdown', event => {
-  if (event.target.closest('.review-card-quote')) pauseReviewReading();
+reviewsGrid.addEventListener('scroll', () => { reviewIndex = getCurrentReviewIndex(); });
+let reviewDrag = null;
+reviewsGrid.addEventListener('pointerdown', event => {
+  pauseReviewReading();
+  if (event.pointerType === 'mouse' && event.button === 0) {
+    reviewDrag = { id: event.pointerId, x: event.clientX, left: reviewsGrid.scrollLeft, active: false };
+  }
 });
+reviewsGrid.addEventListener('pointermove', event => {
+  if (!reviewDrag || event.pointerId !== reviewDrag.id) return;
+  const distance = event.clientX - reviewDrag.x;
+  if (!reviewDrag.active && Math.abs(distance) > 6) {
+    reviewDrag.active = true;
+    reviewsGrid.classList.add('is-dragging');
+    reviewsGrid.setPointerCapture(event.pointerId);
+  }
+  if (reviewDrag.active) reviewsGrid.scrollLeft = reviewDrag.left - distance;
+});
+function finishReviewDrag(event) {
+  if (!reviewDrag || event.pointerId !== reviewDrag.id) return;
+  if (reviewDrag.active) {
+    reviewsGrid.classList.remove('is-dragging');
+    scrollToReview(getCurrentReviewIndex());
+  }
+  reviewDrag = null;
+}
+window.addEventListener('pointerup', finishReviewDrag);
+window.addEventListener('pointercancel', finishReviewDrag);
+reviewsGrid.addEventListener('wheel', event => {
+  if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.target.closest('.review-card-quote')) pauseReviewReading();
+}, { passive: true });
 reviewsCarousel.addEventListener('scroll', event => {
   if (event.target.classList.contains('review-card-quote')) pauseReviewReading();
 }, true);
@@ -1973,7 +2028,10 @@ window.addEventListener('resize', () => {
   if (pageSize !== reviewPageSize) {
     reviewPageSize = pageSize;
     if (publishedReviews.length) renderPublishedReviews();
-  } else updateReviewScrollability();
+  } else requestAnimationFrame(() => {
+    scrollToReview(reviewIndex, false);
+    updateReviewScrollability();
+  });
 });
 document.fonts?.ready.then(updateReviewScrollability);
 
