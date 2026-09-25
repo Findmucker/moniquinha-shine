@@ -161,7 +161,8 @@ p { color: var(--gray); }
 
 /* ========== UTILITY ========== */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section { padding: 80px 0; }
+.section { position: relative; padding: 80px 0; overflow: hidden; }
+.section > .container { position: relative; z-index: 1; }
 .section-header { text-align: center; margin-bottom: 60px; }
 .section-header p { margin-top: 12px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 .btn {
@@ -207,7 +208,11 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 /* ========== HERO ========== */
 .hero {
   min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-  background: linear-gradient(135deg, #2B4178 0%, #4A6BAF 40%, #7B8EC9 70%, #C4A8D4 100%);
+  background:
+    radial-gradient(circle at 14% 29%, rgba(255,233,174,.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 77% 18%, rgba(255,255,255,.65) 0 1px, transparent 2px),
+    radial-gradient(circle at 89% 71%, rgba(255,204,171,.56) 0 1.5px, transparent 3px),
+    linear-gradient(135deg, #2B4178 0%, #4A6BAF 40%, #7B8EC9 70%, #C4A8D4 100%);
   position: relative; overflow: hidden;
 }
 .hero::before {
@@ -258,6 +263,8 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .about {
   position: relative; overflow: hidden;
   background:
+    radial-gradient(circle at 74% 12%, rgba(232,168,69,.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 89% 54%, rgba(228,132,154,.3) 0 1.5px, transparent 3px),
     radial-gradient(circle at 8% 18%, rgba(232,168,69,0.12), transparent 28%),
     radial-gradient(circle at 92% 82%, rgba(228,132,154,0.10), transparent 26%),
     var(--light-bg);
@@ -265,7 +272,7 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .about::before, .about::after {
   content: ''; position: absolute; border-radius: 50%; pointer-events: none;
 }
-.about::before { width: 12px; height: 12px; top: 18%; right: 9%; background: var(--gold); opacity: 0.45; }
+.about::before { content: '✧'; top: 18%; right: 9%; color: var(--gold); font-size: 1.05rem; line-height: 1; opacity: .52; text-shadow: 0 0 12px rgba(232,168,69,.35); }
 .about::after { width: 7px; height: 7px; bottom: 14%; left: 7%; background: var(--coral); opacity: 0.35; }
 .about-grid { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 72px; align-items: center; position: relative; z-index: 1; }
 .about-image-wrap { position: relative; padding: 16px 0 16px 16px; }
@@ -374,6 +381,13 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 @keyframes magicButtonPop { 0%,100% { transform: scale(1); } 45% { transform: scale(1.07) rotate(1deg); } }
 
 /* ========== SERVICES ========== */
+#services {
+  background:
+    radial-gradient(circle at 11% 20%, rgba(232,168,69,.38) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 45%, rgba(155,142,196,.38) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 82% 10%, rgba(255,199,94,.13), transparent 28%),
+    radial-gradient(circle at 6% 87%, rgba(155,142,196,.1), transparent 25%), #fff;
+}
 .services-categories { display: grid; gap: 52px; }
 .service-category { position: relative; }
 .service-category-header {
@@ -431,7 +445,13 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .service-card p { font-size: 0.95rem; }
 
 /* ========== PACKAGES ========== */
-.packages { background: var(--light-bg); }
+.packages {
+  background:
+    radial-gradient(circle at 86% 15%, rgba(232,168,69,.45) 0 1px, transparent 2px),
+    radial-gradient(circle at 16% 78%, rgba(155,142,196,.38) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 13% 16%, rgba(228,132,154,.11), transparent 26%),
+    radial-gradient(circle at 86% 85%, rgba(155,142,196,.13), transparent 30%), var(--light-bg);
+}
 .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
 .package-card {
   background: var(--white); border-radius: 20px; padding: 36px 28px; text-align: center;
@@ -457,7 +477,15 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .package-card .btn { padding: 12px 28px; font-size: 0.95rem; }
 
 /* ========== WHY CHOOSE ME ========== */
-.why { background: linear-gradient(135deg, #2B4178, #4A6BAF); color: var(--white); }
+.why {
+  background:
+    radial-gradient(circle at 9% 22%, rgba(255,224,148,.62) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 14%, rgba(255,255,255,.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 77%, rgba(255,182,150,.48) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 6% 85%, rgba(255,199,94,.13), transparent 30%),
+    linear-gradient(135deg, #2B4178, #4A6BAF);
+  color: var(--white);
+}
 .why .section-header h2 { color: var(--white); }
 .why .section-header p { color: rgba(255,255,255,0.8); }
 .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
@@ -472,7 +500,11 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 
 /* ========== REVIEWS ========== */
 .reviews {
-  background: #f7f9fe;
+  background:
+    radial-gradient(circle at 90% 12%, rgba(232,168,69,.43) 0 1px, transparent 2px),
+    radial-gradient(circle at 7% 67%, rgba(155,142,196,.36) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 7% 18%, rgba(155,142,196,.1), transparent 27%),
+    radial-gradient(circle at 94% 83%, rgba(255,199,94,.11), transparent 29%), #f7f9fe;
   scroll-margin-top: 72px;
 }
 .reviews .section-header { margin-bottom: 42px; }
@@ -557,20 +589,20 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 }
 .review-panel[hidden] { display: none; }
 .review-panel-intro {
+  position: relative;
   padding: 38px 34px; background: linear-gradient(155deg, #2B4178, #5974b6 75%, #8d8bc4);
   color: var(--white);
 }
-.review-panel-intro img { display: block; width: 48px; height: 48px; margin-bottom: 22px; }
+.review-panel-intro > img { position: absolute; right: 20px; bottom: 20px; width: 76px; height: 76px; opacity: .38; transform: rotate(-14deg); pointer-events: none; }
 .review-panel-intro h3 { color: var(--white); font-size: 1.55rem; margin-bottom: 14px; }
 .review-panel-intro p { color: rgba(255,255,255,0.85); font-size: 0.98rem; }
 .review-panel-intro .review-thanks {
-  display: flex; align-items: flex-start; gap: 11px; margin-top: 8px; padding: 16px;
+  position: relative; margin-top: 8px; padding: 16px;
   border: 1px solid rgba(255,217,132,.45); border-radius: 17px;
   background: linear-gradient(125deg, rgba(255,199,94,.2), rgba(255,155,112,.12) 65%, rgba(255,255,255,.1));
   box-shadow: 0 9px 24px rgba(29,43,93,.16); color: #fff;
   font-size: .94rem; font-weight: 600; line-height: 1.5;
 }
-.review-thanks-spark { flex: 0 0 auto; color: #ffcf70; font-size: 1.4rem; line-height: 1; text-shadow: 0 0 10px rgba(255,200,98,.75); }
 .review-thanks strong { display: block; color: #ffdf94; font-weight: 800; }
 .review-form { padding: 36px; }
 .review-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
@@ -622,7 +654,8 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
   .review-card { flex-basis: calc((100% - 22px) / 2); }
   .review-panel { grid-template-columns: 1fr; }
   .review-panel-intro { padding: 30px; }
-  .review-panel-intro img { margin-bottom: 12px; }
+  .review-panel-intro > img { top: 18px; right: 20px; bottom: auto; width: 40px; height: 40px; opacity: .55; }
+  .review-panel-intro h3 { padding-right: 36px; }
 }
 @media (max-width: 600px) {
   .reviews-carousel { margin-inline: 20px; }
@@ -639,7 +672,23 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 }
 
 /* ========== CONTACT ========== */
-.contact { background: #e9eaf7; border-top: 1px solid #cfd5ea; }
+.contact {
+  background:
+    radial-gradient(circle at 16% 11%, rgba(232,168,69,.48) 0 1px, transparent 2px),
+    radial-gradient(circle at 85% 72%, rgba(155,142,196,.42) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 10% 76%, rgba(255,199,94,.15), transparent 27%),
+    radial-gradient(circle at 92% 15%, rgba(155,142,196,.16), transparent 28%), #e9eaf7;
+  border-top: 1px solid #cfd5ea;
+}
+#services::before, .packages::before, .why::before, .reviews::before, .contact::before {
+  position: absolute; z-index: 0; pointer-events: none; line-height: 1;
+  text-shadow: 0 0 12px currentColor;
+}
+#services::before { content: '✧'; top: 9%; right: 6%; color: rgba(232,168,69,.42); font-size: 1.1rem; }
+.packages::before { content: '✦'; bottom: 12%; left: 6%; color: rgba(155,142,196,.38); font-size: .72rem; transform: rotate(-15deg); }
+.why::before { content: '✧'; top: 24%; left: 7%; color: rgba(255,221,147,.55); font-size: 1rem; }
+.reviews::before { content: '✦'; top: 18%; right: 10%; color: rgba(232,168,69,.38); font-size: .65rem; }
+.contact::before { content: '✧'; top: 56%; right: 5%; color: rgba(228,132,154,.42); font-size: .95rem; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
 /* Contact info — Purple Gradient Panel */
@@ -1131,7 +1180,7 @@ footer {
       <div class="review-panel-intro">
         <img src="./moniquinha-star.svg" alt="">
         <h3 id="reviewFormHeading" data-i18n="review_form_title">Conte-me como correu</h3>
-        <p class="review-thanks"><span class="review-thanks-spark" aria-hidden="true">✦</span><span><span data-i18n="review_thanks_intro">A sua opinião para mim é importante!</span> <strong data-i18n="review_thanks_end">Obrigada pelo testemunho!</strong></span></p>
+        <p class="review-thanks"><span data-i18n="review_thanks_intro">A sua opinião para mim é importante!</span> <strong data-i18n="review_thanks_end">Obrigada pelo testemunho!</strong></p>
       </div>
       <form class="review-form" id="reviewForm">
         <div class="review-form-grid">
