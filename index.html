@@ -498,15 +498,8 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .review-card { animation: review-enter .4s ease both; }
 .review-card-stars { display: flex; gap: 3px; margin-bottom: 18px; }
 .review-card-stars .review-rating-star { width: 25px; height: 25px; flex-basis: 25px; }
-.review-card-copy { display: flex; flex: 1; flex-direction: column; min-height: 0; }
-.review-card-quote { flex: 1; min-height: 0; margin: 0; color: var(--dark); font-size: 1.06rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; }
-.review-card-quote.is-expanded { overflow-y: auto; scrollbar-color: #9b8ec4 #f1f2f9; }
-.review-card-more { align-self: flex-start; height: 32px; flex: 0 0 32px; padding: 0; border: 0; background: none; color: var(--purple-dark); font: inherit; font-size: .87rem; font-weight: 800; cursor: pointer; visibility: hidden; }
-.review-card-more.is-visible { visibility: visible; }
-.review-card-more .review-more-arrow { display: inline-block; margin-left: 3px; color: #d28b30; transition: transform .2s; }
-.review-card-more[aria-expanded="true"] .review-more-arrow { transform: rotate(180deg); }
-.review-card-more:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
-.review-card-more:focus-visible, .reviews-nav button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.review-card-quote { flex: 1; min-height: 0; margin: 0 0 18px; color: var(--dark); font-size: 1.06rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; overflow-y: auto; scrollbar-color: #9b8ec4 #f1f2f9; }
+.review-card-quote:focus-visible, .reviews-nav button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .review-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid #e3e8f4; }
 .review-card-name { color: var(--purple-dark); font-weight: 800; overflow-wrap: anywhere; }
 .review-card-service { display: inline-flex; gap: 5px; align-items: center; color: #687493; font-size: .82rem; text-align: right; }
@@ -1436,7 +1429,7 @@ const i18n = {
     reviews_title: "Testimonials",
     reviews_subtitle: "Your experience can help others get to know my work.",
     reviews_empty_title: "No testimonials yet!", reviews_empty_note: "I look forward to yours!",
-    reviews_more: "Read more", reviews_less: "Show less", reviews_previous: "Previous testimonials", reviews_next: "Next testimonials", reviews_position: "Starting at testimonial {current} of {total}",
+    reviews_previous: "Previous testimonials", reviews_next: "Next testimonials", reviews_position: "Starting at testimonial {current} of {total}",
     review_cta: "Leave a testimonial",
     review_form_title: "Tell me how it went",
     review_form_intro: "Your opinion helps others get to know my work. I'll read your testimonial before it appears on the site.",
@@ -1540,7 +1533,7 @@ const i18n = {
     reviews_title: "Testemunhos",
     reviews_subtitle: "A sua experiência pode ajudar outras pessoas a conhecer o meu trabalho.",
     reviews_empty_title: "Ainda não há testemunhos!", reviews_empty_note: "Aguardo pelo seu!",
-    reviews_more: "Ver mais", reviews_less: "Ver menos", reviews_previous: "Testemunhos anteriores", reviews_next: "Testemunhos seguintes", reviews_position: "A começar no testemunho {current} de {total}",
+    reviews_previous: "Testemunhos anteriores", reviews_next: "Testemunhos seguintes", reviews_position: "A começar no testemunho {current} de {total}",
     review_cta: "Deixar testemunho",
     review_form_title: "Conte-me como correu",
     review_form_intro: "A sua opinião ajuda outras pessoas a conhecer o meu trabalho. O testemunho será lido antes de aparecer no site.",
@@ -1644,7 +1637,7 @@ const i18n = {
     reviews_title: "Témoignages",
     reviews_subtitle: "Votre expérience peut aider d'autres personnes à découvrir mon travail.",
     reviews_empty_title: "Pas encore de témoignages !", reviews_empty_note: "J'attends le vôtre !",
-    reviews_more: "Voir plus", reviews_less: "Voir moins", reviews_previous: "Témoignages précédents", reviews_next: "Témoignages suivants", reviews_position: "À partir du témoignage {current} sur {total}",
+    reviews_previous: "Témoignages précédents", reviews_next: "Témoignages suivants", reviews_position: "À partir du témoignage {current} sur {total}",
     review_cta: "Laisser un témoignage",
     review_form_title: "Racontez-moi votre expérience",
     review_form_intro: "Votre avis aide d'autres personnes à découvrir mon travail. Je lirai votre témoignage avant sa publication.",
@@ -1748,7 +1741,7 @@ const i18n = {
     reviews_title: "Testimonios",
     reviews_subtitle: "Tu experiencia puede ayudar a otras personas a conocer mi trabajo.",
     reviews_empty_title: "¡Aún no hay testimonios!", reviews_empty_note: "¡Espero el tuyo!",
-    reviews_more: "Ver más", reviews_less: "Ver menos", reviews_previous: "Testimonios anteriores", reviews_next: "Testimonios siguientes", reviews_position: "Desde el testimonio {current} de {total}",
+    reviews_previous: "Testimonios anteriores", reviews_next: "Testimonios siguientes", reviews_position: "Desde el testimonio {current} de {total}",
     review_cta: "Dejar un testimonio",
     review_form_title: "Cuéntame cómo fue",
     review_form_intro: "Tu opinión ayuda a otras personas a conocer mi trabajo. Leeré tu testimonio antes de publicarlo en la web.",
@@ -1865,6 +1858,8 @@ const reducedReviewMotion = window.matchMedia('(prefers-reduced-motion: reduce)'
 let reviewIndex = 0;
 let reviewTimer;
 let reviewPageSize = getReviewPageSize();
+let reviewReadingUntil = 0;
+let reviewReadingTimeout;
 
 function getReviewPageSize() {
   return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
@@ -1879,22 +1874,24 @@ function startReviewTimer() {
   stopReviewTimer();
   if (publishedReviews.length <= getReviewPageSize() || reducedReviewMotion.matches ||
       document.hidden || reviewsCarousel.matches(':hover') ||
-      reviewsCarousel.contains(document.activeElement) ||
-      reviewsCarousel.querySelector('.review-card-quote.is-expanded')) return;
+      reviewsCarousel.contains(document.activeElement) || Date.now() < reviewReadingUntil) return;
   reviewTimer = setInterval(() => {
     reviewIndex = (reviewIndex + 1) % publishedReviews.length;
     renderPublishedReviews();
-  }, 8000);
+  }, 3000);
 }
 
-function updateReviewOverflow() {
-  document.querySelectorAll('.review-card').forEach(card => {
-    const quote = card.querySelector('.review-card-quote');
-    const more = card.querySelector('.review-card-more');
-    if (quote.classList.contains('is-expanded')) return;
-    const overflowing = quote.scrollHeight > quote.clientHeight + 1;
-    more.classList.toggle('is-visible', overflowing);
-    more.disabled = !overflowing;
+function pauseReviewReading() {
+  reviewReadingUntil = Date.now() + 20000;
+  stopReviewTimer();
+  clearTimeout(reviewReadingTimeout);
+  reviewReadingTimeout = setTimeout(startReviewTimer, 20000);
+}
+
+function updateReviewScrollability() {
+  document.querySelectorAll('.review-card-quote').forEach(quote => {
+    if (quote.scrollHeight > quote.clientHeight + 1) quote.tabIndex = 0;
+    else quote.removeAttribute('tabindex');
   });
 }
 
@@ -1926,31 +1923,7 @@ function renderPublishedReviews() {
     }
     const quote = document.createElement('p');
     quote.className = 'review-card-quote';
-    quote.id = `review-quote-${review.id}`;
     quote.textContent = `“${review.comment}”`;
-    const copy = document.createElement('div');
-    copy.className = 'review-card-copy';
-    const more = document.createElement('button');
-    more.className = 'review-card-more';
-    more.type = 'button';
-    more.disabled = true;
-    more.setAttribute('aria-expanded', 'false');
-    more.setAttribute('aria-controls', quote.id);
-    const moreText = document.createElement('span');
-    moreText.textContent = i18n[currentLang].reviews_more;
-    const arrow = document.createElement('span');
-    arrow.className = 'review-more-arrow';
-    arrow.setAttribute('aria-hidden', 'true');
-    arrow.textContent = '⌄';
-    more.append(moreText, arrow);
-    more.addEventListener('click', () => {
-      const expanded = quote.classList.toggle('is-expanded');
-      more.setAttribute('aria-expanded', String(expanded));
-      moreText.textContent = i18n[currentLang][expanded ? 'reviews_less' : 'reviews_more'];
-      if (!expanded) quote.scrollTop = 0;
-      startReviewTimer();
-    });
-    copy.append(quote, more);
     const bottom = document.createElement('div');
     bottom.className = 'review-card-bottom';
     const name = document.createElement('span');
@@ -1967,10 +1940,10 @@ function renderPublishedReviews() {
     label.textContent = serviceCard?.querySelector('h3')?.textContent || i18n[currentLang].form_other;
     service.append(icon, label);
     bottom.append(name, service);
-    card.append(stars, copy, bottom);
+    card.append(stars, quote, bottom);
     grid.append(card);
   }
-  requestAnimationFrame(updateReviewOverflow);
+  requestAnimationFrame(updateReviewScrollability);
   startReviewTimer();
 }
 
@@ -1984,6 +1957,12 @@ document.getElementById('reviewsNext').addEventListener('click', () => advanceRe
 reviewsCarousel.addEventListener('mouseenter', stopReviewTimer);
 reviewsCarousel.addEventListener('mouseleave', startReviewTimer);
 reviewsCarousel.addEventListener('focusin', stopReviewTimer);
+reviewsCarousel.addEventListener('pointerdown', event => {
+  if (event.target.closest('.review-card-quote')) pauseReviewReading();
+});
+reviewsCarousel.addEventListener('scroll', event => {
+  if (event.target.classList.contains('review-card-quote')) pauseReviewReading();
+}, true);
 reviewsCarousel.addEventListener('focusout', event => {
   if (!reviewsCarousel.contains(event.relatedTarget)) startReviewTimer();
 });
@@ -1994,9 +1973,9 @@ window.addEventListener('resize', () => {
   if (pageSize !== reviewPageSize) {
     reviewPageSize = pageSize;
     if (publishedReviews.length) renderPublishedReviews();
-  } else updateReviewOverflow();
+  } else updateReviewScrollability();
 });
-document.fonts?.ready.then(updateReviewOverflow);
+document.fonts?.ready.then(updateReviewScrollability);
 
 async function loadPublishedReviews() {
   try {
