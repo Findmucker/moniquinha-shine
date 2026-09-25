@@ -44,7 +44,7 @@
 <meta name="twitter:image" content="https://www.moniquinhashine.pt/moniquinha.webp">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" sizes="any" href="/moniquinha-star.svg?v=4">
+<link rel="icon" type="image/svg+xml" sizes="any" href="./moniquinha-star.svg?v=4">
 
 <!-- Structured Data: LocalBusiness -->
 <script type="application/ld+json">
@@ -470,8 +470,126 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .why-card h3 { margin-bottom: 10px; color: var(--gold); }
 .why-card p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
 
+/* ========== REVIEWS ========== */
+.reviews {
+  background: #f7f9fe;
+  scroll-margin-top: 72px;
+}
+.reviews .section-header { margin-bottom: 42px; }
+.reviews .section-header h2::after {
+  content: ''; display: block; width: 64px; height: 4px;
+  margin: 18px auto 0; border-radius: 4px; background: var(--gold);
+}
+.reviews-empty {
+  overflow: hidden; text-align: center; padding: 44px 24px 48px;
+  border: 1px solid #dfe5f2; border-radius: 26px;
+  background: radial-gradient(circle at 12% 15%, rgba(255,199,94,0.2), transparent 28%),
+    radial-gradient(circle at 88% 85%, rgba(155,142,196,0.19), transparent 30%), #fff;
+  box-shadow: 0 12px 34px rgba(45,65,111,0.07);
+}
+.reviews-empty img { display: block; margin: 0 auto 18px; filter: drop-shadow(0 5px 8px rgba(232,168,69,0.2)); }
+.reviews-empty h3 { color: var(--purple-dark); font-size: clamp(1.4rem, 3vw, 2rem); }
+.reviews-empty p { margin-top: 10px; color: #6e6690; font-size: 1.1rem; font-weight: 600; }
+.review-rating-star {
+  width: 27px; height: 27px; flex: 0 0 27px;
+  background: center / contain no-repeat url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkVzdHJlbGluaGEgZGEgTW9uaXF1aW5oYSBTaGluZTwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPlRyw6pzIGJyaWxob3Mgb3Jnw6JuaWNvcyBkb3VyYWRvcyBlIGNvcmFpcyBzb2JyZSB1bSBmdW5kbyBhenVsIHN1YXZlLjwvZGVzYz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ibGFyZ2VTaGluZSIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4IDI3KSByb3RhdGUoNTcpIHNjYWxlKDU3IDQ5KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU2ODAiLz48c3RvcCBvZmZzZXQ9Ii40MiIgc3RvcC1jb2xvcj0iI0ZGQzc1RSIvPjxzdG9wIG9mZnNldD0iLjc0IiBzdG9wLWNvbG9yPSIjRkY5QjY1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkY3NDZGIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic21hbGxHb2xkIiB4MT0iMTQiIHkxPSI3IiB4Mj0iMjgiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU3OEEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkFENTUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzbWFsbENvcmFsIiB4MT0iMTAiIHkxPSI0MyIgeDI9IjI5IiB5Mj0iNzEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRkZEMjdCIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiNGRjlCNzAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjczNzUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93Ij48c3RvcCBzdG9wLWNvbG9yPSIjRkZENzY1IiBzdG9wLW9wYWNpdHk9Ii4zMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGRDc2NSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImRlcHRoIiB4PSItMzUlIiB5PSItMzUlIiB3aWR0aD0iMTcwJSIgaGVpZ2h0PSIxODAlIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMiIgc3RkRGV2aWF0aW9uPSIyLjIiIGZsb29kLWNvbG9yPSIjNUM1Mjc5IiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGVsbGlwc2UgY3g9IjU4IiBjeT0iNDgiIHJ4PSIzNiIgcnk9IjM3IiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTQiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8Y2lyY2xlIGN4PSIyMSIgY3k9IjU4IiByPSIxNSIgZmlsbD0idXJsKCNnbG93KSIvPgogIDxnIGZpbHRlcj0idXJsKCNkZXB0aCkiPgogICAgPHBhdGggZmlsbD0idXJsKCNsYXJnZVNoaW5lKSIgZD0iTTUyIDhjMyAwIDUgMiA2IDZsNCAxN2MxIDQgNCA3IDggOGwxNCA0YzYgMiA2IDggMCAxMGwtMTQgNWMtNCAxLTYgNC03IDhsLTUgMTZjLTIgNy05IDctMTEgMGwtNS0xNmMtMS00LTQtNy04LThsLTEyLTRjLTYtMi02LTcgMC0xMGwxMy02YzQtMiA2LTUgNy05bDQtMTVjMS00IDMtNiA2LTZaIi8+CiAgICA8cGF0aCBmaWxsPSIjRkZGM0E0IiBvcGFjaXR5PSIuMjQiIGQ9Ik01MiAxMWMxIDAgMiAxIDMgNGw0IDE2YzEgNSAzIDggNyAxMC04LTEtMTQgMS0xOSA3LTIgMy00IDYtNSAxMC0yLTMtNC01LTctNmwtMTAtM2MtMy0xLTMtMyAwLTRsMTEtNWM1LTIgNy02IDgtMTFsNC0xNGMxLTMgMi00IDQtNFoiLz4KICAgIDxwYXRoIGZpbGw9InVybCgjc21hbGxHb2xkKSIgZD0iTTIwLjggNS42YzEuMSAwIDEuOC44IDIuMSAyLjJsMS40IDYuMWMuNCAxLjYgMS4zIDIuNiAyLjggMy4xbDUuMyAxLjhjMi40LjggMi40IDMuMy4xIDQuMmwtNS41IDIuMWMtMS41LjYtMi40IDEuNi0yLjggMy4ybC0xLjQgNmMtLjUgMi4zLTMuMSAyLjMtMy43IDBsLTEuNi02LjJjLS40LTEuNS0xLjMtMi41LTIuNy0zbC01LjMtMS45Yy0yLjMtLjgtMi40LTMuMi0uMi00LjFsNS42LTIuM2MxLjUtLjYgMi40LTEuNyAyLjctMy4ybDEuMy01LjljLjMtMS4zLjktMi4xIDEuOS0yLjFaIi8+CiAgICA8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3KSIgZmlsbD0idXJsKCNzbWFsbENvcmFsKSIgZD0iTTEzLjYgMzguNmMxLjMgMCAyLjEuOSAyLjQgMi43bDEuOCA4Yy40IDEuOSAxLjUgMy4xIDMuMyAzLjdsNy4yIDIuNGMyLjguOSAyLjkgMy45LjEgNWwtNy4yIDIuOGMtMS44LjctMi45IDItMy4zIDMuOGwtMS44IDcuOGMtLjcgMi44LTMuOCAyLjgtNC41IDBsLTIuMS04Yy0uNS0xLjctMS41LTIuOS0zLjMtMy41TC0uNiA2MWMtMi44LTEtMi45LTMuOS0uMi01bDctMi44YzEuOC0uNyAyLjktMiAzLjMtMy45bDEuNy04Yy40LTEuOCAxLjItMi43IDIuNC0yLjdaIi8+CiAgPC9nPgo8L3N2Zz4K");
+}
+.reviews-action { margin-top: 38px; }
+.reviews-toggle {
+  display: grid; grid-template-columns: 30px 1fr 30px; align-items: center; gap: 12px;
+  width: 100%; min-height: 50px; padding: 8px 18px;
+  border: 1px solid #465f9f; border-radius: 14px;
+  background: linear-gradient(105deg, #2B4178, #4A6BAF 72%, #797fb5);
+  color: #fff; font: inherit; font-size: 1rem; font-weight: 800; letter-spacing: 0.01em;
+  box-shadow: 0 9px 22px rgba(43,65,120,0.2); cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.reviews-toggle > .review-rating-star { width: 30px; height: 30px; flex-basis: 30px; }
+.reviews-toggle-chevron {
+  width: 10px; height: 10px; justify-self: center; margin-top: -5px;
+  border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+  transform: rotate(45deg); transition: transform 0.2s, margin 0.2s;
+}
+.reviews-toggle[aria-expanded="true"] .reviews-toggle-chevron { margin-top: 5px; transform: rotate(225deg); }
+.reviews-toggle:hover { background: linear-gradient(105deg, #354f8b, #5878ba 72%, #8989c2); box-shadow: 0 12px 27px rgba(43,65,120,0.25); transform: translateY(-2px); }
+.reviews-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.review-panel {
+  display: grid; grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.4fr);
+  max-width: 980px; margin: 38px auto 0; border-radius: 26px; overflow: hidden;
+  background: #fff; border: 1px solid #dfe5f2;
+  box-shadow: 0 18px 48px rgba(45,65,111,0.1);
+  scroll-margin-top: 90px;
+}
+.review-panel[hidden] { display: none; }
+.review-panel-intro {
+  padding: 38px 34px; background: linear-gradient(155deg, #2B4178, #5974b6 75%, #8d8bc4);
+  color: var(--white);
+}
+.review-panel-intro img { display: block; width: 48px; height: 48px; margin-bottom: 22px; }
+.review-panel-intro h3 { color: var(--white); font-size: 1.55rem; margin-bottom: 14px; }
+.review-panel-intro p { color: rgba(255,255,255,0.85); font-size: 0.98rem; }
+.review-form { padding: 36px; }
+.review-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.review-field { min-width: 0; }
+.review-field-full { grid-column: 1 / -1; }
+.review-field label, .review-field legend {
+  display: block; margin-bottom: 8px; color: var(--purple-dark); font-size: 0.9rem; font-weight: 700;
+}
+.review-field input:not([type="radio"]):not([type="checkbox"]),
+.review-field select, .review-field textarea {
+  display: block; width: 100%; padding: 12px 14px; border: 1.5px solid #d8deed;
+  border-radius: 12px; background: #fff; color: var(--dark);
+  font: inherit; font-size: 1rem;
+}
+.review-field textarea { min-height: 126px; resize: vertical; }
+.review-field input:focus-visible, .review-field select:focus-visible, .review-field textarea:focus-visible {
+  outline: 3px solid rgba(155,142,196,0.3); border-color: var(--purple-dark);
+}
+.review-field-hint { margin-top: 6px; color: var(--gray); font-size: 0.82rem; }
+.review-rating-field { border: 0; padding: 0; }
+.review-rating-options { display: flex; gap: 8px; align-items: center; }
+.review-rating-choice {
+  position: relative; display: inline-grid; place-items: center; width: 46px; height: 46px;
+  cursor: pointer;
+}
+.review-rating-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.review-rating-choice svg { display: block; width: 40px; height: 40px; overflow: visible; transition: transform 0.18s; }
+.review-rating-choice path {
+  fill: transparent; stroke: #6378a5; stroke-width: 4; stroke-linejoin: round;
+  transition: fill 0.18s, stroke 0.18s;
+}
+.review-rating-choice.is-active .review-sparkle-main { fill: #ffc75e; stroke: #dd913e; }
+.review-rating-choice.is-active .review-sparkle-small { fill: #ffad55; stroke: #d98843; }
+.review-rating-choice.is-active .review-sparkle-coral { fill: #ff9b70; stroke: #d8776b; }
+.review-rating-choice.is-active svg { transform: scale(1.06); }
+.review-rating-choice:hover svg { transform: scale(1.14); }
+.review-rating-choice input:focus-visible + svg { filter: drop-shadow(0 0 3px rgba(232,168,69,0.9)); }
+.review-check { display: flex; align-items: flex-start; gap: 10px; color: var(--dark); font-size: 0.9rem; line-height: 1.45; cursor: pointer; }
+.review-check input { width: 18px; height: 18px; margin-top: 2px; flex: 0 0 18px; accent-color: var(--purple-dark); }
+.review-form-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 24px; }
+.review-submit { background: var(--gold); color: var(--dark); padding: 13px 28px; font-size: 0.98rem; }
+.review-submit:disabled { opacity: 0.6; cursor: wait; }
+.review-form-status { font-size: 0.9rem; font-weight: 600; }
+.review-form-status[data-state="error"] { color: #aa3636; }
+.review-form-status[data-state="success"] { color: #216e5a; }
+.review-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 900px) {
+  .review-panel { grid-template-columns: 1fr; }
+  .review-panel-intro { padding: 30px; }
+  .review-panel-intro img { margin-bottom: 12px; }
+}
+@media (max-width: 600px) {
+  .review-form { padding: 26px 22px; }
+  .review-form-grid { grid-template-columns: 1fr; }
+  .review-field-full { grid-column: auto; }
+  .review-rating-options { gap: 4px; }
+  .review-rating-choice { width: 42px; height: 42px; }
+  .review-rating-choice svg { width: 36px; height: 36px; }
+}
+
 /* ========== CONTACT ========== */
-.contact { background: var(--light-bg); }
+.contact { background: #e9eaf7; border-top: 1px solid #cfd5ea; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
 /* Contact info — Purple Gradient Panel */
@@ -663,11 +781,16 @@ footer {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
-/* ========== MOBILE ========== */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,26,46,0.98); flex-direction: column; padding: 20px 24px; gap: 16px; }
   .nav-links.active { display: flex; }
   .hamburger { display: flex; }
+}
+@media (max-width: 900px) {
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
   .about-grid { gap: 44px; }
   .about-image-wrap { max-width: 330px; margin: 0 auto; padding-left: 10px; }
@@ -688,7 +811,7 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <div class="container">
-    <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="/moniquinha-star.svg?v=4" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
+    <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="./moniquinha-star.svg?v=4" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
     <div class="nav-right">
       <div class="lang-switcher">
         <button type="button" class="lang-btn active" data-lang="pt" aria-label="Ver site em português">PT</button>
@@ -701,6 +824,7 @@ footer {
         <li><a href="#services" data-i18n="nav_services">Services</a></li>
         <li><a href="#packages" data-i18n="nav_packages">Packages</a></li>
         <li><a href="#why" data-i18n="nav_why">Why Me</a></li>
+        <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <button type="button" class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
@@ -925,6 +1049,83 @@ footer {
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section class="reviews section" id="reviews" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="reviews-title" data-i18n="reviews_title">Testemunhos</h2>
+      <p data-i18n="reviews_subtitle">A sua experiência pode ajudar outras pessoas a conhecer o meu trabalho.</p>
+    </div>
+    <div class="reviews-empty">
+      <img src="./moniquinha-star.svg" alt="" width="64" height="64">
+      <h3 data-i18n="reviews_empty_title">Ainda não há testemunhos!</h3>
+      <p data-i18n="reviews_empty_note">Aguardo pelo seu!</p>
+    </div>
+    <div class="reviews-action">
+      <button class="reviews-toggle" id="reviewFormToggle" type="button" aria-expanded="false" aria-controls="reviewFormPanel">
+        <span class="review-rating-star" aria-hidden="true"></span>
+        <span data-i18n="review_cta">Deixar testemunho</span>
+        <span class="reviews-toggle-chevron" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="review-panel" id="reviewFormPanel" hidden>
+      <div class="review-panel-intro">
+        <img src="./moniquinha-star.svg" alt="">
+        <h3 id="reviewFormHeading" data-i18n="review_form_title">Conte-me como correu</h3>
+        <p data-i18n="review_form_intro">A sua opinião ajuda outras pessoas a conhecer o meu trabalho. O testemunho será lido antes de aparecer no site.</p>
+      </div>
+      <form class="review-form" id="reviewForm">
+        <div class="review-form-grid">
+          <fieldset class="review-field review-field-full review-rating-field">
+            <legend data-i18n="review_form_rating">Como avalia o serviço? *</legend>
+            <div class="review-rating-options" id="reviewRatingOptions">
+              <label class="review-rating-choice"><input type="radio" name="reviewRating" value="1" required aria-label="1 estrela"><svg viewBox="0 0 96 96" aria-hidden="true"><path class="review-sparkle-main" d="M52 8c3 0 5 2 6 6l4 17c1 4 4 7 8 8l14 4c6 2 6 8 0 10l-14 5c-4 1-6 4-7 8l-5 16c-2 7-9 7-11 0l-5-16c-1-4-4-7-8-8l-12-4c-6-2-6-7 0-10l13-6c4-2 6-5 7-9l4-15c1-4 3-6 6-6Z"/><path class="review-sparkle-small" d="M20.8 5.6c1.1 0 1.8.8 2.1 2.2l1.4 6.1c.4 1.6 1.3 2.6 2.8 3.1l5.3 1.8c2.4.8 2.4 3.3.1 4.2l-5.5 2.1c-1.5.6-2.4 1.6-2.8 3.2l-1.4 6c-.5 2.3-3.1 2.3-3.7 0l-1.6-6.2c-.4-1.5-1.3-2.5-2.7-3l-5.3-1.9c-2.3-.8-2.4-3.2-.2-4.1l5.6-2.3c1.5-.6 2.4-1.7 2.7-3.2l1.3-5.9c.3-1.3.9-2.1 1.9-2.1Z"/><path class="review-sparkle-coral" transform="translate(7)" d="M13.6 38.6c1.3 0 2.1.9 2.4 2.7l1.8 8c.4 1.9 1.5 3.1 3.3 3.7l7.2 2.4c2.8.9 2.9 3.9.1 5l-7.2 2.8c-1.8.7-2.9 2-3.3 3.8l-1.8 7.8c-.7 2.8-3.8 2.8-4.5 0l-2.1-8c-.5-1.7-1.5-2.9-3.3-3.5L-.6 61c-2.8-1-2.9-3.9-.2-5l7-2.8c1.8-.7 2.9-2 3.3-3.9l1.7-8c.4-1.8 1.2-2.7 2.4-2.7Z"/></svg></label>
+              <label class="review-rating-choice"><input type="radio" name="reviewRating" value="2" aria-label="2 estrelas"><svg viewBox="0 0 96 96" aria-hidden="true"><path class="review-sparkle-main" d="M52 8c3 0 5 2 6 6l4 17c1 4 4 7 8 8l14 4c6 2 6 8 0 10l-14 5c-4 1-6 4-7 8l-5 16c-2 7-9 7-11 0l-5-16c-1-4-4-7-8-8l-12-4c-6-2-6-7 0-10l13-6c4-2 6-5 7-9l4-15c1-4 3-6 6-6Z"/><path class="review-sparkle-small" d="M20.8 5.6c1.1 0 1.8.8 2.1 2.2l1.4 6.1c.4 1.6 1.3 2.6 2.8 3.1l5.3 1.8c2.4.8 2.4 3.3.1 4.2l-5.5 2.1c-1.5.6-2.4 1.6-2.8 3.2l-1.4 6c-.5 2.3-3.1 2.3-3.7 0l-1.6-6.2c-.4-1.5-1.3-2.5-2.7-3l-5.3-1.9c-2.3-.8-2.4-3.2-.2-4.1l5.6-2.3c1.5-.6 2.4-1.7 2.7-3.2l1.3-5.9c.3-1.3.9-2.1 1.9-2.1Z"/><path class="review-sparkle-coral" transform="translate(7)" d="M13.6 38.6c1.3 0 2.1.9 2.4 2.7l1.8 8c.4 1.9 1.5 3.1 3.3 3.7l7.2 2.4c2.8.9 2.9 3.9.1 5l-7.2 2.8c-1.8.7-2.9 2-3.3 3.8l-1.8 7.8c-.7 2.8-3.8 2.8-4.5 0l-2.1-8c-.5-1.7-1.5-2.9-3.3-3.5L-.6 61c-2.8-1-2.9-3.9-.2-5l7-2.8c1.8-.7 2.9-2 3.3-3.9l1.7-8c.4-1.8 1.2-2.7 2.4-2.7Z"/></svg></label>
+              <label class="review-rating-choice"><input type="radio" name="reviewRating" value="3" aria-label="3 estrelas"><svg viewBox="0 0 96 96" aria-hidden="true"><path class="review-sparkle-main" d="M52 8c3 0 5 2 6 6l4 17c1 4 4 7 8 8l14 4c6 2 6 8 0 10l-14 5c-4 1-6 4-7 8l-5 16c-2 7-9 7-11 0l-5-16c-1-4-4-7-8-8l-12-4c-6-2-6-7 0-10l13-6c4-2 6-5 7-9l4-15c1-4 3-6 6-6Z"/><path class="review-sparkle-small" d="M20.8 5.6c1.1 0 1.8.8 2.1 2.2l1.4 6.1c.4 1.6 1.3 2.6 2.8 3.1l5.3 1.8c2.4.8 2.4 3.3.1 4.2l-5.5 2.1c-1.5.6-2.4 1.6-2.8 3.2l-1.4 6c-.5 2.3-3.1 2.3-3.7 0l-1.6-6.2c-.4-1.5-1.3-2.5-2.7-3l-5.3-1.9c-2.3-.8-2.4-3.2-.2-4.1l5.6-2.3c1.5-.6 2.4-1.7 2.7-3.2l1.3-5.9c.3-1.3.9-2.1 1.9-2.1Z"/><path class="review-sparkle-coral" transform="translate(7)" d="M13.6 38.6c1.3 0 2.1.9 2.4 2.7l1.8 8c.4 1.9 1.5 3.1 3.3 3.7l7.2 2.4c2.8.9 2.9 3.9.1 5l-7.2 2.8c-1.8.7-2.9 2-3.3 3.8l-1.8 7.8c-.7 2.8-3.8 2.8-4.5 0l-2.1-8c-.5-1.7-1.5-2.9-3.3-3.5L-.6 61c-2.8-1-2.9-3.9-.2-5l7-2.8c1.8-.7 2.9-2 3.3-3.9l1.7-8c.4-1.8 1.2-2.7 2.4-2.7Z"/></svg></label>
+              <label class="review-rating-choice"><input type="radio" name="reviewRating" value="4" aria-label="4 estrelas"><svg viewBox="0 0 96 96" aria-hidden="true"><path class="review-sparkle-main" d="M52 8c3 0 5 2 6 6l4 17c1 4 4 7 8 8l14 4c6 2 6 8 0 10l-14 5c-4 1-6 4-7 8l-5 16c-2 7-9 7-11 0l-5-16c-1-4-4-7-8-8l-12-4c-6-2-6-7 0-10l13-6c4-2 6-5 7-9l4-15c1-4 3-6 6-6Z"/><path class="review-sparkle-small" d="M20.8 5.6c1.1 0 1.8.8 2.1 2.2l1.4 6.1c.4 1.6 1.3 2.6 2.8 3.1l5.3 1.8c2.4.8 2.4 3.3.1 4.2l-5.5 2.1c-1.5.6-2.4 1.6-2.8 3.2l-1.4 6c-.5 2.3-3.1 2.3-3.7 0l-1.6-6.2c-.4-1.5-1.3-2.5-2.7-3l-5.3-1.9c-2.3-.8-2.4-3.2-.2-4.1l5.6-2.3c1.5-.6 2.4-1.7 2.7-3.2l1.3-5.9c.3-1.3.9-2.1 1.9-2.1Z"/><path class="review-sparkle-coral" transform="translate(7)" d="M13.6 38.6c1.3 0 2.1.9 2.4 2.7l1.8 8c.4 1.9 1.5 3.1 3.3 3.7l7.2 2.4c2.8.9 2.9 3.9.1 5l-7.2 2.8c-1.8.7-2.9 2-3.3 3.8l-1.8 7.8c-.7 2.8-3.8 2.8-4.5 0l-2.1-8c-.5-1.7-1.5-2.9-3.3-3.5L-.6 61c-2.8-1-2.9-3.9-.2-5l7-2.8c1.8-.7 2.9-2 3.3-3.9l1.7-8c.4-1.8 1.2-2.7 2.4-2.7Z"/></svg></label>
+              <label class="review-rating-choice"><input type="radio" name="reviewRating" value="5" aria-label="5 estrelas"><svg viewBox="0 0 96 96" aria-hidden="true"><path class="review-sparkle-main" d="M52 8c3 0 5 2 6 6l4 17c1 4 4 7 8 8l14 4c6 2 6 8 0 10l-14 5c-4 1-6 4-7 8l-5 16c-2 7-9 7-11 0l-5-16c-1-4-4-7-8-8l-12-4c-6-2-6-7 0-10l13-6c4-2 6-5 7-9l4-15c1-4 3-6 6-6Z"/><path class="review-sparkle-small" d="M20.8 5.6c1.1 0 1.8.8 2.1 2.2l1.4 6.1c.4 1.6 1.3 2.6 2.8 3.1l5.3 1.8c2.4.8 2.4 3.3.1 4.2l-5.5 2.1c-1.5.6-2.4 1.6-2.8 3.2l-1.4 6c-.5 2.3-3.1 2.3-3.7 0l-1.6-6.2c-.4-1.5-1.3-2.5-2.7-3l-5.3-1.9c-2.3-.8-2.4-3.2-.2-4.1l5.6-2.3c1.5-.6 2.4-1.7 2.7-3.2l1.3-5.9c.3-1.3.9-2.1 1.9-2.1Z"/><path class="review-sparkle-coral" transform="translate(7)" d="M13.6 38.6c1.3 0 2.1.9 2.4 2.7l1.8 8c.4 1.9 1.5 3.1 3.3 3.7l7.2 2.4c2.8.9 2.9 3.9.1 5l-7.2 2.8c-1.8.7-2.9 2-3.3 3.8l-1.8 7.8c-.7 2.8-3.8 2.8-4.5 0l-2.1-8c-.5-1.7-1.5-2.9-3.3-3.5L-.6 61c-2.8-1-2.9-3.9-.2-5l7-2.8c1.8-.7 2.9-2 3.3-3.9l1.7-8c.4-1.8 1.2-2.7 2.4-2.7Z"/></svg></label>
+            </div>
+          </fieldset>
+          <div class="review-field review-field-full">
+            <label for="reviewService" data-i18n="review_form_service">Que serviço recebeu? *</label>
+            <select id="reviewService" name="reviewService" required>
+              <option value="" data-i18n="review_form_service_pick">Escolha um serviço</option>
+              <option value="cleaning" data-i18n="svc_cleaning">Limpeza regular</option>
+              <option value="deep-cleaning" data-i18n="svc_deep">Limpeza profunda</option>
+              <option value="construction" data-i18n="svc_construction">Limpeza pós-obra</option>
+              <option value="movein" data-i18n="svc_movein">Limpeza de entrada/saída</option>
+              <option value="laundry" data-i18n="svc_laundry">Lavandaria e engomadoria</option>
+              <option value="closet" data-i18n="svc_closet">Organização de armários</option>
+              <option value="organization" data-i18n="svc_org">Organização da casa</option>
+              <option value="garage" data-i18n="svc_garage">Organização de garagem</option>
+              <option value="holiday" data-i18n="svc_holiday">Decoração festiva</option>
+              <option value="staging" data-i18n="svc_staging">Home staging</option>
+              <option value="other" data-i18n="form_other">Outro</option>
+            </select>
+          </div>
+          <div class="review-field review-field-full">
+            <label for="reviewComment" data-i18n="review_form_comment">O que achou? *</label>
+            <textarea id="reviewComment" name="reviewComment" minlength="20" maxlength="600" required data-i18n-placeholder="review_form_comment_ph" placeholder="Conte-me como foi a sua experiência..."></textarea>
+            <p class="review-field-hint" data-i18n="review_form_comment_hint">Entre 20 e 600 caracteres.</p>
+          </div>
+          <div class="review-field">
+            <label for="reviewName" data-i18n="review_form_name">Nome a mostrar *</label>
+            <input id="reviewName" name="reviewName" maxlength="40" required data-i18n-placeholder="review_form_name_ph" placeholder="Ex.: Moniquinha Shine" autocomplete="name">
+          </div>
+          <div class="review-field">
+            <label for="reviewContact" data-i18n="review_form_contact">Email ou telemóvel *</label>
+            <input id="reviewContact" name="reviewContact" maxlength="120" required data-i18n-placeholder="review_form_contact_ph" placeholder="Para confirmar o serviço" autocomplete="email">
+            <p class="review-field-hint" data-i18n="review_form_contact_hint">Só para confirmar que foi cliente. Não aparece no site.</p>
+          </div>
+          <label class="review-check review-field-full"><input type="checkbox" id="reviewConsent" required><span data-i18n="review_form_consent">Autorizo a publicação do nome escolhido, classificação, serviço e comentário no site.</span></label>
+          <div class="review-honeypot" aria-hidden="true"><label for="reviewWebsite">Website</label><input id="reviewWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+        </div>
+        <div class="review-form-actions"><button class="btn review-submit" id="reviewSubmit" type="submit" data-i18n="review_form_submit">Enviar testemunho</button><p class="review-form-status" id="reviewFormStatus" role="status" aria-live="polite"></p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact section" id="contact">
   <div class="container">
@@ -1104,7 +1305,7 @@ footer {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="/moniquinha-star.svg?v=4" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
+        <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="./moniquinha-star.svg?v=4" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
         <p data-i18n="footer_desc">Professional home services with a personal touch. Making homes shine, one space at a time.</p>
       </div>
       <div class="footer-col">
@@ -1113,6 +1314,7 @@ footer {
         <a href="#services" data-i18n="nav_services">Services</a>
         <a href="#packages" data-i18n="nav_packages">Packages</a>
         <a href="#why" data-i18n="nav_why">Why Choose Me</a>
+        <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
       </div>
       <div class="footer-col">
@@ -1141,7 +1343,7 @@ const SITE_TEXT = Object.freeze({
 
 const i18n = {
   en: {
-    nav_about: "About", nav_services: "Services", nav_packages: "Packages", nav_why: "Why Me", nav_contact: "Contact",
+    nav_about: "About", nav_services: "Services", nav_packages: "Packages", nav_why: "Why Me", nav_reviews: "Reviews", nav_contact: "Contact",
     hero_tagline: "Cleaning, organizing & caring for your home, with energy, heart, and a personal touch.",
     hero_cta: "Get a Free Quote", hero_services: "Our Services",
     about_magic: "A little touch of shine?",
@@ -1193,6 +1395,23 @@ const i18n = {
     why_flex_desc: "Mornings, evenings or weekends, I work around your schedule, not the other way around.",
     why_trust: "Trusted & Personal",
     why_trust_desc: "You always deal directly with me. No strangers and no surprises, just consistent, quality care.",
+    reviews_title: "Testimonials",
+    reviews_subtitle: "Your experience can help others get to know my work.",
+    reviews_empty_title: "No testimonials yet!", reviews_empty_note: "I look forward to yours!",
+    review_cta: "Leave a testimonial",
+    review_form_title: "Tell me how it went",
+    review_form_intro: "Your opinion helps others get to know my work. I'll read your testimonial before it appears on the site.",
+    review_form_rating: "How would you rate the service? *", review_form_rating_one: "star", review_form_rating_many: "stars",
+    review_form_service: "Which service did you receive? *", review_form_service_pick: "Choose a service",
+    review_form_comment: "How was it? *", review_form_comment_ph: "Tell me about your experience...", review_form_comment_hint: "Between 20 and 600 characters.",
+    review_form_name: "Name to display *", review_form_name_ph: "E.g. Moniquinha Shine",
+    review_form_contact: "Email or phone *", review_form_contact_ph: "To confirm the service", review_form_contact_hint: "Only to confirm you were a client. It won't appear on the site.",
+    review_form_consent: "I allow my chosen name, rating, service and comment to be published on the site.",
+    review_form_submit: "Send testimonial", review_form_sending: "Sending...",
+    review_form_success: "Thank you! Your testimonial has been received and will be reviewed before publication.",
+    review_form_preview_success: "Preview completed. No testimonial was sent.",
+    review_form_error: "We couldn't send your testimonial. Please try again later.",
+    review_form_invalid_contact: "Enter a valid email address or phone number.",
     contact_title: "Let's Make Your Home Shine",
     contact_subtitle: "Get in touch for a free quote or to book a service.",
     contact_heading: "Get in Touch",
@@ -1227,7 +1446,7 @@ const i18n = {
     footer_copy: `© ${SITE_TEXT.copyrightYear} ${SITE_TEXT.brandName}. All rights reserved.`
   },
   pt: {
-    nav_about: "Sobre Mim", nav_services: "Serviços", nav_packages: "Pacotes", nav_why: "Porquê Eu", nav_contact: "Contacto",
+    nav_about: "Sobre Mim", nav_services: "Serviços", nav_packages: "Pacotes", nav_why: "Porquê Eu", nav_reviews: "Testemunhos", nav_contact: "Contacto",
     hero_tagline: "Limpeza, organização e cuidado do seu lar, com energia, carinho e um toque pessoal.",
     hero_cta: "Pedir Orçamento Grátis", hero_services: "Os Meus Serviços",
     about_magic: "Um toque de brilho?",
@@ -1279,6 +1498,23 @@ const i18n = {
     why_flex_desc: "Manhãs, tardes ou fins de semana, adapto-me ao seu horário, não o contrário.",
     why_trust: "Confiança e Proximidade",
     why_trust_desc: "Lida sempre diretamente comigo. Sem estranhos e sem surpresas, apenas cuidado consistente e de qualidade.",
+    reviews_title: "Testemunhos",
+    reviews_subtitle: "A sua experiência pode ajudar outras pessoas a conhecer o meu trabalho.",
+    reviews_empty_title: "Ainda não há testemunhos!", reviews_empty_note: "Aguardo pelo seu!",
+    review_cta: "Deixar testemunho",
+    review_form_title: "Conte-me como correu",
+    review_form_intro: "A sua opinião ajuda outras pessoas a conhecer o meu trabalho. O testemunho será lido antes de aparecer no site.",
+    review_form_rating: "Como avalia o serviço? *", review_form_rating_one: "estrela", review_form_rating_many: "estrelas",
+    review_form_service: "Que serviço recebeu? *", review_form_service_pick: "Escolha um serviço",
+    review_form_comment: "O que achou? *", review_form_comment_ph: "Conte-me como foi a sua experiência...", review_form_comment_hint: "Entre 20 e 600 caracteres.",
+    review_form_name: "Nome a mostrar *", review_form_name_ph: "Ex.: Moniquinha Shine",
+    review_form_contact: "Email ou telemóvel *", review_form_contact_ph: "Para confirmar o serviço", review_form_contact_hint: "Só para confirmar que foi cliente. Não aparece no site.",
+    review_form_consent: "Autorizo a publicação do nome escolhido, classificação, serviço e comentário no site.",
+    review_form_submit: "Enviar testemunho", review_form_sending: "A enviar...",
+    review_form_success: "Obrigado! Recebemos o seu testemunho e vamos analisá-lo antes de o publicar.",
+    review_form_preview_success: "Pré-visualização concluída. O testemunho não foi enviado.",
+    review_form_error: "Não foi possível enviar o testemunho. Tente novamente mais tarde.",
+    review_form_invalid_contact: "Indique um email ou número de telefone válido.",
     contact_title: "Vamos Fazer a Sua Casa Brilhar",
     contact_subtitle: "Entre em contacto para um orçamento grátis ou para marcar um serviço.",
     contact_heading: "Entre em Contacto",
@@ -1313,7 +1549,7 @@ const i18n = {
     footer_copy: `© ${SITE_TEXT.copyrightYear} ${SITE_TEXT.brandName}. Todos os direitos reservados.`
   },
   fr: {
-    nav_about: "À Propos", nav_services: "Services", nav_packages: "Forfaits", nav_why: "Pourquoi Moi", nav_contact: "Contact",
+    nav_about: "À Propos", nav_services: "Services", nav_packages: "Forfaits", nav_why: "Pourquoi Moi", nav_reviews: "Avis", nav_contact: "Contact",
     hero_tagline: "Ménage, organisation et soin de votre maison, avec énergie, cœur et une touche personnelle.",
     hero_cta: "Devis Gratuit", hero_services: "Nos Services",
     about_magic: "Une petite touche d'éclat ?",
@@ -1365,6 +1601,23 @@ const i18n = {
     why_flex_desc: "Matins, soirs ou week-ends, je m'adapte à votre emploi du temps, pas l'inverse.",
     why_trust: "Confiance et Proximité",
     why_trust_desc: "Vous échangez toujours directement avec moi. Pas d'inconnus ni de surprises, juste un service constant et de qualité.",
+    reviews_title: "Témoignages",
+    reviews_subtitle: "Votre expérience peut aider d'autres personnes à découvrir mon travail.",
+    reviews_empty_title: "Pas encore de témoignages !", reviews_empty_note: "J'attends le vôtre !",
+    review_cta: "Laisser un témoignage",
+    review_form_title: "Racontez-moi votre expérience",
+    review_form_intro: "Votre avis aide d'autres personnes à découvrir mon travail. Je lirai votre témoignage avant sa publication.",
+    review_form_rating: "Comment évaluez-vous le service ? *", review_form_rating_one: "étoile", review_form_rating_many: "étoiles",
+    review_form_service: "Quel service avez-vous reçu ? *", review_form_service_pick: "Choisissez un service",
+    review_form_comment: "Qu'en avez-vous pensé ? *", review_form_comment_ph: "Parlez-moi de votre expérience...", review_form_comment_hint: "Entre 20 et 600 caractères.",
+    review_form_name: "Nom à afficher *", review_form_name_ph: "Ex. : Moniquinha Shine",
+    review_form_contact: "Email ou téléphone *", review_form_contact_ph: "Pour confirmer le service", review_form_contact_hint: "Seulement pour confirmer que vous avez été client. Ne sera pas publié.",
+    review_form_consent: "J'autorise la publication du nom choisi, de la note, du service et du commentaire sur le site.",
+    review_form_submit: "Envoyer le témoignage", review_form_sending: "Envoi en cours...",
+    review_form_success: "Merci ! Votre témoignage a été reçu et sera examiné avant publication.",
+    review_form_preview_success: "Aperçu terminé. Aucun témoignage n'a été envoyé.",
+    review_form_error: "Impossible d'envoyer votre témoignage. Veuillez réessayer plus tard.",
+    review_form_invalid_contact: "Saisissez un email ou un numéro de téléphone valide.",
     contact_title: "Faisons Briller Votre Maison",
     contact_subtitle: "Contactez-moi pour un devis gratuit ou pour réserver un service.",
     contact_heading: "Me Contacter",
@@ -1399,7 +1652,7 @@ const i18n = {
     footer_copy: `© ${SITE_TEXT.copyrightYear} ${SITE_TEXT.brandName}. Tous droits réservés.`
   },
   es: {
-    nav_about: "Sobre Mí", nav_services: "Servicios", nav_packages: "Paquetes", nav_why: "Por Qué Yo", nav_contact: "Contacto",
+    nav_about: "Sobre Mí", nav_services: "Servicios", nav_packages: "Paquetes", nav_why: "Por Qué Yo", nav_reviews: "Reseñas", nav_contact: "Contacto",
     hero_tagline: "Limpieza, organización y cuidado de tu hogar, con energía, corazón y un toque personal.",
     hero_cta: "Presupuesto Gratis", hero_services: "Nuestros Servicios",
     about_magic: "¿Un pequeño toque de brillo?",
@@ -1451,6 +1704,23 @@ const i18n = {
     why_flex_desc: "Mañanas, tardes o fines de semana, me adapto a tu horario, no al revés.",
     why_trust: "Confianza y Cercanía",
     why_trust_desc: "Siempre tratas directamente conmigo. Sin desconocidos ni sorpresas, solo un servicio constante y de calidad.",
+    reviews_title: "Testimonios",
+    reviews_subtitle: "Tu experiencia puede ayudar a otras personas a conocer mi trabajo.",
+    reviews_empty_title: "¡Aún no hay testimonios!", reviews_empty_note: "¡Espero el tuyo!",
+    review_cta: "Dejar un testimonio",
+    review_form_title: "Cuéntame cómo fue",
+    review_form_intro: "Tu opinión ayuda a otras personas a conocer mi trabajo. Leeré tu testimonio antes de publicarlo en la web.",
+    review_form_rating: "¿Cómo valoras el servicio? *", review_form_rating_one: "estrella", review_form_rating_many: "estrellas",
+    review_form_service: "¿Qué servicio recibiste? *", review_form_service_pick: "Elige un servicio",
+    review_form_comment: "¿Qué te pareció? *", review_form_comment_ph: "Cuéntame cómo fue tu experiencia...", review_form_comment_hint: "Entre 20 y 600 caracteres.",
+    review_form_name: "Nombre para mostrar *", review_form_name_ph: "Ej.: Moniquinha Shine",
+    review_form_contact: "Email o teléfono *", review_form_contact_ph: "Para confirmar el servicio", review_form_contact_hint: "Solo para confirmar que fuiste cliente. No aparecerá en la web.",
+    review_form_consent: "Autorizo la publicación del nombre elegido, valoración, servicio y comentario en la web.",
+    review_form_submit: "Enviar testimonio", review_form_sending: "Enviando...",
+    review_form_success: "¡Gracias! Hemos recibido tu testimonio y lo revisaremos antes de publicarlo.",
+    review_form_preview_success: "Vista previa completada. No se ha enviado ningún testimonio.",
+    review_form_error: "No se pudo enviar el testimonio. Inténtalo más tarde.",
+    review_form_invalid_contact: "Introduce un email o número de teléfono válido.",
     contact_title: "Hagamos Brillar Tu Hogar",
     contact_subtitle: "Contáctame para un presupuesto gratis o para reservar un servicio.",
     contact_heading: "Contáctame",
@@ -1514,6 +1784,16 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n-placeholder');
     if (i18n[lang][key]) el.placeholder = i18n[lang][key];
   });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    if (i18n[lang][key]) el.setAttribute('aria-label', i18n[lang][key]);
+  });
+  document.querySelectorAll('input[name="reviewRating"]').forEach(input => {
+    const unit = input.value === '1' ? i18n[lang].review_form_rating_one : i18n[lang].review_form_rating_many;
+    input.setAttribute('aria-label', `${input.value} ${unit}`);
+  });
+  const reviewStatus = document.getElementById('reviewFormStatus');
+  if (reviewStatus?.dataset.key) reviewStatus.textContent = i18n[lang][reviewStatus.dataset.key];
   document.querySelectorAll('.service-card[data-service]').forEach(card => {
     const title = card.querySelector('h3');
     if (title) card.setAttribute('aria-label', title.textContent);
@@ -1530,6 +1810,131 @@ try {
 
 document.querySelectorAll('.lang-btn').forEach(button => {
   button.addEventListener('click', () => setLang(button.dataset.lang));
+});
+
+// ========== TESTIMONIAL FORM ==========
+const reviewForm = document.getElementById('reviewForm');
+const reviewRatingOptions = document.getElementById('reviewRatingOptions');
+const reviewName = document.getElementById('reviewName');
+const reviewContact = document.getElementById('reviewContact');
+const reviewStatus = document.getElementById('reviewFormStatus');
+const reviewSubmit = document.getElementById('reviewSubmit');
+const reviewPanel = document.getElementById('reviewFormPanel');
+const reviewToggle = document.getElementById('reviewFormToggle');
+
+function setReviewPanelOpen(open) {
+  reviewPanel.hidden = !open;
+  reviewToggle.setAttribute('aria-expanded', String(open));
+}
+reviewToggle.addEventListener('click', () => setReviewPanelOpen(reviewPanel.hidden));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !reviewPanel.hidden) {
+    setReviewPanelOpen(false);
+    reviewToggle.focus();
+  }
+});
+
+function paintReviewRating(value) {
+  reviewRatingOptions.querySelectorAll('.review-rating-choice').forEach(choice => {
+    choice.classList.toggle('is-active', Number(choice.querySelector('input').value) <= value);
+  });
+}
+
+reviewRatingOptions.querySelectorAll('input').forEach(input => {
+  input.addEventListener('change', () => paintReviewRating(Number(input.value)));
+  input.closest('label').addEventListener('mouseenter', () => paintReviewRating(Number(input.value)));
+  input.addEventListener('focus', () => paintReviewRating(Number(input.value)));
+});
+reviewRatingOptions.addEventListener('mouseleave', () => {
+  paintReviewRating(Number(reviewForm.elements.reviewRating.value || 0));
+});
+
+reviewContact.addEventListener('input', () => reviewContact.setCustomValidity(''));
+
+function showReviewStatus(key, state) {
+  reviewStatus.dataset.key = key;
+  reviewStatus.dataset.state = state;
+  reviewStatus.textContent = i18n[currentLang][key];
+}
+
+reviewForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  reviewStatus.textContent = '';
+  reviewStatus.removeAttribute('data-key');
+  reviewStatus.removeAttribute('data-state');
+
+  const commentInput = document.getElementById('reviewComment');
+  const serviceInput = document.getElementById('reviewService');
+  reviewName.value = reviewName.value.trim();
+  reviewContact.value = reviewContact.value.trim();
+  commentInput.value = commentInput.value.trim();
+  if (!reviewForm.reportValidity()) return;
+
+  const contact = reviewContact.value;
+  const digits = contact.replace(/\D/g, '');
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+  const validPhone = /^\+?[\d\s().-]+$/.test(contact) && digits.length >= 9 && digits.length <= 15;
+  if (!validEmail && !validPhone) {
+    reviewContact.setCustomValidity(i18n[currentLang].review_form_invalid_contact);
+    reviewContact.reportValidity();
+    return;
+  }
+
+  // The hidden field catches basic automated submissions without sending mail.
+  if (document.getElementById('reviewWebsite').value) {
+    showReviewStatus('review_form_success', 'success');
+    reviewForm.reset();
+    paintReviewRating(0);
+    return;
+  }
+
+  const displayName = reviewName.value;
+  const serviceName = serviceInput.selectedOptions[0].textContent;
+  const rating = reviewForm.elements.reviewRating.value;
+
+  // The standalone preview never sends personal details or a real email.
+  const localPreview = document.documentElement.hasAttribute('data-review-preview') ||
+    location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+  if (localPreview) {
+    showReviewStatus('review_form_preview_success', 'success');
+    reviewForm.reset();
+    paintReviewRating(0);
+    return;
+  }
+
+  reviewSubmit.disabled = true;
+  reviewSubmit.textContent = i18n[currentLang].review_form_sending;
+  try {
+    const message = [
+      'TESTEMUNHO PARA APROVAÇÃO — não publicar automaticamente',
+      `Nome a mostrar: ${displayName}`,
+      `Classificação: ${rating}/5`,
+      `Serviço: ${serviceName}`,
+      `Contacto privado: ${contact}`,
+      `Autorização de publicação: sim`,
+      '',
+      'Comentário:',
+      commentInput.value
+    ].join('\n');
+    await emailjs.send('service_0o7hvd3', 'template_m24yjpo', {
+      from_name: displayName,
+      from_email: validEmail ? contact : 'Não indicado',
+      from_phone: validPhone ? contact : 'Não indicado',
+      address: 'Testemunho — não aplicável',
+      address_map_url: '',
+      service: `TESTEMUNHO • ${serviceName}`,
+      home_type: 'Não aplicável', date: 'Não aplicável', time: 'Não aplicável', period: 'Não aplicável',
+      message
+    });
+    showReviewStatus('review_form_success', 'success');
+    reviewForm.reset();
+    paintReviewRating(0);
+  } catch (error) {
+    showReviewStatus('review_form_error', 'error');
+  } finally {
+    reviewSubmit.disabled = false;
+    reviewSubmit.textContent = i18n[currentLang].review_form_submit;
+  }
 });
 
 // ========== NAV & UI ==========
