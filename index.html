@@ -491,16 +491,31 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .reviews-empty h3 { color: var(--purple-dark); font-size: clamp(1.4rem, 3vw, 2rem); }
 .reviews-empty p { margin-top: 10px; color: #6e6690; font-size: 1.1rem; font-weight: 600; }
 .reviews-empty[hidden] { display: none; }
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 22px; margin-bottom: 26px; }
+.reviews-grid { display: flex; justify-content: center; gap: 22px; }
 .reviews-grid:empty { display: none; }
-.review-card { display: flex; flex-direction: column; min-height: 240px; padding: 30px; border: 1px solid #dfe5f2; border-radius: 25px; background: #fff; box-shadow: 0 12px 34px rgba(45,65,111,.07); }
+.review-card { box-sizing: border-box; display: flex; flex: 0 0 calc((100% - 44px) / 3); flex-direction: column; min-width: 0; height: 350px; padding: 30px; border: 1px solid #dfe5f2; border-radius: 25px; background: #fff; box-shadow: 0 12px 34px rgba(45,65,111,.07); }
+@keyframes review-enter { from { opacity: .55; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+.review-card { animation: review-enter .4s ease both; }
 .review-card-stars { display: flex; gap: 3px; margin-bottom: 18px; }
 .review-card-stars .review-rating-star { width: 25px; height: 25px; flex-basis: 25px; }
-.review-card-quote { margin: 0 0 26px; color: var(--dark); font-size: 1.06rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; flex: 1; }
+.review-card-copy { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.review-card-quote { flex: 1; min-height: 0; margin: 0; color: var(--dark); font-size: 1.06rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; }
+.review-card-quote.is-expanded { overflow-y: auto; scrollbar-color: #9b8ec4 #f1f2f9; }
+.review-card-more { align-self: flex-start; height: 32px; flex: 0 0 32px; padding: 0; border: 0; background: none; color: var(--purple-dark); font: inherit; font-size: .87rem; font-weight: 800; cursor: pointer; visibility: hidden; }
+.review-card-more.is-visible { visibility: visible; }
+.review-card-more .review-more-arrow { display: inline-block; margin-left: 3px; color: #d28b30; transition: transform .2s; }
+.review-card-more[aria-expanded="true"] .review-more-arrow { transform: rotate(180deg); }
+.review-card-more:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.review-card-more:focus-visible, .reviews-nav button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .review-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid #e3e8f4; }
 .review-card-name { color: var(--purple-dark); font-weight: 800; overflow-wrap: anywhere; }
 .review-card-service { display: inline-flex; gap: 5px; align-items: center; color: #687493; font-size: .82rem; text-align: right; }
 .review-card-service-icon { font-size: 1.2rem; line-height: 1; }
+.reviews-nav { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 24px; }
+.reviews-nav[hidden] { display: none; }
+.reviews-nav button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #d9dff0; border-radius: 50%; background: #fff; color: var(--purple-dark); box-shadow: 0 4px 12px rgba(45,65,111,.08); font: inherit; font-size: 1.55rem; cursor: pointer; transition: background .2s, transform .2s; }
+.reviews-nav button:hover { background: #f4efff; transform: translateY(-2px); }
+.reviews-position { min-width: 55px; color: var(--purple-dark); text-align: center; font-size: .9rem; font-weight: 800; }
 .review-rating-star {
   width: 27px; height: 27px; flex: 0 0 27px;
   background: center / contain no-repeat url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIGRlc2MiPgogIDx0aXRsZSBpZD0idGl0bGUiPkVzdHJlbGluaGEgZGEgTW9uaXF1aW5oYSBTaGluZTwvdGl0bGU+CiAgPGRlc2MgaWQ9ImRlc2MiPlRyw6pzIGJyaWxob3Mgb3Jnw6JuaWNvcyBkb3VyYWRvcyBlIGNvcmFpcyBzb2JyZSB1bSBmdW5kbyBhenVsIHN1YXZlLjwvZGVzYz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ibGFyZ2VTaGluZSIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4IDI3KSByb3RhdGUoNTcpIHNjYWxlKDU3IDQ5KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU2ODAiLz48c3RvcCBvZmZzZXQ9Ii40MiIgc3RvcC1jb2xvcj0iI0ZGQzc1RSIvPjxzdG9wIG9mZnNldD0iLjc0IiBzdG9wLWNvbG9yPSIjRkY5QjY1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkY3NDZGIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic21hbGxHb2xkIiB4MT0iMTQiIHkxPSI3IiB4Mj0iMjgiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkU3OEEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRkFENTUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzbWFsbENvcmFsIiB4MT0iMTAiIHkxPSI0MyIgeDI9IjI5IiB5Mj0iNzEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRkZEMjdCIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiNGRjlCNzAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGRjczNzUiLz48L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93Ij48c3RvcCBzdG9wLWNvbG9yPSIjRkZENzY1IiBzdG9wLW9wYWNpdHk9Ii4zMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGRDc2NSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImRlcHRoIiB4PSItMzUlIiB5PSItMzUlIiB3aWR0aD0iMTcwJSIgaGVpZ2h0PSIxODAlIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMiIgc3RkRGV2aWF0aW9uPSIyLjIiIGZsb29kLWNvbG9yPSIjNUM1Mjc5IiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGVsbGlwc2UgY3g9IjU4IiBjeT0iNDgiIHJ4PSIzNiIgcnk9IjM3IiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTQiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8Y2lyY2xlIGN4PSIyMSIgY3k9IjU4IiByPSIxNSIgZmlsbD0idXJsKCNnbG93KSIvPgogIDxnIGZpbHRlcj0idXJsKCNkZXB0aCkiPgogICAgPHBhdGggZmlsbD0idXJsKCNsYXJnZVNoaW5lKSIgZD0iTTUyIDhjMyAwIDUgMiA2IDZsNCAxN2MxIDQgNCA3IDggOGwxNCA0YzYgMiA2IDggMCAxMGwtMTQgNWMtNCAxLTYgNC03IDhsLTUgMTZjLTIgNy05IDctMTEgMGwtNS0xNmMtMS00LTQtNy04LThsLTEyLTRjLTYtMi02LTcgMC0xMGwxMy02YzQtMiA2LTUgNy05bDQtMTVjMS00IDMtNiA2LTZaIi8+CiAgICA8cGF0aCBmaWxsPSIjRkZGM0E0IiBvcGFjaXR5PSIuMjQiIGQ9Ik01MiAxMWMxIDAgMiAxIDMgNGw0IDE2YzEgNSAzIDggNyAxMC04LTEtMTQgMS0xOSA3LTIgMy00IDYtNSAxMC0yLTMtNC01LTctNmwtMTAtM2MtMy0xLTMtMyAwLTRsMTEtNWM1LTIgNy02IDgtMTFsNC0xNGMxLTMgMi00IDQtNFoiLz4KICAgIDxwYXRoIGZpbGw9InVybCgjc21hbGxHb2xkKSIgZD0iTTIwLjggNS42YzEuMSAwIDEuOC44IDIuMSAyLjJsMS40IDYuMWMuNCAxLjYgMS4zIDIuNiAyLjggMy4xbDUuMyAxLjhjMi40LjggMi40IDMuMy4xIDQuMmwtNS41IDIuMWMtMS41LjYtMi40IDEuNi0yLjggMy4ybC0xLjQgNmMtLjUgMi4zLTMuMSAyLjMtMy43IDBsLTEuNi02LjJjLS40LTEuNS0xLjMtMi41LTIuNy0zbC01LjMtMS45Yy0yLjMtLjgtMi40LTMuMi0uMi00LjFsNS42LTIuM2MxLjUtLjYgMi40LTEuNyAyLjctMy4ybDEuMy01LjljLjMtMS4zLjktMi4xIDEuOS0yLjFaIi8+CiAgICA8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3KSIgZmlsbD0idXJsKCNzbWFsbENvcmFsKSIgZD0iTTEzLjYgMzguNmMxLjMgMCAyLjEuOSAyLjQgMi43bDEuOCA4Yy40IDEuOSAxLjUgMy4xIDMuMyAzLjdsNy4yIDIuNGMyLjguOSAyLjkgMy45LjEgNWwtNy4yIDIuOGMtMS44LjctMi45IDItMy4zIDMuOGwtMS44IDcuOGMtLjcgMi44LTMuOCAyLjgtNC41IDBsLTIuMS04Yy0uNS0xLjctMS41LTIuOS0zLjMtMy41TC0uNiA2MWMtMi44LTEtMi45LTMuOS0uMi01bDctMi44YzEuOC0uNyAyLjktMiAzLjMtMy45bDEuNy04Yy40LTEuOCAxLjItMi43IDIuNC0yLjdaIi8+CiAgPC9nPgo8L3N2Zz4K");
@@ -586,11 +601,13 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
 .review-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 @media (max-width: 900px) {
+  .review-card { flex-basis: calc((100% - 22px) / 2); }
   .review-panel { grid-template-columns: 1fr; }
   .review-panel-intro { padding: 30px; }
   .review-panel-intro img { margin-bottom: 12px; }
 }
 @media (max-width: 600px) {
+  .review-card { flex-basis: 100%; padding: 26px; }
   .review-form { padding: 26px 22px; }
   .review-form-grid { grid-template-columns: 1fr; }
   .review-field-full { grid-column: auto; }
@@ -790,6 +807,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .review-card { animation: none; }
 }
 
 @media (max-width: 1100px) {
@@ -1067,7 +1085,15 @@ footer {
       <h2 id="reviews-title" data-i18n="reviews_title">Testemunhos</h2>
       <p data-i18n="reviews_subtitle">A sua experiência pode ajudar outras pessoas a conhecer o meu trabalho.</p>
     </div>
-    <div class="reviews-grid" id="reviewsGrid" aria-live="polite"></div>
+    <div class="reviews-carousel" id="reviewsCarousel" aria-roledescription="carousel" aria-labelledby="reviews-title">
+      <div class="reviews-grid" id="reviewsGrid"></div>
+      <div class="reviews-nav" id="reviewsNav" hidden>
+        <button id="reviewsPrevious" type="button" data-i18n-aria-label="reviews_previous" aria-label="Testemunhos anteriores">‹</button>
+        <span class="reviews-position" id="reviewsPosition" aria-live="off"></span>
+        <span class="sr-only" id="reviewsAnnouncement" aria-live="polite"></span>
+        <button id="reviewsNext" type="button" data-i18n-aria-label="reviews_next" aria-label="Testemunhos seguintes">›</button>
+      </div>
+    </div>
     <div class="reviews-empty" id="reviewsEmpty">
       <img src="./moniquinha-star.svg" alt="" width="64" height="64">
       <h3 data-i18n="reviews_empty_title">Ainda não há testemunhos!</h3>
@@ -1410,6 +1436,7 @@ const i18n = {
     reviews_title: "Testimonials",
     reviews_subtitle: "Your experience can help others get to know my work.",
     reviews_empty_title: "No testimonials yet!", reviews_empty_note: "I look forward to yours!",
+    reviews_more: "Read more", reviews_less: "Show less", reviews_previous: "Previous testimonials", reviews_next: "Next testimonials", reviews_position: "Starting at testimonial {current} of {total}",
     review_cta: "Leave a testimonial",
     review_form_title: "Tell me how it went",
     review_form_intro: "Your opinion helps others get to know my work. I'll read your testimonial before it appears on the site.",
@@ -1513,6 +1540,7 @@ const i18n = {
     reviews_title: "Testemunhos",
     reviews_subtitle: "A sua experiência pode ajudar outras pessoas a conhecer o meu trabalho.",
     reviews_empty_title: "Ainda não há testemunhos!", reviews_empty_note: "Aguardo pelo seu!",
+    reviews_more: "Ver mais", reviews_less: "Ver menos", reviews_previous: "Testemunhos anteriores", reviews_next: "Testemunhos seguintes", reviews_position: "A começar no testemunho {current} de {total}",
     review_cta: "Deixar testemunho",
     review_form_title: "Conte-me como correu",
     review_form_intro: "A sua opinião ajuda outras pessoas a conhecer o meu trabalho. O testemunho será lido antes de aparecer no site.",
@@ -1616,6 +1644,7 @@ const i18n = {
     reviews_title: "Témoignages",
     reviews_subtitle: "Votre expérience peut aider d'autres personnes à découvrir mon travail.",
     reviews_empty_title: "Pas encore de témoignages !", reviews_empty_note: "J'attends le vôtre !",
+    reviews_more: "Voir plus", reviews_less: "Voir moins", reviews_previous: "Témoignages précédents", reviews_next: "Témoignages suivants", reviews_position: "À partir du témoignage {current} sur {total}",
     review_cta: "Laisser un témoignage",
     review_form_title: "Racontez-moi votre expérience",
     review_form_intro: "Votre avis aide d'autres personnes à découvrir mon travail. Je lirai votre témoignage avant sa publication.",
@@ -1719,6 +1748,7 @@ const i18n = {
     reviews_title: "Testimonios",
     reviews_subtitle: "Tu experiencia puede ayudar a otras personas a conocer mi trabajo.",
     reviews_empty_title: "¡Aún no hay testimonios!", reviews_empty_note: "¡Espero el tuyo!",
+    reviews_more: "Ver más", reviews_less: "Ver menos", reviews_previous: "Testimonios anteriores", reviews_next: "Testimonios siguientes", reviews_position: "Desde el testimonio {current} de {total}",
     review_cta: "Dejar un testimonio",
     review_form_title: "Cuéntame cómo fue",
     review_form_intro: "Tu opinión ayuda a otras personas a conocer mi trabajo. Leeré tu testimonio antes de publicarlo en la web.",
@@ -1828,11 +1858,61 @@ document.querySelectorAll('.lang-btn').forEach(button => {
 
 // ========== TESTIMONIAL FORM ==========
 const reviewsEndpoint = 'https://vpdovbwljwtlqhnqefwo.supabase.co/functions/v1/reviews';
+const reviewsCarousel = document.getElementById('reviewsCarousel');
+const reviewsNav = document.getElementById('reviewsNav');
+const reviewsPosition = document.getElementById('reviewsPosition');
+const reducedReviewMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let reviewIndex = 0;
+let reviewTimer;
+let reviewPageSize = getReviewPageSize();
+
+function getReviewPageSize() {
+  return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+}
+
+function stopReviewTimer() {
+  clearInterval(reviewTimer);
+  reviewTimer = undefined;
+}
+
+function startReviewTimer() {
+  stopReviewTimer();
+  if (publishedReviews.length <= getReviewPageSize() || reducedReviewMotion.matches ||
+      document.hidden || reviewsCarousel.matches(':hover') ||
+      reviewsCarousel.contains(document.activeElement) ||
+      reviewsCarousel.querySelector('.review-card-quote.is-expanded')) return;
+  reviewTimer = setInterval(() => {
+    reviewIndex = (reviewIndex + 1) % publishedReviews.length;
+    renderPublishedReviews();
+  }, 8000);
+}
+
+function updateReviewOverflow() {
+  document.querySelectorAll('.review-card').forEach(card => {
+    const quote = card.querySelector('.review-card-quote');
+    const more = card.querySelector('.review-card-more');
+    if (quote.classList.contains('is-expanded')) return;
+    const overflowing = quote.scrollHeight > quote.clientHeight + 1;
+    more.classList.toggle('is-visible', overflowing);
+    more.disabled = !overflowing;
+  });
+}
+
 function renderPublishedReviews() {
+  stopReviewTimer();
   const grid = document.getElementById('reviewsGrid');
   grid.replaceChildren();
   document.getElementById('reviewsEmpty').hidden = publishedReviews.length > 0;
-  for (const review of publishedReviews) {
+  const pageSize = getReviewPageSize();
+  const count = Math.min(pageSize, publishedReviews.length);
+  if (publishedReviews.length <= pageSize) reviewIndex = 0;
+  else reviewIndex %= publishedReviews.length;
+  reviewsNav.hidden = publishedReviews.length <= pageSize;
+  reviewsPosition.textContent = `${reviewIndex + 1} / ${publishedReviews.length}`;
+  reviewsPosition.setAttribute('aria-label', i18n[currentLang].reviews_position
+    .replace('{current}', reviewIndex + 1).replace('{total}', publishedReviews.length));
+  for (let offset = 0; offset < count; offset++) {
+    const review = publishedReviews[(reviewIndex + offset) % publishedReviews.length];
     const card = document.createElement('article');
     card.className = 'review-card';
     const stars = document.createElement('div');
@@ -1846,7 +1926,31 @@ function renderPublishedReviews() {
     }
     const quote = document.createElement('p');
     quote.className = 'review-card-quote';
+    quote.id = `review-quote-${review.id}`;
     quote.textContent = `“${review.comment}”`;
+    const copy = document.createElement('div');
+    copy.className = 'review-card-copy';
+    const more = document.createElement('button');
+    more.className = 'review-card-more';
+    more.type = 'button';
+    more.disabled = true;
+    more.setAttribute('aria-expanded', 'false');
+    more.setAttribute('aria-controls', quote.id);
+    const moreText = document.createElement('span');
+    moreText.textContent = i18n[currentLang].reviews_more;
+    const arrow = document.createElement('span');
+    arrow.className = 'review-more-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '⌄';
+    more.append(moreText, arrow);
+    more.addEventListener('click', () => {
+      const expanded = quote.classList.toggle('is-expanded');
+      more.setAttribute('aria-expanded', String(expanded));
+      moreText.textContent = i18n[currentLang][expanded ? 'reviews_less' : 'reviews_more'];
+      if (!expanded) quote.scrollTop = 0;
+      startReviewTimer();
+    });
+    copy.append(quote, more);
     const bottom = document.createElement('div');
     bottom.className = 'review-card-bottom';
     const name = document.createElement('span');
@@ -1863,10 +1967,36 @@ function renderPublishedReviews() {
     label.textContent = serviceCard?.querySelector('h3')?.textContent || i18n[currentLang].form_other;
     service.append(icon, label);
     bottom.append(name, service);
-    card.append(stars, quote, bottom);
+    card.append(stars, copy, bottom);
     grid.append(card);
   }
+  requestAnimationFrame(updateReviewOverflow);
+  startReviewTimer();
 }
+
+function advanceReviews(direction) {
+  reviewIndex = (reviewIndex + direction + publishedReviews.length) % publishedReviews.length;
+  renderPublishedReviews();
+  document.getElementById('reviewsAnnouncement').textContent = reviewsPosition.getAttribute('aria-label');
+}
+document.getElementById('reviewsPrevious').addEventListener('click', () => advanceReviews(-1));
+document.getElementById('reviewsNext').addEventListener('click', () => advanceReviews(1));
+reviewsCarousel.addEventListener('mouseenter', stopReviewTimer);
+reviewsCarousel.addEventListener('mouseleave', startReviewTimer);
+reviewsCarousel.addEventListener('focusin', stopReviewTimer);
+reviewsCarousel.addEventListener('focusout', event => {
+  if (!reviewsCarousel.contains(event.relatedTarget)) startReviewTimer();
+});
+document.addEventListener('visibilitychange', startReviewTimer);
+reducedReviewMotion.addEventListener('change', startReviewTimer);
+window.addEventListener('resize', () => {
+  const pageSize = getReviewPageSize();
+  if (pageSize !== reviewPageSize) {
+    reviewPageSize = pageSize;
+    if (publishedReviews.length) renderPublishedReviews();
+  } else updateReviewOverflow();
+});
+document.fonts?.ready.then(updateReviewOverflow);
 
 async function loadPublishedReviews() {
   try {
