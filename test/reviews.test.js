@@ -43,7 +43,7 @@ test('a review stays private until approved, appears publicly, then is deleted',
   };
   const env = key => ({ SUPABASE_URL: 'https://example.supabase.co',
     SUPABASE_SECRET_KEYS: JSON.stringify({ default: 'sb_secret_test_only' }),
-    EMAILJS_PRIVATE_KEY: 'emailjs_private_test_only' })[key];
+    EMAILJS_KEY: 'emailjs_private_test_only' })[key];
   const call = async (method, body, origin = 'https://www.moniquinhashine.pt') => {
     const req = new Request('https://example.supabase.co/functions/v1/reviews', {
       method, headers: { origin, 'x-forwarded-for': '192.0.2.1' },

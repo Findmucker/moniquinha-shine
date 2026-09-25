@@ -138,7 +138,7 @@ export async function handleReviewRequest(req, dependencies = {}) {
       '', 'Na página pode publicar ou rejeitar o testemunho. A ligação também permite apagá-lo depois de publicado. Não a partilhe.'
     ].join('\n');
     try {
-      const privateKey = env('EMAILJS_PRIVATE_KEY');
+      const privateKey = env('EMAILJS_KEY');
       const mail = await fetcher('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ service_id: 'service_0o7hvd3', template_id: 'template_m24yjpo',
