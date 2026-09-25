@@ -138,10 +138,12 @@ export async function handleReviewRequest(req, dependencies = {}) {
       '', 'Na página pode publicar ou rejeitar o testemunho. A ligação também permite apagá-lo depois de publicado. Não a partilhe.'
     ].join('\n');
     try {
+      const privateKey = env('EMAILJS_PRIVATE_KEY');
       const mail = await fetcher('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ service_id: 'service_0o7hvd3', template_id: 'template_m24yjpo',
           user_id: 'IOvvpHPz0DZRqJlmz',
+          ...(privateKey ? { accessToken: privateKey } : {}),
           template_params: { from_name: name, from_email: email ? contact : 'Não indicado',
             from_phone: phone ? contact : 'Não indicado', address: 'Testemunho — não aplicável',
             address_map_url: '', service: `TESTEMUNHO • ${serviceNames[service]}`,

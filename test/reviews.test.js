@@ -7,7 +7,9 @@ test('a review stays private until approved, appears publicly, then is deleted',
   let sentEmail = '';
   const fetcher = async (url, options = {}) => {
     if (url.startsWith('https://api.emailjs.com/')) {
-      sentEmail = JSON.parse(options.body).template_params.message;
+      const emailRequest = JSON.parse(options.body);
+      assert.equal(emailRequest.accessToken, 'emailjs_private_test_only');
+      sentEmail = emailRequest.template_params.message;
       return new Response('OK');
     }
     const parsed = new URL(url);
@@ -40,7 +42,8 @@ test('a review stays private until approved, appears publicly, then is deleted',
     throw new Error('Unexpected request');
   };
   const env = key => ({ SUPABASE_URL: 'https://example.supabase.co',
-    SUPABASE_SECRET_KEYS: JSON.stringify({ default: 'sb_secret_test_only' }) })[key];
+    SUPABASE_SECRET_KEYS: JSON.stringify({ default: 'sb_secret_test_only' }),
+    EMAILJS_PRIVATE_KEY: 'emailjs_private_test_only' })[key];
   const call = async (method, body, origin = 'https://www.moniquinhashine.pt') => {
     const req = new Request('https://example.supabase.co/functions/v1/reviews', {
       method, headers: { origin, 'x-forwarded-for': '192.0.2.1' },
