@@ -11,3 +11,7 @@ README.md
 .env.local
 .vscode
 .idea
+docs/
+sql/
+supabase/
+test/

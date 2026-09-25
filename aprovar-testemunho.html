@@ -48,6 +48,7 @@
   </main>
   <script>
     const params = new URLSearchParams(location.hash.slice(1));
+    const reviewsEndpoint = 'https://vpdovbwljwtlqhnqefwo.supabase.co/functions/v1/reviews';
     const id = params.get('id');
     const token = params.get('token');
     const status = document.getElementById('status');
@@ -63,7 +64,7 @@
     };
 
     async function request(action) {
-      const response = await fetch('/api/reviews-moderate', {
+      const response = await fetch(reviewsEndpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, token, action }), cache: 'no-store'
       });

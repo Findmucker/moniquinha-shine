@@ -1827,6 +1827,7 @@ document.querySelectorAll('.lang-btn').forEach(button => {
 });
 
 // ========== TESTIMONIAL FORM ==========
+const reviewsEndpoint = 'https://vpdovbwljwtlqhnqefwo.supabase.co/functions/v1/reviews';
 function renderPublishedReviews() {
   const grid = document.getElementById('reviewsGrid');
   grid.replaceChildren();
@@ -1869,7 +1870,7 @@ function renderPublishedReviews() {
 
 async function loadPublishedReviews() {
   try {
-    const response = await fetch('/api/reviews', { cache: 'no-store' });
+    const response = await fetch(reviewsEndpoint, { cache: 'no-store' });
     if (!response.ok) return;
     const data = await response.json();
     if (!Array.isArray(data.reviews)) return;
@@ -1970,7 +1971,7 @@ reviewForm.addEventListener('submit', async event => {
   reviewSubmit.disabled = true;
   reviewSubmit.textContent = i18n[currentLang].review_form_sending;
   try {
-    const response = await fetch('/api/reviews', {
+    const response = await fetch(reviewsEndpoint, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: displayName, contact, rating, service: serviceInput.value,
         comment: commentInput.value, consent: document.getElementById('reviewConsent').checked,

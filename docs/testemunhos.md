@@ -1,8 +1,8 @@
 # Testemunhos: configuração e ensaio
 
-1. Criar um projeto Supabase dedicado à Moniquinha Shine (região da UE). Executar [`sql/reviews.sql`](../sql/reviews.sql) nele. A tabela bloqueia acesso direto do navegador e permite apenas operações feitas pelo servidor.
-2. No projeto Vercel `moniquinhas-shine`, configurar **apenas no ambiente Production** `SUPABASE_URL` e `SUPABASE_SECRET_KEY` do projeto criado. A secret key é privada e nunca deve ser colocada no HTML ou no Git. Fazer um novo deploy para carregar as variáveis.
-3. Verificar que o EmailJS usado pelo formulário de orçamentos entrega a mensagem com `{{message}}` à Moniquinha; a mensagem do testemunho inclui o endereço privado de aprovação. O endpoint `/api/reviews` usa o serviço e template existentes do site.
+1. Projeto Supabase dedicado à Moniquinha Shine: `vpdovbwljwtlqhnqefwo` (Europa). A tabela foi criada com [`sql/reviews.sql`](../sql/reviews.sql). O acesso direto anónimo à tabela está bloqueado; apenas a função do Supabase pode ler e escrever os dados.
+2. Publicar [`supabase/functions/reviews/index.js`](../supabase/functions/reviews/index.js) como função Edge `reviews` com `verify_jwt=false` porque o público tem de poder enviar testemunhos e ler os aprovados. A função aplica autenticação própria por token aleatório para ações privadas. Usa a chave secreta disponibilizada automaticamente pelo Supabase à função; nenhuma chave privada fica no site ou no Vercel.
+3. Verificar que o EmailJS usado pelo formulário de orçamentos entrega a mensagem com `{{message}}` à Moniquinha; a mensagem do testemunho inclui o endereço privado de aprovação. O endpoint público da função usa o serviço e template existentes do site.
 4. Um cliente preenche o formulário e recebe uma confirmação. O testemunho é guardado como `pending`, invisível ao público. O servidor envia um email à Moniquinha com a ligação para rever, publicar ou apagar. O email do cliente/telemóvel nunca aparece no cartão público.
 5. A Moniquinha abre a ligação, verifica o contacto e clica em **Publicar testemunho**. Uma atualização da página mostra o cartão publicado. A mesma ligação tem **Apagar testemunho** e remove também os dados privados; use-a para apagar o testemunho do ensaio.
 
