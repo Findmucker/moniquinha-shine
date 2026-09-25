@@ -128,7 +128,7 @@ export async function handleReviewRequest(req, dependencies = {}) {
       method: 'POST', body: JSON.stringify({ id, display_name: name, contact, comment, service, rating,
         moderation_hash: await digest(secret), ip_hash: identifier, status: 'pending' })
     });
-    const approvalLink = `https://www.moniquinhashine.pt/aprovar-testemunho.html#id=${id}&token=${secret}`;
+    const approvalLink = `https://www.moniquinhashine.pt/aprovar-testemunho#id=${id}&token=${secret}`;
     const message = [
       'NOVO TESTEMUNHO PARA APROVAÇÃO', `Nome a mostrar: ${name}`, `Classificação: ${rating}/5`,
       `Serviço: ${serviceNames[service]}`, `Contacto privado: ${contact}`,
