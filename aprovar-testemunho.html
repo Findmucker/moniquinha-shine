@@ -82,6 +82,7 @@
           document.getElementById(key).textContent = values[key];
         }
         approve.hidden = review.status === 'approved';
+        remove.textContent = review.status === 'approved' ? 'Apagar testemunho' : 'Rejeitar testemunho';
         document.getElementById('hint').textContent = review.status === 'approved'
           ? 'Já está publicado no site. Pode apagá-lo aqui, inclusive depois do ensaio.'
           : 'Confira o contacto e o comentário antes de publicar. Nada aparece no site até confirmar.';
@@ -102,12 +103,15 @@
     });
 
     remove.addEventListener('click', async () => {
-      if (!confirm('Quer apagar este testemunho e o contacto associado?')) return;
+      const message = approve.hidden
+        ? 'Quer apagar este testemunho publicado e o contacto associado?'
+        : 'Quer rejeitar este testemunho? Será apagado com o contacto associado.';
+      if (!confirm(message)) return;
       approve.disabled = true; remove.disabled = true;
       try {
         await request('delete');
         section.hidden = true;
-        status.textContent = 'Testemunho apagado. Deixou de aparecer no site.';
+        status.textContent = 'Testemunho apagado. Não aparece no site.';
       } catch (error) { status.textContent = error.message; approve.disabled = false; remove.disabled = false; }
     });
     load();

@@ -130,11 +130,12 @@ export async function handleReviewRequest(req, dependencies = {}) {
     });
     const approvalLink = `https://www.moniquinhashine.pt/aprovar-testemunho#id=${id}&token=${secret}`;
     const message = [
-      'NOVO TESTEMUNHO PARA APROVAÇÃO', `Nome a mostrar: ${name}`, `Classificação: ${rating}/5`,
+      'NOVO TESTEMUNHO — PUBLICAR OU REJEITAR',
+      'ABRA ESTA LIGAÇÃO PRIVADA PARA DECIDIR:', approvalLink,
+      '', `Nome a mostrar: ${name}`, `Classificação: ${rating}/5`,
       `Serviço: ${serviceNames[service]}`, `Contacto privado: ${contact}`,
       'Autorização de publicação: sim', '', 'Comentário:', comment,
-      '', 'Para rever e decidir, abra esta ligação privada:', approvalLink,
-      'A ligação também permite retirar o testemunho depois de publicado. Não a partilhe.'
+      '', 'Na página pode publicar ou rejeitar o testemunho. A ligação também permite apagá-lo depois de publicado. Não a partilhe.'
     ].join('\n');
     try {
       const mail = await fetcher('https://api.emailjs.com/api/v1.0/email/send', {
