@@ -176,16 +176,31 @@ p { color: var(--gray); }
 
 /* ========== LANGUAGE SWITCHER ========== */
 .lang-switcher {
-  display: flex; gap: 4px; align-items: center;
-  margin-right: 16px;
+  position: relative; flex: 0 0 auto; margin-left: 24px;
 }
+.lang-current {
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  min-width: 52px; min-height: 42px; padding: 7px 10px; border: 1px solid var(--gold);
+  border-radius: 10px; background: var(--gold); color: var(--dark);
+  font-family: inherit; font-size: .9rem; font-weight: 700; line-height: 1; cursor: pointer;
+}
+.lang-current:hover { background: #f5b958; }
+.lang-chevron { font-size: 0.9em; transition: transform .2s ease; }
+.lang-current[aria-expanded="true"] .lang-chevron { transform: rotate(180deg); }
+.language-options {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 2;
+  width: 174px; padding: 8px; border: 1px solid #dfe5f1; border-radius: 14px;
+  background: var(--white); box-shadow: 0 14px 35px rgba(16,33,68,.2);
+}
+.language-options[hidden] { display: none; }
 .lang-btn {
-  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7);
-  padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
-  transition: all 0.3s; font-family: inherit;
+  display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--dark); text-align: left;
+  font-family: inherit; font-size: .875rem; font-weight: 600; line-height: 1.3; cursor: pointer;
 }
-.lang-btn:hover { background: rgba(255,255,255,0.25); color: var(--white); }
-.lang-btn.active { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+.lang-btn:hover, .lang-btn:focus-visible { background: var(--purple-light); }
+.lang-btn.active { background: var(--gold-light); color: var(--dark); }
+.lang-current:focus-visible, .hamburger:focus-visible, .nav-links a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
 /* ========== NAV ========== */
 nav {
@@ -193,17 +208,19 @@ nav {
   padding: 16px 0; transition: all 0.3s ease;
 }
 nav.scrolled { background: rgba(26,26,46,0.95); backdrop-filter: blur(10px); padding: 10px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
-nav .container { display: flex; justify-content: space-between; align-items: center; }
-.nav-right { display: flex; align-items: center; }
+nav .container { max-width: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.nav-right { display: flex; align-items: center; flex: 0 0 auto; }
 .logo { display: inline-flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; color: var(--white); text-decoration: none; }
 .logo-mark { width: 38px; height: 38px; flex: 0 0 auto; filter: drop-shadow(0 3px 5px rgba(255, 187, 91, 0.28)); }
+.logo-wordmark { display: inline-flex; align-items: baseline; gap: .25em; white-space: nowrap; }
 .logo [data-brand-lead] { color: var(--white); }
 .logo [data-brand-accent] { color: var(--gold); }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links { display: flex; gap: clamp(13px, 1.8vw, 28px); list-style: none; }
 .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
 .nav-links a:hover { color: var(--gold); }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-.hamburger span { display: block; width: 26px; height: 3px; background: var(--white); border-radius: 3px; transition: all 0.3s; }
+.nav-cta { display: none; }
+.hamburger { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; cursor: pointer; background: rgba(255,255,255,.18); border: 0; border-radius: 10px; }
+.hamburger span { display: block; width: 23px; height: 2.5px; background: var(--white); border-radius: 3px; transition: all 0.3s; }
 
 /* ========== HERO ========== */
 .hero {
@@ -882,8 +899,22 @@ footer {
 }
 
 @media (max-width: 1100px) {
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,26,46,0.98); flex-direction: column; padding: 20px 24px; gap: 16px; }
+  nav { background: linear-gradient(110deg, #38568e, #617bb8); }
+  .nav-right { gap: 8px; }
+  .lang-switcher { margin-left: 0; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    max-height: calc(100dvh - 75px); overflow-y: auto; background: var(--white);
+    flex-direction: column; gap: 0; padding: 18px 24px 24px;
+    box-shadow: 0 16px 32px rgba(20,33,65,.19);
+  }
   .nav-links.active { display: flex; }
+  .nav-links li:not(.nav-cta) { border-bottom: 1px solid #e5eaf2; }
+  .nav-links li:not(.nav-cta) a { display: block; padding: 14px 4px; color: #263a5c; font-size: 1rem; font-weight: 600; }
+  .nav-links li:not(.nav-cta) a:hover { color: #355e9b; }
+  .nav-links .nav-cta { display: block; margin-top: 22px; }
+  .nav-cta a { display: block; padding: 14px 18px; border-radius: 12px; background: var(--gold); color: var(--dark); text-align: center; font-weight: 700; }
+  .nav-cta a:hover { background: #f5b958; color: var(--dark); }
   .hamburger { display: flex; }
 }
 @media (max-width: 900px) {
@@ -902,7 +933,16 @@ footer {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
-  .lang-switcher { margin-right: 12px; }
+  nav .container { padding-inline: 18px; }
+  .logo { gap: 7px; font-size: 1.1rem; line-height: 1.1; }
+  .logo-mark { width: 34px; height: 34px; }
+  .logo-wordmark { flex-direction: column; align-items: flex-start; gap: 0; }
+}
+@media (max-width: 360px) {
+  nav .container { padding-inline: 12px; gap: 8px; }
+  .logo { gap: 5px; font-size: 1rem; }
+  .logo-mark { width: 32px; height: 32px; }
+  .nav-right { gap: 6px; }
 }
 </style>
 </head>
@@ -911,14 +951,8 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <div class="container">
-    <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="./moniquinha-star.svg?v=4" alt=""><span data-brand-lead>Moniquinha</span> <span data-brand-accent>Shine</span></a>
+    <a href="#" class="logo" aria-label="Moniquinha Shine — início"><img class="logo-mark" src="./moniquinha-star.svg?v=4" alt=""><span class="logo-wordmark"><span data-brand-lead>Moniquinha</span><span data-brand-accent>Shine</span></span></a>
     <div class="nav-right">
-      <div class="lang-switcher">
-        <button type="button" class="lang-btn active" data-lang="pt" aria-label="Ver site em português">PT</button>
-        <button type="button" class="lang-btn" data-lang="en" aria-label="View site in English">EN</button>
-        <button type="button" class="lang-btn" data-lang="fr" aria-label="Voir le site en français">FR</button>
-        <button type="button" class="lang-btn" data-lang="es" aria-label="Ver el sitio en español">ES</button>
-      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" data-i18n="nav_about">About</a></li>
         <li><a href="#services" data-i18n="nav_services">Services</a></li>
@@ -926,7 +960,17 @@ footer {
         <li><a href="#why" data-i18n="nav_why">Why Me</a></li>
         <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        <li class="nav-cta"><a href="#contact" data-i18n="hero_cta">Get a Free Quote</a></li>
       </ul>
+      <div class="lang-switcher" id="languageSwitcher">
+        <button type="button" class="lang-current" id="languageToggle" aria-label="Idioma: Português" aria-controls="languageOptions" aria-expanded="false"><span id="currentLanguage">PT</span><span class="lang-chevron" aria-hidden="true">⌄</span></button>
+        <div class="language-options" id="languageOptions" role="group" aria-label="Idioma" hidden>
+          <button type="button" class="lang-btn active" data-lang="pt" aria-label="Ver site em português">Português</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-label="View site in English">English</button>
+          <button type="button" class="lang-btn" data-lang="fr" aria-label="Voir le site en français">Français</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-label="Ver el sitio en español">Español</button>
+        </div>
+      </div>
       <button type="button" class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1881,9 +1925,15 @@ document.querySelectorAll('[data-brand-accent]').forEach(element => {
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
+  const languageNames = { pt: 'Português', en: 'English', fr: 'Français', es: 'Español' };
+  const languageLabels = { pt: 'Idioma', en: 'Language', fr: 'Langue', es: 'Idioma' };
+  document.getElementById('currentLanguage').textContent = lang.toUpperCase();
+  document.getElementById('languageToggle').setAttribute('aria-label', `${languageLabels[lang]}: ${languageNames[lang]}`);
+  document.getElementById('languageOptions').setAttribute('aria-label', languageLabels[lang]);
   // Update active button
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
+    btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
   });
   // Update all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1923,7 +1973,11 @@ try {
 } catch(e) { setLang('pt'); }
 
 document.querySelectorAll('.lang-btn').forEach(button => {
-  button.addEventListener('click', () => setLang(button.dataset.lang));
+  button.addEventListener('click', () => {
+    setLang(button.dataset.lang);
+    closeLanguageOptions();
+    document.getElementById('languageToggle').focus();
+  });
 });
 
 // ========== TESTIMONIAL FORM ==========
@@ -2237,15 +2291,48 @@ window.addEventListener('scroll', () => {
 
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+const languageSwitcher = document.getElementById('languageSwitcher');
+const languageToggle = document.getElementById('languageToggle');
+const languageOptions = document.getElementById('languageOptions');
+function closeNavMenu() {
+  navLinks.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+function closeLanguageOptions() {
+  languageOptions.hidden = true;
+  languageToggle.setAttribute('aria-expanded', 'false');
+}
 hamburger.addEventListener('click', () => {
+  closeLanguageOptions();
   const isOpen = navLinks.classList.toggle('active');
   hamburger.setAttribute('aria-expanded', String(isOpen));
 });
+languageToggle.addEventListener('click', () => {
+  closeNavMenu();
+  const isOpen = languageOptions.hidden;
+  languageOptions.hidden = !isOpen;
+  languageToggle.setAttribute('aria-expanded', String(isOpen));
+});
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
+  link.addEventListener('click', closeNavMenu);
+});
+document.addEventListener('click', event => {
+  if (!languageSwitcher.contains(event.target)) closeLanguageOptions();
+  if (!navbar.contains(event.target)) closeNavMenu();
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  if (!languageOptions.hidden) {
+    closeLanguageOptions();
+    languageToggle.focus();
+  } else if (navLinks.classList.contains('active')) {
+    closeNavMenu();
+    hamburger.focus();
+  }
+});
+window.matchMedia('(min-width: 1101px)').addEventListener('change', () => {
+  closeNavMenu();
+  closeLanguageOptions();
 });
 
 // Scroll animation
