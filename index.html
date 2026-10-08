@@ -325,15 +325,15 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
 .stat {
   position: relative; flex: 1; min-width: 0; text-align: center; padding: 12px 10px;
 }
-.stat:nth-child(1), .stat:nth-child(2) { background: rgba(255,255,255,0.35); }
-.stat:nth-child(1) { border: 1.5px dashed rgba(232,168,69,0.52); border-radius: 21px 15px 19px 14px; transform: rotate(-0.6deg); }
-.stat:nth-child(2) { border: 1.5px dashed rgba(155,142,196,0.55); border-radius: 15px 21px 14px 19px; transform: rotate(0.6deg); }
-.stat:nth-child(1)::after, .stat:nth-child(2)::after {
+.stat-dedication, .stat-service { background: rgba(255,255,255,0.35); }
+.stat-dedication { border: 1.5px dashed rgba(232,168,69,0.52); border-radius: 21px 15px 19px 14px; transform: rotate(-0.6deg); }
+.stat-service { border: 1.5px dashed rgba(155,142,196,0.55); border-radius: 15px 21px 14px 19px; transform: rotate(0.6deg); }
+.stat-dedication::after, .stat-service::after {
   content: '✦'; position: absolute; top: -9px; right: 12px;
   padding: 0 4px; background: var(--light-bg); font-size: 0.72rem;
 }
-.stat:nth-child(1)::after { color: var(--gold); }
-.stat:nth-child(2)::after { color: var(--purple); }
+.stat-dedication::after { color: var(--gold); }
+.stat-service::after { left: 12px; right: auto; color: var(--purple); }
 .stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
 .stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
 .sr-only {
@@ -987,17 +987,17 @@ footer {
         <p data-i18n="about_p1">I'm a young, energetic professional who believes every home deserves to shine. Whether it's a sparkling clean kitchen, a beautifully organized closet, or a cozy space that feels just right. I bring dedication, attention to detail, and a big smile to every job.</p>
         <p data-i18n="about_p2">From regular cleaning to home organization and home staging, I offer a range of services tailored to make your life easier and your home more beautiful.</p>
         <div class="about-stats">
-          <div class="stat">
+          <div class="stat stat-dedication">
             <div class="stat-number">100%</div>
             <div class="stat-label" data-i18n="stat_dedication">Dedication</div>
           </div>
-          <div class="stat">
-            <div class="stat-number">5★</div>
-            <div class="stat-label" data-i18n="stat_service">Service</div>
-          </div>
-          <div class="stat">
+          <div class="stat stat-passion">
             <div class="stat-number">💛</div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
+          </div>
+          <div class="stat stat-service">
+            <div class="stat-number">5★</div>
+            <div class="stat-label" data-i18n="stat_service">Service</div>
           </div>
           <div class="about-cleaning-row" aria-hidden="true">
             <span class="about-cleaner" data-spark-x="5"><span class="about-cleaning-tool">🧹</span></span>
