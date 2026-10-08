@@ -337,6 +337,24 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
 .stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
 .stat-service .stat-number { display: flex; align-items: center; justify-content: center; gap: 1px; }
 .stat-brand-star { width: 1.15em; height: 1.15em; flex: 0 0 auto; }
+.about-passion-heart { position: relative; display: inline-block; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; line-height: inherit; cursor: pointer; vertical-align: baseline; transition: transform .2s ease; -webkit-tap-highlight-color: transparent; }
+.about-passion-heart::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; }
+.about-passion-heart:hover { transform: scale(1.12) rotate(-6deg); }
+.about-passion-heart:focus-visible { outline: 2px dashed var(--gold); outline-offset: 6px; border-radius: 50%; }
+.about-passion-heart.is-popping { animation: passionHeartPop .45s ease-out; }
+.about-passion-burst { position: fixed; inset: 0; z-index: 80; overflow: hidden; pointer-events: none; }
+.about-passion-piece { position: absolute; width: var(--passion-size); height: var(--passion-size); color: var(--passion-color); opacity: 0; pointer-events: none; filter: drop-shadow(0 2px 3px rgba(228,132,154,.2)); animation: passionBurst var(--passion-duration) ease-out var(--passion-delay) forwards; }
+.about-passion-piece svg { display: block; width: 100%; height: 100%; fill: currentColor; }
+.about-passion-piece.is-star { background: center / contain no-repeat url('./moniquinha-star.svg?v=4'); }
+.about-passion-burst.is-still .about-passion-piece { animation-name: passionGlimmer; animation-duration: .6s; }
+@keyframes passionHeartPop { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.28) rotate(-9deg); } 70% { transform: scale(.95) rotate(5deg); } }
+@keyframes passionBurst {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.25) rotate(0deg); }
+  12% { opacity: 1; }
+  45% { opacity: 1; transform: translate(calc(-50% + var(--passion-mid-x)), calc(-50% + var(--passion-mid-y))) scale(1.1) rotate(var(--passion-mid-turn)); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--passion-x)), calc(-50% + var(--passion-y))) scale(.65) rotate(var(--passion-turn)); }
+}
+@keyframes passionGlimmer { 0%, 100% { opacity: 0; } 30%, 65% { opacity: 1; } }
 .stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -367,6 +385,9 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
 @media (prefers-reduced-motion: reduce) {
   .about-cleaner, .about-cleaning-tool { animation: none; }
   .about-cleaning-spark { display: none; }
+  .about-passion-heart { transition: none; }
+  .about-passion-heart:hover { transform: none; }
+  .about-passion-heart.is-popping { animation: none; }
 }
 
 /* ========== SERVICES ========== */
@@ -994,7 +1015,7 @@ footer {
             <div class="stat-label" data-i18n="stat_dedication">Dedication</div>
           </div>
           <div class="stat stat-passion">
-            <div class="stat-number">💛</div>
+            <div class="stat-number"><button type="button" class="about-passion-heart" id="aboutPassionHeart" data-i18n-aria-label="about_passion_magic" aria-label="Espalhar corações e estrelinhas"><span aria-hidden="true">💛</span></button></div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
           <div class="stat stat-service">
@@ -1482,6 +1503,7 @@ const i18n = {
     hero_tagline: "Cleaning, organizing & caring for your home, with energy, heart, and a personal touch.",
     hero_cta: "Get a Free Quote", hero_services: "Our Services",
     about_magic: "A little touch of shine?",
+    about_passion_magic: "Send out hearts and sparkles",
     about_title: "Hi, I'm Moniquinha!",
     about_p1: "I'm a young, energetic professional who believes every home deserves to shine. Whether it's a sparkling clean kitchen, a beautifully organized closet, or a cozy space that feels just right. I bring dedication, attention to detail, and a big smile to every job.",
     about_p2: "With experience in hotel cleaning and a passion for beautiful spaces, I offer a full range of services tailored to make your life easier and your home more beautiful.",
@@ -1586,6 +1608,7 @@ const i18n = {
     hero_tagline: "Limpeza, organização e cuidado do seu lar, com energia, carinho e um toque pessoal.",
     hero_cta: "Pedir Orçamento Grátis", hero_services: "Os Meus Serviços",
     about_magic: "Um toque de brilho?",
+    about_passion_magic: "Espalhar corações e estrelinhas",
     about_title: "Olá, sou a Moniquinha!",
     about_p1: "Sou uma jovem profissional, cheia de energia, que acredita que todas as casas merecem brilhar. Seja uma cozinha impecável, um armário perfeitamente organizado ou um espaço acolhedor. Trago dedicação, atenção ao detalhe e um grande sorriso a cada trabalho.",
     about_p2: "Com experiência em limpeza hoteleira e uma paixão por espaços bonitos, ofereço uma gama completa de serviços pensados para tornar a sua vida mais fácil e a sua casa mais bonita.",
@@ -1690,6 +1713,7 @@ const i18n = {
     hero_tagline: "Ménage, organisation et soin de votre maison, avec énergie, cœur et une touche personnelle.",
     hero_cta: "Devis Gratuit", hero_services: "Nos Services",
     about_magic: "Une petite touche d'éclat ?",
+    about_passion_magic: "Faire jaillir des cœurs et des étoiles",
     about_title: "Bonjour, je suis Moniquinha !",
     about_p1: "Je suis une jeune professionnelle pleine d'énergie qui croit que chaque maison mérite de briller. Qu'il s'agisse d'une cuisine impeccable, d'un placard parfaitement organisé ou d'un espace chaleureux. J'apporte dévouement, attention aux détails et un grand sourire à chaque mission.",
     about_p2: "Avec une expérience en nettoyage hôtelier et une passion pour les beaux espaces, je propose une gamme complète de services conçus pour vous simplifier la vie et embellir votre maison.",
@@ -1794,6 +1818,7 @@ const i18n = {
     hero_tagline: "Limpieza, organización y cuidado de tu hogar, con energía, corazón y un toque personal.",
     hero_cta: "Presupuesto Gratis", hero_services: "Nuestros Servicios",
     about_magic: "¿Un pequeño toque de brillo?",
+    about_passion_magic: "Lanzar corazones y estrellitas",
     about_title: "¡Hola, soy Moniquinha!",
     about_p1: "Soy una joven profesional llena de energía que cree que cada hogar merece brillar. Ya sea una cocina impecable, un armario perfectamente organizado o un espacio acogedor. Pongo dedicación, atención al detalle y una gran sonrisa en cada trabajo.",
     about_p2: "Con experiencia en limpieza hotelera y pasión por los espacios bonitos, ofrezco una gama completa de servicios diseñados para facilitarte la vida y embellecer tu hogar.",
@@ -2880,6 +2905,87 @@ document.querySelectorAll('.package-card[data-service]').forEach(card => {
   }).observe(row);
   document.addEventListener('visibilitychange', syncAnimation);
   reduceMotion.addEventListener('change', syncAnimation);
+})();
+
+// ========== ABOUT: HEARTS AND SPARKLES ==========
+(function() {
+  const button = document.getElementById('aboutPassionHeart');
+  if (!button) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const colors = ['#F4BB42', '#E4849A', '#F2A8BC', '#F29B68'];
+  let layer = null;
+
+  function clearBurst() {
+    if (layer) layer.remove();
+    layer = null;
+    button.classList.remove('is-popping');
+  }
+
+  button.addEventListener('click', () => {
+    if (!layer) {
+      layer = document.createElement('div');
+      layer.className = 'about-passion-burst';
+      layer.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(layer);
+    }
+    const burst = layer;
+    const still = reduceMotion.matches;
+    burst.classList.toggle('is-still', still);
+    while (burst.childElementCount > 112) burst.firstElementChild.remove();
+    const rect = button.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+    const count = still ? 14 : 56;
+    const radius = Math.min(172, window.innerWidth * .42);
+
+    if (!still) {
+      button.classList.remove('is-popping');
+      void button.offsetWidth;
+      button.classList.add('is-popping');
+    }
+
+    for (let i = 0; i < count; i++) {
+      const angle = i / count * Math.PI * 2 + (Math.random() - .5) * .3;
+      const distance = (still ? 24 : 58) + Math.random() * (still ? 35 : radius - 58);
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance - (still ? 15 : 38);
+      const turn = (Math.random() - .5) * 90;
+      const star = i % 5 > 2;
+      const piece = document.createElement('span');
+      piece.className = 'about-passion-piece ' + (star ? 'is-star' : 'is-heart');
+      piece.style.left = (originX + (still ? x : 0)) + 'px';
+      piece.style.top = (originY + (still ? y : 0)) + 'px';
+      piece.style.setProperty('--passion-size', ((star ? 11 : 14) + Math.random() * 10) + 'px');
+      piece.style.setProperty('--passion-color', colors[i % colors.length]);
+      piece.style.setProperty('--passion-duration', (1250 + Math.random() * 600) + 'ms');
+      piece.style.setProperty('--passion-delay', Math.random() * 120 + 'ms');
+      piece.style.setProperty('--passion-x', x + 'px');
+      piece.style.setProperty('--passion-y', y + 'px');
+      piece.style.setProperty('--passion-mid-x', x * .65 + 'px');
+      piece.style.setProperty('--passion-mid-y', (y * .65 - 24) + 'px');
+      piece.style.setProperty('--passion-turn', turn + 'deg');
+      piece.style.setProperty('--passion-mid-turn', turn * .5 + 'deg');
+      if (!star) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M12 21C10 19 2 14 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 6-8 11-10 13Z');
+        svg.appendChild(path);
+        piece.appendChild(svg);
+      }
+      piece.addEventListener('animationend', () => {
+        piece.remove();
+        if (!burst.hasChildNodes()) {
+          burst.remove();
+          if (layer === burst) layer = null;
+        }
+      }, { once: true });
+      burst.appendChild(piece);
+    }
+  });
+  button.addEventListener('animationend', () => button.classList.remove('is-popping'));
+  reduceMotion.addEventListener('change', clearBurst);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearBurst(); });
 })();
 
 // Re-trigger language to apply
