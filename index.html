@@ -340,23 +340,30 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-.about-cleaning-row { position: relative; grid-column: 1 / -1; height: 68px; margin-top: -3px; overflow: hidden; pointer-events: none; --sweep-distance: 0px; }
+.about-cleaning-row { position: relative; grid-column: 1 / -1; height: 74px; margin-top: -3px; overflow: hidden; pointer-events: none; --cleaning-distance: 0px; }
 .about-cleaning-row::before { content: ''; position: absolute; left: 12px; right: 12px; bottom: 12px; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,168,69,.2) 25%, rgba(155,142,196,.2) 70%, transparent); }
-.about-sweeper { position: absolute; top: 9px; left: 12px; z-index: 1; width: 38px; height: 38px; animation: broomTravel 8s ease-in-out infinite; animation-play-state: paused; }
-.about-sweeper:nth-child(2) { left: calc(50% + 6px); animation-delay: -4s; }
-.about-dancing-broom { display: block; font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-size: 2.05rem; font-weight: 400; line-height: 1.2; transform-origin: 30% 88%; filter: drop-shadow(0 3px 4px rgba(232,168,69,.2)); animation: broomDance .7s ease-in-out infinite; animation-play-state: paused; --broom-direction: 1; }
-.about-sweeper:nth-child(2) .about-dancing-broom { --broom-direction: -1; animation-duration: .85s; animation-delay: -.25s; }
-.about-cleaning-row.is-cleaning .about-sweeper, .about-cleaning-row.is-cleaning .about-dancing-broom { animation-play-state: running; }
+.about-cleaner { position: absolute; top: 18px; left: 12px; z-index: 1; width: 38px; height: 38px; animation: cleaningTravel 8s ease-in-out infinite; animation-play-state: paused; }
+.about-cleaner:nth-child(2) { left: calc(25% + 6px); animation-delay: -2s; }
+.about-cleaner:nth-child(3) { left: calc(50% + 6px); animation-delay: -4s; }
+.about-cleaner:nth-child(4) { left: calc(75% + 6px); animation-delay: -6s; }
+.about-cleaning-tool { display: block; width: 38px; height: 40px; font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-size: 2.05rem; font-weight: 400; line-height: 1.2; transform-origin: 50% 88%; filter: drop-shadow(0 3px 4px rgba(232,168,69,.2)); animation: broomDance .8s ease-in-out infinite; animation-play-state: paused; }
+.about-tool-mop { animation-name: mopDance; animation-duration: 1.05s; animation-delay: -.3s; }
+.about-tool-sponge { animation-name: spongeScrub; animation-duration: 1.1s; animation-delay: -.55s; }
+.about-tool-bucket { animation-name: bucketHop; animation-duration: 1.4s; animation-delay: -.8s; }
+.about-cleaning-row.is-cleaning .about-cleaner, .about-cleaning-row.is-cleaning .about-cleaning-tool { animation-play-state: running; }
 .about-cleaning-spark {
   position: absolute; z-index: 2; line-height: 1; opacity: 0;
   color: var(--spark-color); font-size: var(--spark-size); pointer-events: none;
   filter: drop-shadow(0 0 3px rgba(232,168,69,.3)); animation: cleaningSpark .9s ease-out forwards;
 }
-@keyframes broomTravel { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--sweep-distance)); } }
-@keyframes broomDance { 0%, 100% { transform: scaleX(var(--broom-direction)) rotate(-16deg) translateY(0); } 30% { transform: scaleX(var(--broom-direction)) rotate(10deg) translateY(-3px); } 65% { transform: scaleX(var(--broom-direction)) rotate(18deg) translateY(1px); } }
+@keyframes cleaningTravel { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--cleaning-distance)); } }
+@keyframes broomDance { 0%, 100% { transform: rotate(-16deg) translateY(0); } 30% { transform: rotate(10deg) translateY(-5px); } 65% { transform: rotate(18deg) translateY(1px); } }
+@keyframes mopDance { 0%, 100% { transform: rotate(12deg) translateY(0); } 35% { transform: rotate(-14deg) translateY(-7px); } 70% { transform: rotate(7deg) translateY(1px); } }
+@keyframes spongeScrub { 0%, 100% { transform: translate(-3px, 0) rotate(-8deg); } 30% { transform: translate(4px, -6px) rotate(8deg); } 65% { transform: translate(-2px, 1px) rotate(-4deg); } }
+@keyframes bucketHop { 0%, 100% { transform: translateY(0) rotate(-4deg); } 30% { transform: translateY(-14px) rotate(8deg); } 55% { transform: translateY(1px) rotate(-5deg) scale(1.04, .96); } 75% { transform: translateY(-5px) rotate(3deg); } }
 @keyframes cleaningSpark { 0% { opacity: 0; transform: translate(0, 0) scale(.4) rotate(0); } 22% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--spark-drift), -18px) scale(1.1) rotate(45deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .about-sweeper, .about-dancing-broom { animation: none; }
+  .about-cleaner, .about-cleaning-tool { animation: none; }
   .about-cleaning-spark { display: none; }
 }
 
@@ -993,8 +1000,18 @@ footer {
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
           <div class="about-cleaning-row" aria-hidden="true">
-            <span class="about-sweeper"><span class="about-dancing-broom">🧹</span></span>
-            <span class="about-sweeper"><span class="about-dancing-broom">🧹</span></span>
+            <span class="about-cleaner" data-spark-x="5"><span class="about-cleaning-tool">🧹</span></span>
+            <span class="about-cleaner" data-spark-x="12">
+              <svg class="about-cleaning-tool about-tool-mop" viewBox="0 0 48 48" focusable="false">
+                <path d="M33 3 20 28" fill="none" stroke="#ae643e" stroke-width="3.6" stroke-linecap="round"/>
+                <path d="m32 3-11 22" fill="none" stroke="#dca675" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M17 25c-4 2-8 9-9 15 3 4 13 7 19 2 0-6-2-12-6-15Z" fill="#bce9e9"/>
+                <path d="M17 28c-3 4-5 8-5 13m7-12c-2 5-3 9-2 14m4-13c-1 4 0 8 2 12" fill="none" stroke="#62b9c2" stroke-width="2" stroke-linecap="round"/>
+                <path d="m16 25 7 4" fill="none" stroke="#8d89be" stroke-width="4.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="about-cleaner" data-spark-x="17"><span class="about-cleaning-tool about-tool-sponge">🧽</span></span>
+            <span class="about-cleaner" data-spark-x="18"><span class="about-cleaning-tool about-tool-bucket">🪣</span></span>
           </div>
         </div>
       </div>
@@ -2810,28 +2827,28 @@ document.querySelectorAll('.package-card[data-service]').forEach(card => {
 (function() {
   const row = document.querySelector('.about-cleaning-row');
   if (!row) return;
-  const sweepers = [...row.querySelectorAll('.about-sweeper')];
+  const cleaners = [...row.querySelectorAll('.about-cleaner')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let visible = false;
   let frame = 0;
   let lastSpark = 0;
   let sparkIndex = 0;
   const colors = ['#E8A845', '#E4849A', '#9B8EC4'];
-  const resize = () => row.style.setProperty('--sweep-distance', Math.max(0, row.clientWidth / 2 - 58) + 'px');
+  const resize = () => row.style.setProperty('--cleaning-distance', Math.max(0, row.clientWidth / cleaners.length - 60) + 'px');
   new ResizeObserver(resize).observe(row);
   resize();
 
   function animate(time) {
-    if (time - lastSpark > 230) {
+    if (time - lastSpark > 340) {
       lastSpark = time;
       const rowLeft = row.getBoundingClientRect().left;
-      sweepers.forEach((sweeper, index) => {
-        const position = sweeper.getBoundingClientRect().left - rowLeft;
+      cleaners.forEach(cleaner => {
+        const position = cleaner.getBoundingClientRect().left - rowLeft;
         const spark = document.createElement('span');
         spark.className = 'about-cleaning-spark';
         spark.textContent = sparkIndex % 3 === 1 ? '✧' : '✦';
-        spark.style.left = (position + (index ? 22 : 5) + sparkIndex % 3 * 3) + 'px';
-        spark.style.top = (42 + sparkIndex % 2 * 4) + 'px';
+        spark.style.left = (position + Number(cleaner.dataset.sparkX) + sparkIndex % 3 * 3) + 'px';
+        spark.style.top = (51 + sparkIndex % 2 * 4) + 'px';
         spark.style.setProperty('--spark-color', colors[sparkIndex % colors.length]);
         spark.style.setProperty('--spark-size', (7 + sparkIndex % 3 * 2) + 'px');
         spark.style.setProperty('--spark-drift', (sparkIndex % 2 ? 7 : -7) + 'px');
