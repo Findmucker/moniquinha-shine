@@ -334,7 +334,15 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
 }
 .stat-dedication::after { color: var(--gold); }
 .stat-service::after { left: 12px; right: auto; color: var(--purple); }
-.stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat-number { display: flex; align-items: center; justify-content: center; min-height: 44px; font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat-number-styled { gap: .12em; font-size: clamp(1.95rem, 2.8vw, 2.45rem); font-weight: 900; line-height: 1; letter-spacing: -.045em; white-space: nowrap; }
+.stat-digit {
+  background: linear-gradient(145deg, #294477 8%, #3d5a99 58%, #8c80ba);
+  background-clip: text; -webkit-background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(255,255,255,.85)) drop-shadow(0 3px 5px rgba(61,90,153,.12));
+}
+.stat-percent { font-size: .58em; font-weight: 800; letter-spacing: -.025em; transform: translateY(.18em); }
+.stat-brand-star { width: 44px; height: 44px; flex: 0 0 auto; }
 .stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -906,7 +914,9 @@ footer {
   .about-text { padding: 8px 4px 10px; }
   .about-stats { gap: 8px; }
   .stat { padding: 10px 5px; }
-  .stat-number { font-size: 1.35rem; }
+  .stat-number { min-height: 36px; font-size: 1.35rem; }
+  .stat-number-styled { font-size: clamp(1.55rem, 7vw, 1.9rem); }
+  .stat-brand-star { width: 36px; height: 36px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -988,7 +998,7 @@ footer {
         <p data-i18n="about_p2">From regular cleaning to home organization and home staging, I offer a range of services tailored to make your life easier and your home more beautiful.</p>
         <div class="about-stats">
           <div class="stat stat-dedication">
-            <div class="stat-number">100%</div>
+            <div class="stat-number stat-number-styled"><span class="stat-digit">100</span><span class="stat-percent">%</span></div>
             <div class="stat-label" data-i18n="stat_dedication">Dedication</div>
           </div>
           <div class="stat stat-passion">
@@ -996,7 +1006,7 @@ footer {
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
           <div class="stat stat-service">
-            <div class="stat-number">5★</div>
+            <div class="stat-number stat-number-styled"><span class="sr-only">5★</span><span class="stat-digit" aria-hidden="true">5</span><img class="stat-brand-star" src="./moniquinha-star.svg?v=4" alt="" width="44" height="44"></div>
             <div class="stat-label" data-i18n="stat_service">Service</div>
           </div>
           <div class="about-cleaning-row" aria-hidden="true">
