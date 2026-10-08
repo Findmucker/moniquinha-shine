@@ -323,79 +323,43 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
 .about-text p { margin-bottom: 15px; font-size: 1.03rem; }
 .about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 27px; align-items: stretch; }
 .stat {
+  position: relative; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-width: 0; min-height: 100px; padding: 18px 10px; text-align: center;
-  border: 1px solid #dfe5f2; border-radius: 18px;
-  background: linear-gradient(145deg, #fff, #f8f9fd);
-  box-shadow: 0 5px 16px rgba(45,65,111,.04);
+  min-width: 0; min-height: 108px; padding: 20px 10px; text-align: center;
+  border: 1px solid rgba(232,168,69,.32); border-radius: 22px;
+  background: radial-gradient(circle at 86% 10%, rgba(255,213,117,.32), transparent 52%), linear-gradient(145deg, #fffdf7, #fff4df);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(232,168,69,.09);
 }
-.stat-number { display: flex; align-items: center; justify-content: center; gap: 3px; min-height: 34px; font-size: 1.65rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat:nth-child(2) { border-color: rgba(155,142,196,.32); background: radial-gradient(circle at 12% 90%, rgba(155,142,196,.18), transparent 56%), linear-gradient(145deg, #fcfbff, #efedfc); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(155,142,196,.1); }
+.stat:nth-child(3) { border-color: rgba(228,132,154,.3); background: radial-gradient(circle at 90% 10%, rgba(255,189,163,.23), transparent 56%), linear-gradient(145deg, #fffafa, #fff0f2); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(228,132,154,.09); }
+.stat::after { content: '✧'; position: absolute; top: 7px; right: 12px; color: #dfa644; font-size: .95rem; line-height: 1; opacity: .6; pointer-events: none; }
+.stat:nth-child(2)::after { content: '✦'; top: auto; bottom: 9px; right: 9px; color: #9b8ec4; font-size: .55rem; transform: rotate(12deg); }
+.stat:nth-child(3)::after { top: 10px; right: auto; left: 10px; color: #e4849a; font-size: .75rem; transform: rotate(-12deg); }
+.stat-number { display: flex; align-items: center; justify-content: center; gap: 3px; min-height: 36px; font-size: clamp(1.45rem, 2.1vw, 1.8rem); line-height: 1.15; font-weight: 800; color: #354f8b; }
 .stat-service-star.review-rating-star { width: 29px; height: 29px; flex-basis: 29px; }
-.stat-heart { color: var(--gold); font-family: 'Segoe UI', sans-serif; font-size: 2rem; }
-.stat-label { max-width: 100%; margin-top: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
-.about-magic-btn {
-  position: relative; grid-column: 1 / -1; justify-self: end;
-  display: inline-flex; align-items: center; gap: 8px; min-width: 0; min-height: 44px;
-  padding: 0 8px; border: 0; background: transparent; color: var(--gold);
-  cursor: pointer; opacity: 0.9; transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.about-magic-label { color: var(--gray); font: inherit; font-size: 0.875rem; }
-.about-magic-btn:hover { transform: translateY(-1px); opacity: 1; }
-.about-magic-btn:hover .about-magic-label { color: var(--purple-dark); }
-.about-magic-btn:active { transform: scale(0.96); }
-.about-magic-btn:focus-visible { outline: 2px dotted var(--gold); outline-offset: 5px; border-radius: 50%; }
+.stat-heart { font-family: 'Segoe UI', sans-serif; font-size: 2.15rem; color: #ef9866; background: linear-gradient(145deg, #f6bd5d, #eb858f); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-label { max-width: 100%; margin-top: 8px; font-size: 0.875rem; font-weight: 700; color: #52638a; overflow-wrap: anywhere; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-.about-magic-icon {
-  position: relative; display: grid; place-items: center; width: 38px; height: 28px;
-}
-.about-magic-broom {
-  position: relative; z-index: 2; font-size: 1.38rem; line-height: 1;
-  filter: drop-shadow(0 3px 4px rgba(232,168,69,0.2)); transition: transform 0.35s ease;
-}
-.about-magic-btn:hover .about-magic-broom { transform: rotate(-12deg) translateY(-1px); }
-.about-magic-glitter {
-  position: absolute; color: #e8a845; line-height: 1; pointer-events: none;
-  filter: drop-shadow(0 0 4px rgba(232,168,69,0.5));
-  animation: gentleMagicSparkle 2.6s ease-in-out infinite;
-}
-.about-magic-glitter:nth-of-type(2) { top: 0; left: 8px; font-size: 0.72rem; animation-delay: -0.4s; }
-.about-magic-glitter:nth-of-type(3) { top: 3px; right: 5px; font-size: 0.52rem; animation-delay: -1.7s; }
-.about-magic-glitter:nth-of-type(4) { bottom: 0; right: 10px; font-size: 0.82rem; animation-delay: -0.9s; }
-.about-magic-glitter:nth-of-type(5) { bottom: 2px; left: 4px; font-size: 0.46rem; animation-delay: -2.1s; }
-.about-magic-btn.is-sweeping { animation: magicButtonPop 0.55s ease; }
-.about-cleaning-broom {
-  position: absolute; left: -90px; top: 58%; z-index: 20;
-  font-size: 3.4rem; line-height: 1; pointer-events: none;
-  filter: drop-shadow(0 7px 8px rgba(61,90,153,0.2));
-  animation: broomSweep 2.35s cubic-bezier(0.4,0,0.2,1) forwards;
-}
+.about-cleaning-row { position: relative; grid-column: 1 / -1; height: 62px; margin-top: -3px; overflow: hidden; pointer-events: none; --sweep-distance: 0px; }
+.about-cleaning-row::before { content: ''; position: absolute; left: 12px; right: 12px; bottom: 12px; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,168,69,.2) 25%, rgba(155,142,196,.2) 70%, transparent); }
+.about-sweeper { position: absolute; top: 9px; left: 12px; z-index: 1; width: 38px; height: 38px; animation: broomTravel 8s ease-in-out infinite; animation-play-state: paused; }
+.about-dancing-broom { display: block; font-size: 1.95rem; line-height: 1.2; transform-origin: 30% 88%; color: #d9993f; filter: drop-shadow(0 3px 4px rgba(232,168,69,.15)); animation: broomDance .7s ease-in-out infinite; animation-play-state: paused; }
+.about-cleaning-row.is-cleaning .about-sweeper, .about-cleaning-row.is-cleaning .about-dancing-broom { animation-play-state: running; }
 .about-cleaning-spark {
-  position: absolute; left: var(--spark-x); top: var(--spark-y); z-index: 19;
-  color: var(--spark-color); font-size: var(--spark-size); opacity: 0;
-  pointer-events: none; animation: cleaningSpark 0.95s ease-out var(--spark-delay) forwards;
+  position: absolute; z-index: 2; line-height: 1; opacity: 0;
+  color: var(--spark-color); font-size: var(--spark-size); pointer-events: none;
+  filter: drop-shadow(0 0 3px rgba(232,168,69,.3)); animation: cleaningSpark .9s ease-out forwards;
 }
-@keyframes broomSweep {
-  0% { left: -90px; top: 64%; transform: rotate(-28deg) scale(0.8); opacity: 0; }
-  12% { opacity: 1; }
-  30% { top: 46%; transform: rotate(12deg) scale(1); }
-  55% { top: 67%; transform: rotate(-18deg) scale(1.05); }
-  78% { top: 38%; transform: rotate(15deg) scale(1); opacity: 1; }
-  100% { left: calc(100% + 90px); top: 56%; transform: rotate(-10deg) scale(0.82); opacity: 0; }
+@keyframes broomTravel { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--sweep-distance)); } }
+@keyframes broomDance { 0%, 100% { transform: rotate(-16deg) translateY(0); } 30% { transform: rotate(10deg) translateY(-3px); } 65% { transform: rotate(18deg) translateY(1px); } }
+@keyframes cleaningSpark { 0% { opacity: 0; transform: translate(0, 0) scale(.4) rotate(0); } 22% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--spark-drift), -18px) scale(1.1) rotate(45deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .about-sweeper, .about-dancing-broom { animation: none; }
+  .about-cleaning-spark { display: none; }
 }
-@keyframes cleaningSpark {
-  0% { opacity: 0; transform: translateY(8px) scale(0.4) rotate(0deg); }
-  35% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-25px) scale(1.25) rotate(55deg); }
-}
-@keyframes gentleMagicSparkle {
-  0%, 100% { opacity: 0.28; transform: scale(0.68) rotate(0deg); }
-  48% { opacity: 1; transform: scale(1.16) rotate(18deg); }
-  68% { opacity: 0.55; transform: scale(0.9) rotate(28deg); }
-}
-@keyframes magicButtonPop { 0%,100% { transform: scale(1); } 45% { transform: scale(1.07) rotate(1deg); } }
 
 /* ========== SERVICES ========== */
 #services {
@@ -935,9 +899,8 @@ footer {
   .about-image-wrap { max-width: 330px; margin: 0 auto; padding-left: 10px; }
   .about-text { padding: 8px 4px 10px; }
   .about-stats { gap: 10px; }
-  .stat { min-height: 92px; padding: 14px 5px; border-radius: 15px; }
-  .stat-number { font-size: 1.5rem; }
-  .about-magic-btn { padding-inline: 4px; }
+  .stat { min-height: 96px; padding: 16px 5px; border-radius: 18px; }
+  .stat-number { font-size: clamp(1.25rem, 6vw, 1.55rem); }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -1030,16 +993,9 @@ footer {
             <div class="stat-number"><span class="stat-heart" aria-hidden="true">♥</span></div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
-          <button type="button" class="about-magic-btn" id="aboutMagic">
-            <span class="about-magic-icon" aria-hidden="true">
-              <span class="about-magic-broom">🧹</span>
-              <span class="about-magic-glitter">✦</span>
-              <span class="about-magic-glitter">✧</span>
-              <span class="about-magic-glitter">✦</span>
-              <span class="about-magic-glitter">•</span>
-            </span>
-            <span class="about-magic-label" data-i18n="about_magic">A little touch of shine?</span>
-          </button>
+          <div class="about-cleaning-row" aria-hidden="true">
+            <span class="about-sweeper"><span class="about-dancing-broom">🧹</span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -2852,45 +2808,56 @@ document.querySelectorAll('.package-card[data-service]').forEach(card => {
 
 // ========== ABOUT: PLAYFUL CLEANING ANIMATION ==========
 (function() {
-  const section = document.getElementById('about');
-  const button = document.getElementById('aboutMagic');
-  if (!section || !button) return;
+  const row = document.querySelector('.about-cleaning-row');
+  if (!row) return;
+  const sweeper = row.querySelector('.about-sweeper');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false;
+  let frame = 0;
+  let lastSpark = 0;
+  let sparkIndex = 0;
+  const colors = ['#E8A845', '#E4849A', '#9B8EC4'];
+  const resize = () => row.style.setProperty('--sweep-distance', Math.max(0, row.clientWidth - 64) + 'px');
+  new ResizeObserver(resize).observe(row);
+  resize();
 
-  button.addEventListener('click', () => {
-    section.querySelectorAll('.about-cleaning-broom, .about-cleaning-spark').forEach(el => el.remove());
-    button.disabled = true;
-    button.classList.remove('is-sweeping');
-    void button.offsetWidth;
-    button.classList.add('is-sweeping');
-
-    const broom = document.createElement('span');
-    broom.className = 'about-cleaning-broom';
-    broom.textContent = '🧹';
-    broom.setAttribute('aria-hidden', 'true');
-    section.appendChild(broom);
-
-    const colors = ['#E8A845', '#E4849A', '#9B8EC4', '#5CBEA3'];
-    const symbols = ['✦', '✨', '·'];
-    for (let i = 0; i < 18; i++) {
+  function animate(time) {
+    if (time - lastSpark > 170) {
+      lastSpark = time;
+      const position = sweeper.getBoundingClientRect().left - row.getBoundingClientRect().left;
       const spark = document.createElement('span');
       spark.className = 'about-cleaning-spark';
-      spark.textContent = symbols[i % symbols.length];
-      spark.setAttribute('aria-hidden', 'true');
-      spark.style.setProperty('--spark-x', (7 + i * 5.1) + '%');
-      spark.style.setProperty('--spark-y', (30 + (i * 17) % 48) + '%');
-      spark.style.setProperty('--spark-delay', (0.12 + i * 0.105) + 's');
-      spark.style.setProperty('--spark-color', colors[i % colors.length]);
-      spark.style.setProperty('--spark-size', (0.75 + (i % 3) * 0.22) + 'rem');
-      section.appendChild(spark);
+      spark.textContent = sparkIndex % 3 === 1 ? '✧' : '✦';
+      spark.style.left = (position + 5 + sparkIndex % 3 * 4) + 'px';
+      spark.style.top = (37 + sparkIndex % 2 * 4) + 'px';
+      spark.style.setProperty('--spark-color', colors[sparkIndex % colors.length]);
+      spark.style.setProperty('--spark-size', (7 + sparkIndex % 3 * 2) + 'px');
+      spark.style.setProperty('--spark-drift', (sparkIndex % 2 ? 7 : -7) + 'px');
+      spark.addEventListener('animationend', () => spark.remove(), { once: true });
+      row.appendChild(spark);
+      sparkIndex++;
     }
+    frame = requestAnimationFrame(animate);
+  }
 
-    setTimeout(() => {
-      broom.remove();
-      section.querySelectorAll('.about-cleaning-spark').forEach(el => el.remove());
-      button.classList.remove('is-sweeping');
-      button.disabled = false;
-    }, 2550);
-  });
+  function syncAnimation() {
+    const running = visible && !document.hidden && !reduceMotion.matches;
+    row.classList.toggle('is-cleaning', running);
+    cancelAnimationFrame(frame);
+    frame = 0;
+    if (running) {
+      lastSpark = performance.now();
+      frame = requestAnimationFrame(animate);
+    } else {
+      row.querySelectorAll('.about-cleaning-spark').forEach(spark => spark.remove());
+    }
+  }
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    syncAnimation();
+  }).observe(row);
+  document.addEventListener('visibilitychange', syncAnimation);
+  reduceMotion.addEventListener('change', syncAnimation);
 })();
 
 // Re-trigger language to apply
