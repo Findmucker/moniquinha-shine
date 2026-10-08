@@ -321,27 +321,27 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
   border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--coral));
 }
 .about-text p { margin-bottom: 15px; font-size: 1.03rem; }
-.about-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 27px; align-items: stretch; }
+.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 27px; align-items: stretch; }
 .stat {
-  position: relative; flex: 1; text-align: center; padding: 12px 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 0; min-height: 100px; padding: 18px 10px; text-align: center;
+  border: 1px solid #dfe5f2; border-radius: 18px;
+  background: linear-gradient(145deg, #fff, #f8f9fd);
+  box-shadow: 0 5px 16px rgba(45,65,111,.04);
 }
-.stat:nth-child(1), .stat:nth-child(2) { background: rgba(255,255,255,0.35); }
-.stat:nth-child(1) { border: 1.5px dashed rgba(232,168,69,0.52); border-radius: 21px 15px 19px 14px; transform: rotate(-0.6deg); }
-.stat:nth-child(2) { border: 1.5px dashed rgba(155,142,196,0.55); border-radius: 15px 21px 14px 19px; transform: rotate(0.6deg); }
-.stat:nth-child(1)::after, .stat:nth-child(2)::after {
-  content: '✦'; position: absolute; top: -9px; right: 12px;
-  padding: 0 4px; background: var(--light-bg); font-size: 0.72rem;
-}
-.stat:nth-child(1)::after { color: var(--gold); }
-.stat:nth-child(2)::after { color: var(--purple); }
-.stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
-.stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); }
+.stat-number { display: flex; align-items: center; justify-content: center; gap: 3px; min-height: 34px; font-size: 1.65rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat-service-star.review-rating-star { width: 29px; height: 29px; flex-basis: 29px; }
+.stat-heart { color: var(--gold); font-family: 'Segoe UI', sans-serif; font-size: 2rem; }
+.stat-label { max-width: 100%; margin-top: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
 .about-magic-btn {
-  position: relative; display: grid; place-items: center; min-width: 0;
-  padding: 12px 6px; border: 0; background: transparent; color: var(--gold);
-  cursor: pointer; opacity: 0.82; transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative; grid-column: 1 / -1; justify-self: end;
+  display: inline-flex; align-items: center; gap: 8px; min-width: 0; min-height: 44px;
+  padding: 0 8px; border: 0; background: transparent; color: var(--gold);
+  cursor: pointer; opacity: 0.9; transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.about-magic-btn:hover { transform: scale(1.08); opacity: 1; }
+.about-magic-label { color: var(--gray); font: inherit; font-size: 0.875rem; }
+.about-magic-btn:hover { transform: translateY(-1px); opacity: 1; }
+.about-magic-btn:hover .about-magic-label { color: var(--purple-dark); }
 .about-magic-btn:active { transform: scale(0.96); }
 .about-magic-btn:focus-visible { outline: 2px dotted var(--gold); outline-offset: 5px; border-radius: 50%; }
 .sr-only {
@@ -349,7 +349,7 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 .about-magic-icon {
-  position: relative; display: grid; place-items: center; width: 58px; height: 28px;
+  position: relative; display: grid; place-items: center; width: 38px; height: 28px;
 }
 .about-magic-broom {
   position: relative; z-index: 2; font-size: 1.38rem; line-height: 1;
@@ -934,10 +934,10 @@ footer {
   .about-grid { gap: 44px; }
   .about-image-wrap { max-width: 330px; margin: 0 auto; padding-left: 10px; }
   .about-text { padding: 8px 4px 10px; }
-  .about-stats { gap: 8px; }
-  .stat { padding: 10px 5px; }
-  .stat-number { font-size: 1.35rem; }
-  .about-magic-btn { padding-inline: 2px; }
+  .about-stats { gap: 10px; }
+  .stat { min-height: 92px; padding: 14px 5px; border-radius: 15px; }
+  .stat-number { font-size: 1.5rem; }
+  .about-magic-btn { padding-inline: 4px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -1023,11 +1023,11 @@ footer {
             <div class="stat-label" data-i18n="stat_dedication">Dedication</div>
           </div>
           <div class="stat">
-            <div class="stat-number">5★</div>
+            <div class="stat-number" aria-label="5★">5<span class="stat-service-star review-rating-star" aria-hidden="true"></span></div>
             <div class="stat-label" data-i18n="stat_service">Service</div>
           </div>
           <div class="stat">
-            <div class="stat-number">💛</div>
+            <div class="stat-number"><span class="stat-heart" aria-hidden="true">♥</span></div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
           <button type="button" class="about-magic-btn" id="aboutMagic">
@@ -1038,7 +1038,7 @@ footer {
               <span class="about-magic-glitter">✦</span>
               <span class="about-magic-glitter">•</span>
             </span>
-            <span class="sr-only" data-i18n="about_magic">A little touch of shine?</span>
+            <span class="about-magic-label" data-i18n="about_magic">A little touch of shine?</span>
           </button>
         </div>
       </div>
