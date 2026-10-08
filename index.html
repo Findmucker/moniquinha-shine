@@ -321,32 +321,31 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
   border-radius: 999px; background: linear-gradient(90deg, var(--gold), var(--coral));
 }
 .about-text p { margin-bottom: 15px; font-size: 1.03rem; }
-.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 27px; align-items: stretch; }
+.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 27px; align-items: stretch; }
 .stat {
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-width: 0; min-height: 108px; padding: 20px 10px; text-align: center;
-  border: 1px solid rgba(232,168,69,.32); border-radius: 22px;
-  background: radial-gradient(circle at 86% 10%, rgba(255,213,117,.32), transparent 52%), linear-gradient(145deg, #fffdf7, #fff4df);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(232,168,69,.09);
+  position: relative; flex: 1; min-width: 0; text-align: center; padding: 12px 10px;
 }
-.stat:nth-child(2) { border-color: rgba(155,142,196,.32); background: radial-gradient(circle at 12% 90%, rgba(155,142,196,.18), transparent 56%), linear-gradient(145deg, #fcfbff, #efedfc); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(155,142,196,.1); }
-.stat:nth-child(3) { border-color: rgba(228,132,154,.3); background: radial-gradient(circle at 90% 10%, rgba(255,189,163,.23), transparent 56%), linear-gradient(145deg, #fffafa, #fff0f2); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 20px rgba(228,132,154,.09); }
-.stat::after { content: '✧'; position: absolute; top: 7px; right: 12px; color: #dfa644; font-size: .95rem; line-height: 1; opacity: .6; pointer-events: none; }
-.stat:nth-child(2)::after { content: '✦'; top: auto; bottom: 9px; right: 9px; color: #9b8ec4; font-size: .55rem; transform: rotate(12deg); }
-.stat:nth-child(3)::after { top: 10px; right: auto; left: 10px; color: #e4849a; font-size: .75rem; transform: rotate(-12deg); }
-.stat-number { display: flex; align-items: center; justify-content: center; gap: 3px; min-height: 36px; font-size: clamp(1.45rem, 2.1vw, 1.8rem); line-height: 1.15; font-weight: 800; color: #354f8b; }
-.stat-service-star.review-rating-star { width: 29px; height: 29px; flex-basis: 29px; }
-.stat-heart { font-family: 'Segoe UI', sans-serif; font-size: 2.15rem; color: #ef9866; background: linear-gradient(145deg, #f6bd5d, #eb858f); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.stat-label { max-width: 100%; margin-top: 8px; font-size: 0.875rem; font-weight: 700; color: #52638a; overflow-wrap: anywhere; }
+.stat:nth-child(1), .stat:nth-child(2) { background: rgba(255,255,255,0.35); }
+.stat:nth-child(1) { border: 1.5px dashed rgba(232,168,69,0.52); border-radius: 21px 15px 19px 14px; transform: rotate(-0.6deg); }
+.stat:nth-child(2) { border: 1.5px dashed rgba(155,142,196,0.55); border-radius: 15px 21px 14px 19px; transform: rotate(0.6deg); }
+.stat:nth-child(1)::after, .stat:nth-child(2)::after {
+  content: '✦'; position: absolute; top: -9px; right: 12px;
+  padding: 0 4px; background: var(--light-bg); font-size: 0.72rem;
+}
+.stat:nth-child(1)::after { color: var(--gold); }
+.stat:nth-child(2)::after { color: var(--purple); }
+.stat-number { font-size: 1.55rem; line-height: 1.15; font-weight: 800; color: var(--purple-dark); }
+.stat-label { margin-top: 4px; font-size: 0.78rem; font-weight: 600; color: var(--gray); overflow-wrap: anywhere; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-.about-cleaning-row { position: relative; grid-column: 1 / -1; height: 62px; margin-top: -3px; overflow: hidden; pointer-events: none; --sweep-distance: 0px; }
+.about-cleaning-row { position: relative; grid-column: 1 / -1; height: 68px; margin-top: -3px; overflow: hidden; pointer-events: none; --sweep-distance: 0px; }
 .about-cleaning-row::before { content: ''; position: absolute; left: 12px; right: 12px; bottom: 12px; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,168,69,.2) 25%, rgba(155,142,196,.2) 70%, transparent); }
 .about-sweeper { position: absolute; top: 9px; left: 12px; z-index: 1; width: 38px; height: 38px; animation: broomTravel 8s ease-in-out infinite; animation-play-state: paused; }
-.about-dancing-broom { display: block; font-size: 1.95rem; line-height: 1.2; transform-origin: 30% 88%; color: #d9993f; filter: drop-shadow(0 3px 4px rgba(232,168,69,.15)); animation: broomDance .7s ease-in-out infinite; animation-play-state: paused; }
+.about-sweeper:nth-child(2) { left: calc(50% + 6px); animation-delay: -4s; }
+.about-dancing-broom { display: block; font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-size: 2.05rem; font-weight: 400; line-height: 1.2; transform-origin: 30% 88%; filter: drop-shadow(0 3px 4px rgba(232,168,69,.2)); animation: broomDance .7s ease-in-out infinite; animation-play-state: paused; --broom-direction: 1; }
+.about-sweeper:nth-child(2) .about-dancing-broom { --broom-direction: -1; animation-duration: .85s; animation-delay: -.25s; }
 .about-cleaning-row.is-cleaning .about-sweeper, .about-cleaning-row.is-cleaning .about-dancing-broom { animation-play-state: running; }
 .about-cleaning-spark {
   position: absolute; z-index: 2; line-height: 1; opacity: 0;
@@ -354,7 +353,7 @@ nav .container { max-width: none; display: flex; justify-content: space-between;
   filter: drop-shadow(0 0 3px rgba(232,168,69,.3)); animation: cleaningSpark .9s ease-out forwards;
 }
 @keyframes broomTravel { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--sweep-distance)); } }
-@keyframes broomDance { 0%, 100% { transform: rotate(-16deg) translateY(0); } 30% { transform: rotate(10deg) translateY(-3px); } 65% { transform: rotate(18deg) translateY(1px); } }
+@keyframes broomDance { 0%, 100% { transform: scaleX(var(--broom-direction)) rotate(-16deg) translateY(0); } 30% { transform: scaleX(var(--broom-direction)) rotate(10deg) translateY(-3px); } 65% { transform: scaleX(var(--broom-direction)) rotate(18deg) translateY(1px); } }
 @keyframes cleaningSpark { 0% { opacity: 0; transform: translate(0, 0) scale(.4) rotate(0); } 22% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--spark-drift), -18px) scale(1.1) rotate(45deg); } }
 @media (prefers-reduced-motion: reduce) {
   .about-sweeper, .about-dancing-broom { animation: none; }
@@ -898,9 +897,9 @@ footer {
   .about-grid { gap: 44px; }
   .about-image-wrap { max-width: 330px; margin: 0 auto; padding-left: 10px; }
   .about-text { padding: 8px 4px 10px; }
-  .about-stats { gap: 10px; }
-  .stat { min-height: 96px; padding: 16px 5px; border-radius: 18px; }
-  .stat-number { font-size: clamp(1.25rem, 6vw, 1.55rem); }
+  .about-stats { gap: 8px; }
+  .stat { padding: 10px 5px; }
+  .stat-number { font-size: 1.35rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 0; }
   .hero-buttons { flex-direction: column; align-items: center; }
@@ -986,14 +985,15 @@ footer {
             <div class="stat-label" data-i18n="stat_dedication">Dedication</div>
           </div>
           <div class="stat">
-            <div class="stat-number" aria-label="5★">5<span class="stat-service-star review-rating-star" aria-hidden="true"></span></div>
+            <div class="stat-number">5★</div>
             <div class="stat-label" data-i18n="stat_service">Service</div>
           </div>
           <div class="stat">
-            <div class="stat-number"><span class="stat-heart" aria-hidden="true">♥</span></div>
+            <div class="stat-number">💛</div>
             <div class="stat-label" data-i18n="stat_passion">Passion</div>
           </div>
           <div class="about-cleaning-row" aria-hidden="true">
+            <span class="about-sweeper"><span class="about-dancing-broom">🧹</span></span>
             <span class="about-sweeper"><span class="about-dancing-broom">🧹</span></span>
           </div>
         </div>
@@ -2810,32 +2810,35 @@ document.querySelectorAll('.package-card[data-service]').forEach(card => {
 (function() {
   const row = document.querySelector('.about-cleaning-row');
   if (!row) return;
-  const sweeper = row.querySelector('.about-sweeper');
+  const sweepers = [...row.querySelectorAll('.about-sweeper')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let visible = false;
   let frame = 0;
   let lastSpark = 0;
   let sparkIndex = 0;
   const colors = ['#E8A845', '#E4849A', '#9B8EC4'];
-  const resize = () => row.style.setProperty('--sweep-distance', Math.max(0, row.clientWidth - 64) + 'px');
+  const resize = () => row.style.setProperty('--sweep-distance', Math.max(0, row.clientWidth / 2 - 58) + 'px');
   new ResizeObserver(resize).observe(row);
   resize();
 
   function animate(time) {
-    if (time - lastSpark > 170) {
+    if (time - lastSpark > 230) {
       lastSpark = time;
-      const position = sweeper.getBoundingClientRect().left - row.getBoundingClientRect().left;
-      const spark = document.createElement('span');
-      spark.className = 'about-cleaning-spark';
-      spark.textContent = sparkIndex % 3 === 1 ? '✧' : '✦';
-      spark.style.left = (position + 5 + sparkIndex % 3 * 4) + 'px';
-      spark.style.top = (37 + sparkIndex % 2 * 4) + 'px';
-      spark.style.setProperty('--spark-color', colors[sparkIndex % colors.length]);
-      spark.style.setProperty('--spark-size', (7 + sparkIndex % 3 * 2) + 'px');
-      spark.style.setProperty('--spark-drift', (sparkIndex % 2 ? 7 : -7) + 'px');
-      spark.addEventListener('animationend', () => spark.remove(), { once: true });
-      row.appendChild(spark);
-      sparkIndex++;
+      const rowLeft = row.getBoundingClientRect().left;
+      sweepers.forEach((sweeper, index) => {
+        const position = sweeper.getBoundingClientRect().left - rowLeft;
+        const spark = document.createElement('span');
+        spark.className = 'about-cleaning-spark';
+        spark.textContent = sparkIndex % 3 === 1 ? '✧' : '✦';
+        spark.style.left = (position + (index ? 22 : 5) + sparkIndex % 3 * 3) + 'px';
+        spark.style.top = (42 + sparkIndex % 2 * 4) + 'px';
+        spark.style.setProperty('--spark-color', colors[sparkIndex % colors.length]);
+        spark.style.setProperty('--spark-size', (7 + sparkIndex % 3 * 2) + 'px');
+        spark.style.setProperty('--spark-drift', (sparkIndex % 2 ? 7 : -7) + 'px');
+        spark.addEventListener('animationend', () => spark.remove(), { once: true });
+        row.appendChild(spark);
+        sparkIndex++;
+      });
     }
     frame = requestAnimationFrame(animate);
   }
