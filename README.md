@@ -54,16 +54,32 @@ pnpm build
 moniquinhashine/
 ├── index.html          # Página, estilos, traduções e comportamento
 ├── favicon.png         # Favicon atual da marca (Icons8)
-├── favicon.svg         # Favicon anterior, mantido como recurso legado
 ├── moniquinha.webp     # Imagem otimizada usada no site
 ├── moniquinha.jpeg     # Imagem original
 ├── robots.txt          # Regras para motores de pesquisa
 ├── sitemap.xml         # URL canónica para indexação
 ├── vercel.json         # Deploy, cache e cabeçalhos de segurança
-└── .vercelignore       # Exclui documentação e ferramentas internas
+├── .vercelignore       # Exclui documentação, materiais e ferramentas internas
+├── materiais/          # Flyers, cartazes, cartões de visita, ímanes e recursos
+├── docs/               # Documentação de negócio e técnica
+└── scripts/            # Ferramentas para gerar os materiais
 ```
 
-`PRECOS_MERCADO.md` e `send_precos_email.py` são materiais internos e não fazem parte do site publicado.
+## Materiais e documentação
+
+| Pasta | Conteúdo |
+|---|---|
+| [Flyers](materiais/flyers/) | Flyer A5 aprovado |
+| [Cartazes](materiais/cartazes/) | Cartaz da marca |
+| [Cartões de visita](materiais/cartoes-visita/) | Versão original, alternativa e imagens de frente/verso |
+| [Ímanes](materiais/imanes/) | Alternativa em coração com o avatar do flyer e contactos |
+| [Recursos da marca](materiais/recursos/marca/) | Estrela para impressão, símbolo WhatsApp e favicon legado |
+| [Negócio](docs/negocio/) | Pesquisa e decisões de preços |
+| [Técnico](docs/tecnico/) | Configuração e ensaio dos testemunhos |
+
+Consultar o [índice de materiais](materiais/README.md) para escolher os ficheiros e o [registo de organização](docs/organizacao-ficheiros.md) para encontrar os antigos caminhos.
+
+A documentação, os materiais de impressão e os scripts ficam excluídos do site publicado através de `.vercelignore`. A pesquisa de preços está em [docs/negocio/precos-mercado.md](docs/negocio/precos-mercado.md); um ficheiro num repositório público continua acessível no GitHub, mesmo quando não faz parte do deploy.
 
 ## Deploy
 

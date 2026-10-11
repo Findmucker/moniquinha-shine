@@ -1,0 +1,2 @@
+# Print PDFs are binary assets, including ReportLab's ASCII-encoded files.
+*.pdf binary

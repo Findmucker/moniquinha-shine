@@ -16,10 +16,10 @@ PAGE_W = TRIM_W + 2 * BLEED
 PAGE_H = TRIM_H + 2 * BLEED
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT_DIR = ROOT / "output" / "pdf"
+OUT_DIR = ROOT / "materiais" / "cartoes-visita"
 PDF_PATH = OUT_DIR / "cartao-visita-moniquinha-shine.pdf"
-STAR_PATH = OUT_DIR / "moniquinha-star-print.png"
-WHATSAPP_PATH = OUT_DIR / "whatsapp-logo-gradient.png"
+STAR_PATH = ROOT / "materiais" / "recursos" / "marca" / "moniquinha-star-print.png"
+WHATSAPP_PATH = ROOT / "materiais" / "recursos" / "marca" / "whatsapp-logo-gradient.png"
 
 
 def register_fonts():

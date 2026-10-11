@@ -12,6 +12,12 @@ Thumbs.db
 
 # Internal pricing research — generated PDF (source markdown is committed)
 PRECOS_MERCADO.pdf
+docs/negocio/precos-mercado.pdf
+
+# Generated caches and temporary previews
+__pycache__/
+*.py[cod]
+tmp/
 
 # Local env / secrets for SMTP sending
 .env*
