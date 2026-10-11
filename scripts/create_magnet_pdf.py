@@ -1,9 +1,12 @@
-"""Create a 75 mm size proof from the magnet artwork, without altering its pixels.
+"""Create a size proof from magnet artwork, without altering its pixels.
 
 This is an RGB size proof, not a bleed/cutting production master.
 """
 
+import argparse
 from pathlib import Path
+
+from PIL import Image
 
 from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
@@ -11,21 +14,40 @@ from reportlab.pdfgen.canvas import Canvas
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTWORK = ROOT / "materiais/imanes/moniquinha-shine-iman-coracao-avatar.png"
-OUTPUT = ARTWORK.with_name("moniquinha-shine-iman-coracao-avatar-75mm.pdf")
+VARIANTS = {
+    "coracao": (75, 75, "75mm"),
+    "retangular": (90, 60, "90x60mm"),
+    "estrela": (90, 90, "90mm"),
+}
 
 
-def create_pdf():
-    size = 75 * mm
-    canvas = Canvas(str(OUTPUT), pagesize=(size, size), pageCompression=1)
-    canvas.setTitle("Moniquinha Shine - iman em coracao com avatar - prova 75 mm")
+def create_pdf(variant="coracao"):
+    width_mm, height_mm, suffix = VARIANTS[variant]
+    width, height = width_mm * mm, height_mm * mm
+    artwork = ROOT / f"materiais/imanes/moniquinha-shine-iman-{variant}-avatar.png"
+    output = artwork.with_name(f"{artwork.stem}-{suffix}.pdf")
+    with Image.open(artwork) as image:
+        pixel_width, pixel_height = image.size
+    scale = min(width / pixel_width, height / pixel_height)
+    image_width, image_height = pixel_width * scale, pixel_height * scale
+    canvas = Canvas(str(output), pagesize=(width, height), pageCompression=1)
+    canvas.setTitle(f"Moniquinha Shine - iman {variant} com avatar - prova {width_mm} x {height_mm} mm")
     canvas.setAuthor("Moniquinha Shine")
     canvas.setSubject("Prova de tamanho, RGB, sem sangria nem linha vetorial de corte")
-    canvas.drawImage(ImageReader(str(ARTWORK)), 0, 0, size, size, mask="auto")
+    canvas.drawImage(
+        ImageReader(str(artwork)),
+        (width - image_width) / 2,
+        (height - image_height) / 2,
+        image_width,
+        image_height,
+        mask="auto",
+    )
     canvas.showPage()
     canvas.save()
-    print(OUTPUT)
+    print(output)
 
 
 if __name__ == "__main__":
-    create_pdf()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--variant", choices=VARIANTS, default="coracao")
+    create_pdf(parser.parse_args().variant)

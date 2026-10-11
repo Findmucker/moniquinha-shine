@@ -72,7 +72,7 @@ moniquinhashine/
 | [Flyers](materiais/flyers/) | Flyer A5 aprovado |
 | [Cartazes](materiais/cartazes/) | Cartaz da marca |
 | [Cartões de visita](materiais/cartoes-visita/) | Versão original, alternativa e imagens de frente/verso |
-| [Ímanes](materiais/imanes/) | Alternativa em coração com o avatar do flyer e contactos |
+| [Ímanes](materiais/imanes/) | Coração, retângulo e estrela com o avatar do flyer e contactos |
 | [Recursos da marca](materiais/recursos/marca/) | Estrela para impressão, símbolo WhatsApp e favicon legado |
 | [Negócio](docs/negocio/) | Pesquisa e decisões de preços |
 | [Técnico](docs/tecnico/) | Configuração e ensaio dos testemunhos |
